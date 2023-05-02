@@ -9,9 +9,15 @@ Dropbear provides SSH/SCP access to the HDZero Goggles
 ./setup.sh
 cd build
 make -j
-# binaries will be stored within out/
-# scripts will be stored within out/scripts/
+```
+
+## Cleaning
+```shell
+cd build
+make purgeall
 ```
 
 ## Deployment
-todo...
+copy ```pkg/hdzero-google-VERSION.tgz``` to the root of your SD Card.
+
+HDZ Goggles will automatically install package when detected.
