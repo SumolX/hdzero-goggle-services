@@ -5,24 +5,25 @@ project(HDZGOGGLE-SERVICES)
 file(STRINGS ${CMAKE_SOURCE_DIR}/VERSION BUILD_NUMBER)
 
 set(OUTPUT_DIR ${CMAKE_SOURCE_DIR}/out)
-set(SCRIPTS_DIR ${OUTPUT_DIR}/scripts)
 set(PACKAGE_DIR ${CMAKE_SOURCE_DIR}/pkg)
+set(SCRIPTS_DIR ${CMAKE_SOURCE_DIR}/scripts)
 set(ARCHIVE_NAME "hdzgoggle-services-${BUILD_NUMBER}")
-
 
 add_subdirectory(dropbear)
 
 add_custom_command(
 	OUTPUT DROPBEARMULTI
-	COMMAND mkdir -p ${OUTPUT_DIR}
-	COMMAND cp ${PROJECT_BINARY_DIR}/dropbear/out/dropbearmulti ${OUTPUT_DIR}/
+	COMMAND mkdir -p ${OUTPUT_DIR}/dropbear
+	COMMAND cp ${PROJECT_BINARY_DIR}/dropbear/out/dropbearmulti ${OUTPUT_DIR}/dropbear/
 	DEPENDS dropbearmulti
 )
 
 add_custom_command(
 	OUTPUT ALL_SCRIPTS
-	COMMAND mkdir -p ${SCRIPTS_DIR}
-	COMMAND cp ${dropbear_SOURCE_DIR}/scripts/* ${SCRIPTS_DIR}/
+	COMMAND mkdir -p ${OUTPUT_DIR}/scripts
+	COMMAND cp ${dropbear_SOURCE_DIR}/scripts/* ${OUTPUT_DIR}/scripts/
+	COMMAND cp ${SCRIPTS_DIR}/* ${OUTPUT_DIR}/
+	COMMAND cp ${CMAKE_SOURCE_DIR}/VERSION ${OUTPUT_DIR}/
 	DEPENDS DROPBEARMULTI
 )
 
@@ -47,7 +48,7 @@ add_custom_target(
 )
 
 add_custom_target(
-	purgeall ALL 
+	purgeall
 	DEPENDS PURGE_ALL
 )
 
