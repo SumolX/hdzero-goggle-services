@@ -9,6 +9,8 @@ Dropbear provides SSH/SCP access to the HDZero Goggles
 ./setup.sh
 cd build
 make -j
+# binaries will be stored within out/
+# scripts will be stored within out/scripts/
 ```
 
 ## Deployment
