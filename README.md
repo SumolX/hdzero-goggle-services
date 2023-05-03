@@ -18,6 +18,6 @@ make purgeall
 ```
 
 ## Deployment
-copy ```pkg/hdzero-google-VERSION.tgz``` to the root of your SD Card.
+copy ```pkg/hdzero-google-VERSION.tar``` to the root of your SD Card.
 
 HDZ Goggles will automatically install package when detected.
