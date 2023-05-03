@@ -30,7 +30,7 @@ add_custom_command(
 add_custom_command(
 	OUTPUT CREATE_PACKAGE
 	COMMAND mkdir -p ${PACKAGE_DIR}
-	COMMAND tar czf "${PACKAGE_DIR}/${ARCHIVE_NAME}.tgz" --transform 's,^.,${ARCHIVE_NAME},' .
+	COMMAND tar cvf "${PACKAGE_DIR}/${ARCHIVE_NAME}.tar" --transform 's,^.,${ARCHIVE_NAME},' .
 	WORKING_DIRECTORY ${OUTPUT_DIR}
 	DEPENDS ALL_SCRIPTS
 )
