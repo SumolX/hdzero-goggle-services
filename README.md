@@ -20,4 +20,4 @@ make purgeall
 ## Deployment
 copy ```pkg/hdzero-google-VERSION.tar``` to the root of your SD Card.
 
-HDZ Goggles will automatically install package when detected.
+HDZ Goggles will automatically install package when detected (Minimum Google FW Version: TBD).
