@@ -2,7 +2,10 @@
 3rd Party Services for the HDZero Goggle
 
 ## Services
-Dropbear provides SSH/SCP access to the HDZero Goggles
+```
+dropbear:  Network communications (SSH/SCP) via WiFi Module
+ntpclient: Synchronize time with NTP Server via WiFi Module
+```
 
 ## Building
 ```shell
@@ -14,7 +17,7 @@ make -j
 ## Cleaning
 ```shell
 cd build
-make purgeall
+make cleanall
 ```
 
 ## Deployment

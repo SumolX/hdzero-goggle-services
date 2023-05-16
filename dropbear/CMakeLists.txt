@@ -55,11 +55,11 @@ add_custom_command(
 )
 
 add_custom_command(
-	OUTPUT dropbear_clean
+	OUTPUT dropbear_cleanall
 	COMMAND find . -name '*.o' -delete
 	COMMAND find . -name '*.a' -delete
 	COMMAND rm -rf ${dropbear_BINARY_DIR}/*
 )
 
 add_custom_target(dropbearmulti ALL DEPENDS dropbear_build)
-add_custom_target(cleanall dropbearmulti DEPENDS dropbear_clean)
+add_custom_target(dropbear_clean DEPENDS dropbear_cleanall)
