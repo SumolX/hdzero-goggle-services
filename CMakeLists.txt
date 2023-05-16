@@ -9,8 +9,16 @@ set(PACKAGE_DIR ${CMAKE_SOURCE_DIR}/pkg)
 set(SCRIPTS_DIR ${CMAKE_SOURCE_DIR}/scripts)
 set(ARCHIVE_NAME "hdzgoggle-services-${BUILD_NUMBER}")
 
+add_subdirectory(busybox)
 add_subdirectory(dropbear)
 add_subdirectory(ntpclient)
+
+add_custom_command(
+	OUTPUT BUSYBOX
+	COMMAND mkdir -p ${OUTPUT_DIR}/busybox
+	COMMAND cp ${PROJECT_BINARY_DIR}/busybox/out/busybox ${OUTPUT_DIR}/busybox/
+	DEPENDS busybox
+)
 
 add_custom_command(
 	OUTPUT DROPBEARMULTI
@@ -29,11 +37,12 @@ add_custom_command(
 add_custom_command(
 	OUTPUT ALL_SCRIPTS
 	COMMAND mkdir -p ${OUTPUT_DIR}/scripts
+	COMMAND cp ${busybox_SOURCE_DIR}/scripts/* ${OUTPUT_DIR}/scripts/
 	COMMAND cp ${dropbear_SOURCE_DIR}/scripts/* ${OUTPUT_DIR}/scripts/
 	COMMAND cp ${ntpclient_SOURCE_DIR}/scripts/* ${OUTPUT_DIR}/scripts/
 	COMMAND cp ${SCRIPTS_DIR}/* ${OUTPUT_DIR}/
 	COMMAND cp ${CMAKE_SOURCE_DIR}/VERSION ${OUTPUT_DIR}/
-	DEPENDS DROPBEARMULTI NTPCLIENT
+	DEPENDS BUSYBOX DROPBEARMULTI NTPCLIENT
 )
 
 add_custom_command(
@@ -48,7 +57,7 @@ add_custom_command(
 	OUTPUT CLEAN_ALL
 	COMMAND rm -rf ${OUTPUT_DIR}
 	COMMAND rm -rf ${PACKAGE_DIR}
-	DEPENDS dropbear_clean ntpclient_clean
+	DEPENDS busybox_clean dropbear_clean ntpclient_clean
 )
 
 add_custom_target(
@@ -61,4 +70,4 @@ add_custom_target(
 	DEPENDS CLEAN_ALL
 )
 
-add_dependencies(${PROJECT_NAME} dropbearmulti ntpclient)
+add_dependencies(${PROJECT_NAME} busybox dropbearmulti ntpclient)

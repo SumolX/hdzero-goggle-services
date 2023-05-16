@@ -3,6 +3,7 @@
 
 ## Services
 ```
+busybox:   Software Suite Version 1.27.2
 dropbear:  Network communications (SSH/SCP) via WiFi Module
 ntpclient: Synchronize time with NTP Server via WiFi Module
 ```

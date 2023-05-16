@@ -1,0 +1,11 @@
+--- date.c.old	2023-05-15 21:38:54.357121327 -0400
++++ date.c.new	2023-05-15 21:33:05.595370792 -0400
+@@ -293,7 +293,7 @@
+ 		maybe_set_utc(opt);
+ 
+ 		/* if setting time, set it */
+-		if ((opt & OPT_SET) && stime(&ts.tv_sec) < 0) {
++		if ((opt & OPT_SET) && clock_settime(CLOCK_REALTIME, (struct timespec*){ts.tv_sec, 0}) < 0) {
+ 			bb_perror_msg("can't set date");
+ 		}
+ 	}
