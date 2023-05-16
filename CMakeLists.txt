@@ -10,6 +10,7 @@ set(SCRIPTS_DIR ${CMAKE_SOURCE_DIR}/scripts)
 set(ARCHIVE_NAME "hdzgoggle-services-${BUILD_NUMBER}")
 
 add_subdirectory(dropbear)
+add_subdirectory(ntpclient)
 
 add_custom_command(
 	OUTPUT DROPBEARMULTI
@@ -19,12 +20,20 @@ add_custom_command(
 )
 
 add_custom_command(
+	OUTPUT NTPCLIENT
+	COMMAND mkdir -p ${OUTPUT_DIR}/ntpclient
+	COMMAND cp ${PROJECT_BINARY_DIR}/ntpclient/out/ntpclient ${OUTPUT_DIR}/ntpclient/
+	DEPENDS ntpclient
+)
+
+add_custom_command(
 	OUTPUT ALL_SCRIPTS
 	COMMAND mkdir -p ${OUTPUT_DIR}/scripts
 	COMMAND cp ${dropbear_SOURCE_DIR}/scripts/* ${OUTPUT_DIR}/scripts/
+	COMMAND cp ${ntpclient_SOURCE_DIR}/scripts/* ${OUTPUT_DIR}/scripts/
 	COMMAND cp ${SCRIPTS_DIR}/* ${OUTPUT_DIR}/
 	COMMAND cp ${CMAKE_SOURCE_DIR}/VERSION ${OUTPUT_DIR}/
-	DEPENDS DROPBEARMULTI
+	DEPENDS DROPBEARMULTI NTPCLIENT
 )
 
 add_custom_command(
@@ -36,20 +45,20 @@ add_custom_command(
 )
 
 add_custom_command(
-	OUTPUT PURGE_ALL
+	OUTPUT CLEAN_ALL
 	COMMAND rm -rf ${OUTPUT_DIR}
 	COMMAND rm -rf ${PACKAGE_DIR}
-	depends dropbear_cleanall
+	DEPENDS dropbear_clean ntpclient_clean
 )
 
 add_custom_target(
 	${PROJECT_NAME} ALL 
-	DEPENDS DROPBEARMULTI CREATE_PACKAGE
+	DEPENDS CREATE_PACKAGE
 )
 
 add_custom_target(
-	purgeall
-	DEPENDS PURGE_ALL
+	cleanall
+	DEPENDS CLEAN_ALL
 )
 
-add_dependencies(${PROJECT_NAME} dropbearmulti)
+add_dependencies(${PROJECT_NAME} dropbearmulti ntpclient)
