@@ -9,5 +9,5 @@ if [ ! -d toolchain ]; then
 	wget -qO- "$TOOLCHAIN_URL" | tar xj --strip-components=1 -C toolchain
 fi
 
-rm -rf build && mkdir build
+rm -rf out && build && mkdir build
 cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=toolchain/share/buildroot/toolchainfile.cmake -Bbuild

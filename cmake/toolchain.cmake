@@ -1,0 +1,43 @@
+if(DEFINED CMAKE_TOOLCHAIN_FILE)
+        set(CMAKE_C_FLAGS "-mfpu=neon -mfloat-abi=hard")
+endif()
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-function -Wno-unused-variable -ffunction-sections -fdata-sections -Wl,-gc-sections -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DNORMALUNIX -std=gnu99")
+set(CMAKE_C_FLAGS_DEBUG "-g")
+set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG")
+
+if(DEFINED CMAKE_TOOLCHAIN_FILE)
+        get_filename_component(COMPILER_NAME ${CMAKE_C_COMPILER} NAME)
+        get_filename_component(COMPILER_PATH ${CMAKE_C_COMPILER} PATH)
+        string(REGEX REPLACE "(.*)-gcc" "\\1" TARGET_PLATFORM "${COMPILER_NAME}")
+
+	# Used during configuration step
+	set(ENV{CFLAGS} ${CMAKE_C_FLAGS})
+	set(ENV{CC} ${COMPILER_PATH}/${TARGET_PLATFORM}-gcc)
+        set(ENV{AR} ${COMPILER_PATH}/${TARGET_PLATFORM}-ar)
+	set(ENV{LD} ${COMPILER_PATH}/${TARGET_PLATFORM}-ld)
+	set(ENV{RANLIB} ${COMPILER_PATH}/${TARGET_PLATFORM}-ranlib)
+	set(ENV{NM} ${COMPILER_PATH}/${TARGET_PLATFORM}-nm)
+	set(ENV{AS} ${COMPILER_PATH}/${TARGET_PLATFORM}-as)
+	set(ENV{OBJDUMP} ${COMPILER_PATH}/${TARGET_PLATFORM}-objdump)
+	set(ENV{OBJCOPY} ${COMPILER_PATH}/${TARGET_PLATFORM}-objcopy)
+        set(ENV{STRIP} ${COMPILER_PATH}/${TARGET_PLATFORM}-strip)
+        set(ENV{STRINGS} ${COMPILER_PATH}/${TARGET_PLATFORM}-strings)
+        set(ENV{SIZE} ${COMPILER_PATH}/${TARGET_PLATFORM}-size)
+
+	# Used during build step
+	file(WRITE  ${PROJECT_BINARY_DIR}/toolchain.sh "export PATH=\"${COMPILER_PATH}:$PATH\"\n")
+	file(APPEND ${PROJECT_BINARY_DIR}/toolchain.sh "export CFLAGS=\"${CMAKE_C_FLAGS}\"\n")
+	file(APPEND ${PROJECT_BINARY_DIR}/toolchain.sh "export CC=${COMPILER_PATH}/${TARGET_PLATFORM}-gcc\n")
+	file(APPEND ${PROJECT_BINARY_DIR}/toolchain.sh "export AR=${COMPILER_PATH}/${TARGET_PLATFORM}-ar\n")
+	file(APPEND ${PROJECT_BINARY_DIR}/toolchain.sh "export LD=${COMPILER_PATH}/${TARGET_PLATFORM}-ld\n")
+	file(APPEND ${PROJECT_BINARY_DIR}/toolchain.sh "export RANLIB=${COMPILER_PATH}/${TARGET_PLATFORM}-ranlib\n")
+	file(APPEND ${PROJECT_BINARY_DIR}/toolchain.sh "export NM=${COMPILER_PATH}/${TARGET_PLATFORM}-nm\n")
+	file(APPEND ${PROJECT_BINARY_DIR}/toolchain.sh "export AS=${COMPILER_PATH}/${TARGET_PLATFORM}-as\n")
+	file(APPEND ${PROJECT_BINARY_DIR}/toolchain.sh "export OBJDUMP=${COMPILER_PATH}/${TARGET_PLATFORM}-objdump\n")
+	file(APPEND ${PROJECT_BINARY_DIR}/toolchain.sh "export OBJCOPY=${COMPILER_PATH}/${TARGET_PLATFORM}-objcopy\n")
+	file(APPEND ${PROJECT_BINARY_DIR}/toolchain.sh "export STRIP=${COMPILER_PATH}/${TARGET_PLATFORM}-strip\n")
+	file(APPEND ${PROJECT_BINARY_DIR}/toolchain.sh "export STRINGS=${COMPILER_PATH}/${TARGET_PLATFORM}-strings\n")
+	file(APPEND ${PROJECT_BINARY_DIR}/toolchain.sh "export SIZE=${COMPILER_PATH}/${TARGET_PLATFORM}-size\n")
+endif()
+
