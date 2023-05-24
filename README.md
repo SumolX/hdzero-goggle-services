@@ -22,7 +22,7 @@ make cleanall
 ```
 
 ## Deployment
-copy ```pkg/hdzero-google-VERSION.tar``` to the root of your SD Card.
+copy ```~/hdzero-goggle-services/out/hdzero-google-VERSION.tar``` to the root of your SD Card.
 
 HDZ Goggles Firmware: May 12, 2023 [PR 223](https://github.com/hd-zero/hdzero-goggle/pull/238).
 
