@@ -23,7 +23,7 @@ make cleanall
 ## Deployment
 copy ```pkg/hdzero-google-VERSION.tar``` to the root of your SD Card.
 
-HDZ Goggles will automatically install package when detected (Minimum Google FW Version: TBD).
+HDZ Goggles will automatically install package when detected (Minimum Google FW Version: May 12, 2023 [PR 223](https://github.com/hd-zero/hdzero-goggle/pull/238)).
 
 # Donation
 If you enjoyed this work or would like to see additional software ported please feel free to donate.
