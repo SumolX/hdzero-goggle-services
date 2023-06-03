@@ -16,6 +16,7 @@ set(SCRIPTS_DIR ${CMAKE_SOURCE_DIR}/scripts)
 set(ARCHIVE_NAME "hdzgoggle-services-${BUILD_NUMBER}")
 
 add_subdirectory(busybox)
+add_subdirectory(dosfstools)
 add_subdirectory(dropbear)
 add_subdirectory(ntpclient)
 
@@ -24,6 +25,15 @@ add_custom_command(
 	COMMAND mkdir -p ${BIN_DIR}/busybox
 	COMMAND cp ${PROJECT_BINARY_DIR}/busybox/out/busybox ${BIN_DIR}/busybox/
 	DEPENDS busybox
+)
+
+add_custom_command(
+	OUTPUT DOSFSTOOLS
+	COMMAND mkdir -p ${BIN_DIR}/dosfstools
+	COMMAND cp ${PROJECT_BINARY_DIR}/dosfstools/out/fatlabel ${BIN_DIR}/dosfstools/
+	COMMAND cp ${PROJECT_BINARY_DIR}/dosfstools/out/fsck.fat ${BIN_DIR}/dosfstools/
+	COMMAND cp ${PROJECT_BINARY_DIR}/dosfstools/out/mkfs.fat ${BIN_DIR}/dosfstools/
+	DEPENDS dosfstools
 )
 
 add_custom_command(
@@ -43,11 +53,12 @@ add_custom_command(
 add_custom_command(
 	OUTPUT ALL_SCRIPTS
 	COMMAND mkdir -p ${BIN_DIR}/scripts
+	COMMAND cp ${dosfstools_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${dropbear_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${ntpclient_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${SCRIPTS_DIR}/* ${BIN_DIR}/
 	COMMAND cp ${CMAKE_SOURCE_DIR}/VERSION ${BIN_DIR}/
-	DEPENDS BUSYBOX DROPBEARMULTI NTPCLIENT
+	DEPENDS BUSYBOX DOSFSTOOLS DROPBEARMULTI NTPCLIENT
 )
 
 add_custom_command(
