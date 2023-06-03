@@ -3,9 +3,10 @@
 
 ## Services
 ```
-busybox:   Software Suite Version 1.27.2
-dropbear:  Network communications (SSH/SCP) via WiFi Module
-ntpclient: Synchronize time with NTP Server via WiFi Module
+busybox:    Software Suite Version 1.27.2
+dosfstools: V4.2 Programs used to create, modify, and check the FAT filesystem.
+dropbear:   Network communications (SSH/SCP) via WiFi Module
+ntpclient:  Synchronize time with NTP Server via WiFi Module
 ```
 
 ## Building
