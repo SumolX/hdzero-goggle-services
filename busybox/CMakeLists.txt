@@ -17,6 +17,12 @@ execute_process(
 	COMMAND cp ${PROJECT_SOURCE_DIR}/config.cross .config
 	WORKING_DIRECTORY ${busybox_SOURCE_DIR}
 )
+
+add_custom_command(
+	OUTPUT busybox_build
+	COMMAND cd ${busybox_SOURCE_DIR} && . ${PROJECT_BINARY_DIR}/../toolchain.sh && make
+	COMMAND cp ${busybox_SOURCE_DIR}/busybox ${busybox_BINARY_DIR}
+)
 else()
 execute_process(
 	COMMAND cp ${PROJECT_SOURCE_DIR}/config.host .config
@@ -24,13 +30,13 @@ execute_process(
 	COMMAND patch util-linux/rdate.c -i ${PROJECT_SOURCE_DIR}/patch/util-linux/rdate.diff
 	WORKING_DIRECTORY ${busybox_SOURCE_DIR}
 )
-endif()
 
 add_custom_command(
 	OUTPUT busybox_build
-	COMMAND cd ${busybox_SOURCE_DIR} && . ${PROJECT_BINARY_DIR}/../toolchain.sh && make
+	COMMAND cd ${busybox_SOURCE_DIR} && make
 	COMMAND cp ${busybox_SOURCE_DIR}/busybox ${busybox_BINARY_DIR}
 )
+endif()
 
 add_custom_command(
 	OUTPUT busybox_cleanall
