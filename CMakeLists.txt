@@ -53,6 +53,7 @@ add_custom_command(
 add_custom_command(
 	OUTPUT ALL_SCRIPTS
 	COMMAND mkdir -p ${BIN_DIR}/scripts
+	COMMAND cp ${busybox_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${dosfstools_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${dropbear_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${ntpclient_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
