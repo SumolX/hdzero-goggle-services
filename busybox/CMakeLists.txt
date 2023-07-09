@@ -44,7 +44,7 @@ add_custom_command(
 	OUTPUT busybox_cleanall
 	COMMAND find . -name '*.o' -delete
 	COMMAND find . -name '*.a' -delete
-	COMMAND rm -rf ${busybox_BINARY_DIR}/*
+	COMMAND rm -rf ${busybox_BINARY_DIR}/* ${PROJECT_SOURCE_DIR}/scripts
 )
 
 add_custom_target(busybox ALL DEPENDS busybox_build)
