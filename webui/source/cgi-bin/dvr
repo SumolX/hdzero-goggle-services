@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Utils
+contains() {
+    str="$1"
+    sub="$2"
+    if [ "${str#*"$sub"}" != "$str" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Handlers
+on_dvr() {
+    for file in /mnt/extsd/movies/*; do
+        body="$body $(echo "$(ls -l $file)" | awk '{printf "{\"file\":\"%s\", \"date\":\"%s %s %s\", \"size\":%s},", $9,$6,$7,$8,$5}')"
+    done
+    echo "Content-Type: text/html"
+    echo ""
+    echo "{ \"dvr\":[ $body ] }"
+}
+
+on_dvr_download() {
+    echo "Content-Type: text/html"
+    echo ""
+    echo "Download command not implemented"
+}
+
+on_dvr_play() {
+    echo "Content-Type: text/html"
+    echo ""
+    echo "Play command not implemented"
+}
+
+on_dvr_stop() {
+    echo "Content-Type: text/html"
+    echo ""
+    echo "Stop command not implemented"
+}
+
+# Parse Request
+if [ -z $QUERY_STRING ]; then
+    on_dvr
+else
+    if contains "$QUERY_STRING" "download"; then
+        on_dvr_download
+    elif contains "$QUERY_STRING" "play"; then
+        on_dvr_play
+    elif contains "$QUERY_STRING" "stop"; then
+        on_dvr_stop
+    fi
+fi
