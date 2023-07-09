@@ -15,7 +15,7 @@ USR_SBIN_SYM=$(find $1/_install/usr/sbin -type l | sort -h)
 
 create_script()
 {
-	mkdir -p $ROOT
+	mkdir -p $ROOT/scripts
 	echo "#!/bin/sh" > $OUTPUT
 	echo "" >> $OUTPUT
 }
