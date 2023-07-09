@@ -5,7 +5,8 @@ if [ $# -ne 2 ]; then
 	exit 1
 fi
 
-OUTPUT="$2/scripts/busybox_startup.sh"
+ROOT=$2
+OUTPUT="$ROOT/scripts/busybox_startup.sh"
 BUSYBOX="/mnt/app/services/busybox/busybox"
 BIN_SYM=$(find $1/_install/bin -type l | sort -h)
 SBIN_SYM=$(find $1/_install/sbin -type l | sort -h)
@@ -14,6 +15,7 @@ USR_SBIN_SYM=$(find $1/_install/usr/sbin -type l | sort -h)
 
 create_script()
 {
+	mkdir -p $ROOT
 	echo "#!/bin/sh" > $OUTPUT
 	echo "" >> $OUTPUT
 }
