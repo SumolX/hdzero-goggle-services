@@ -15,15 +15,13 @@ on_dvr() {
 }
 
 on_dvr_download() {
-    echo "Content-Type: text/html"
-    echo ""
-    echo "Download command not implemented"
+    utils_send_file /mnt/extsd/movies $1
 }
 
 on_dvr_play() {
     echo "Content-Type: text/html"
     echo ""
-    echo "Play command not implemented"
+    echo "Play command not implemented $1"
 }
 
 on_dvr_stop() {
@@ -36,11 +34,12 @@ on_dvr_stop() {
 if [ -z $QUERY_STRING ]; then
     on_dvr
 else
-    if contains "$QUERY_STRING" "download"; then
-        on_dvr_download
-    elif contains "$QUERY_STRING" "play"; then
-        on_dvr_play
-    elif contains "$QUERY_STRING" "stop"; then
+    kv=(${QUERY_STRING//=/ })
+    if [ ${kv[0]} == "download" ]; then
+        on_dvr_download ${kv[1]}
+    elif [ ${kv[0]} == "play" ]; then
+        on_dvr_play ${kv[1]}
+    elif [ ${kv[0]} == "stop" ]; then
         on_dvr_stop
     fi
 fi

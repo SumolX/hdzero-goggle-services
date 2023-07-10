@@ -1,5 +1,5 @@
 # Returns success on substring match 
-contains() {
+utils_has_string() {
     str="$1"
     sub="$2"
     if [ "${str#*"$sub"}" != "$str" ]; then
@@ -9,3 +9,11 @@ contains() {
     fi
 }
 
+# Transfers a file to client
+utils_send_file() {
+    echo "Content-Type: application/x-download"
+    echo "Content-Disposition: attachment; filename=$2"
+    echo ""
+    
+    cat $1/$2
+}
