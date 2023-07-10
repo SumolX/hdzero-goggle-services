@@ -5,11 +5,12 @@
 
 # Handlers
 on_dvr() {
-    for file in /mnt/extsd/movies/*; do
-        body="$body $(echo "$(ls -l $file)" | awk '{printf "{\"file\":\"%s\", \"date\":\"%s %s %s\", \"size\":%s},", $9,$6,$7,$8,$5}')"
-    done
     echo "Content-Type: text/html"
     echo ""
+    for file in /mnt/extsd/movies/*.ts; do
+        body="$body $(echo "$(ls -l $file)" | awk '{printf "{\"date\":\"%s %s %s\",\"size\":%s,", $6,$7,$8,$5}')"
+        body="$body \"file\":\"${file##*/}\",\"jpg\":\"$(base64 ${file%.*}.jpg)\","
+    done
     echo "{ \"dvr\":[ $body ] }"
 }
 
