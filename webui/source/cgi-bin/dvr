@@ -1,15 +1,7 @@
 #!/bin/bash
 
-# Utils
-contains() {
-    str="$1"
-    sub="$2"
-    if [ "${str#*"$sub"}" != "$str" ]; then
-        return 0
-    else
-        return 1
-    fi
-}
+# Includes
+. utils
 
 # Handlers
 on_dvr() {

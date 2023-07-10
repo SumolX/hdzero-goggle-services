@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Includes
+. utils
+
+# Handlers
+on_live() {
+    echo "Content-Type: text/html"
+    echo ""
+    echo "Live stream not implemented"
+}
+
+# Parse Request
+if [ -z $QUERY_STRING ]; then
+    on_live
+fi
