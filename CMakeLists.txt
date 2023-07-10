@@ -51,15 +51,23 @@ add_custom_command(
 )
 
 add_custom_command(
+	OUTPUT WEBUI
+	COMMAND mkdir -p ${BIN_DIR}/webui
+	COMMAND cp -a ${PROJECT_SOURCE_DIR}/webui/source/* ${BIN_DIR}/webui/
+)
+
+add_custom_command(
 	OUTPUT ALL_SCRIPTS
 	COMMAND mkdir -p ${BIN_DIR}/scripts
 	COMMAND cp ${busybox_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${dosfstools_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${dropbear_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${ntpclient_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
+	COMMAND cp ${ntpclient_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
+	COMMAND cp ${PROJECT_SOURCE_DIR}/webui/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${SCRIPTS_DIR}/* ${BIN_DIR}/
 	COMMAND cp ${CMAKE_SOURCE_DIR}/VERSION ${BIN_DIR}/
-	DEPENDS BUSYBOX DOSFSTOOLS DROPBEARMULTI NTPCLIENT
+	DEPENDS BUSYBOX DOSFSTOOLS DROPBEARMULTI NTPCLIENT WEBUI
 )
 
 add_custom_command(
