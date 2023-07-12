@@ -5,3 +5,50 @@ html, body {
 	color: #766D6D;
 	background: #ffffff;
 }
+
+.nav { 
+	top: 0px;
+	border: 1px solid black;
+	height: 50px;
+	width: 100%;
+	background: #fff;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	border: 1px solid black;
+	height: 50px;
+	width: 100%;
+	background: #fff;
+}
+
+.cssBody {
+	position: absolute;
+	top: 50px;
+	border: 1px solid black;
+	bottom: 50px;
+	width: 100%;
+	background: #0f0;
+}
+
+/*layout*/ 
+.column {
+	float: left;
+}
+
+.left {
+	width: 25%;
+}
+
+.right {
+	width: 75%;
+}
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+

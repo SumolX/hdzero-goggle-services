@@ -1,0 +1,37 @@
+# ninja log v5
+11392	11458	7106294825844836	busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-test	8c8c653409f94998
+2	74	7106294712005818	busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-mkdir	d97a092958cc2d37
+2	74	7106294712005818	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-mkdir	d97a092958cc2d37
+75	10935	7106294820611896	busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-download	8998c547dd6a90cf
+75	10935	7106294820611896	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-download	8998c547dd6a90cf
+10935	11121	0	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-update	8c1facc9c2481e6
+11122	11190	7106294823151843	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-patch	d485b0e5efa968e6
+10935	11121	0	busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-update	8c1facc9c2481e6
+11122	11190	7106294823151843	busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-patch	d485b0e5efa968e6
+11190	11257	7106294823834836	busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-configure	cb3496ee933108c2
+11190	11257	7106294823834836	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-configure	cb3496ee933108c2
+11257	11324	7106294824504838	busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-build	2b1d1a9673bf5c5b
+11257	11324	7106294824504838	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-build	2b1d1a9673bf5c5b
+11324	11392	7106294825174832	busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-install	870b7270b54ab67d
+11324	11392	7106294825174832	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-install	870b7270b54ab67d
+11392	11458	7106294825844836	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-test	8c8c653409f94998
+11458	11553	7106294826794836	CMakeFiles/busybox-populate-complete	3e59a5372fb2ee26
+11458	11553	7106294826794836	busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-done	3e59a5372fb2ee26
+11458	11553	7106294826794836	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/CMakeFiles/busybox-populate-complete	3e59a5372fb2ee26
+11458	11553	7106294826794836	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-done	3e59a5372fb2ee26
+9	289	0	busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-update	8c1facc9c2481e6
+9	289	0	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-update	8c1facc9c2481e6
+289	363	7107811431888021	busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-patch	d485b0e5efa968e6
+289	363	7107811431888021	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-patch	d485b0e5efa968e6
+363	435	7107811432608036	busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-configure	cb3496ee933108c2
+363	435	7107811432608036	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-configure	cb3496ee933108c2
+435	507	7107811433328040	busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-build	2b1d1a9673bf5c5b
+435	507	7107811433328040	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-build	2b1d1a9673bf5c5b
+507	578	7107811434048034	busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-install	870b7270b54ab67d
+507	578	7107811434048034	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-install	870b7270b54ab67d
+578	647	7107811434728018	busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-test	8c8c653409f94998
+578	647	7107811434728018	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-test	8c8c653409f94998
+647	745	7107811435708050	CMakeFiles/busybox-populate-complete	3e59a5372fb2ee26
+647	745	7107811435708050	busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-done	3e59a5372fb2ee26
+647	745	7107811435708050	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/CMakeFiles/busybox-populate-complete	3e59a5372fb2ee26
+647	745	7107811435708050	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/busybox-subbuild/busybox-populate-prefix/src/busybox-populate-stamp/busybox-populate-done	3e59a5372fb2ee26

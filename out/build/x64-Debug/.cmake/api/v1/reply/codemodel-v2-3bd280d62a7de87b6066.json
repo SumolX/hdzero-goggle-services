@@ -1,0 +1,264 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						4
+					]
+				},
+				{
+					"build" : "busybox",
+					"jsonFile" : "directory-busybox-Debug-74c48e6f7a6f09136fbd.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "busybox",
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				},
+				{
+					"build" : "dosfstools",
+					"jsonFile" : "directory-dosfstools-Debug-6a375216af427da42c21.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "dosfstools",
+					"targetIndexes" : 
+					[
+						5,
+						6
+					]
+				},
+				{
+					"build" : "dropbear",
+					"jsonFile" : "directory-dropbear-Debug-24ce4848f03e7ba621ac.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "dropbear",
+					"targetIndexes" : 
+					[
+						7,
+						8
+					]
+				},
+				{
+					"build" : "ntpclient",
+					"jsonFile" : "directory-ntpclient-Debug-33a24c495ca08cb3f7fd.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 4,
+					"source" : "ntpclient",
+					"targetIndexes" : 
+					[
+						1,
+						9,
+						10
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "HDZGOGGLE-SERVICES",
+					"targetIndexes" : 
+					[
+						0,
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "busybox",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "dosfstools",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						5,
+						6
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "dropbear",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						7,
+						8
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4
+					],
+					"name" : "ntpclient",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						9,
+						10
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "HDZGOGGLE-SERVICES::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-HDZGOGGLE-SERVICES-Debug-bf1e0866f9c8a032b8a0.json",
+					"name" : "HDZGOGGLE-SERVICES",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "adjtimex::@6e354afb3f2349f5d28f",
+					"jsonFile" : "target-adjtimex-Debug-cb002e1dbbcf78dfefea.json",
+					"name" : "adjtimex",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "busybox::@d1384fd4ccf92ed2d011",
+					"jsonFile" : "target-busybox-Debug-d012d9ff49e653e50bea.json",
+					"name" : "busybox",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "busybox_clean::@d1384fd4ccf92ed2d011",
+					"jsonFile" : "target-busybox_clean-Debug-e87d488140bac30d6372.json",
+					"name" : "busybox_clean",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cleanall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cleanall-Debug-5ee641b781a0ecff28e4.json",
+					"name" : "cleanall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "dosfstools::@8f67d8c5e3d1ae36c809",
+					"jsonFile" : "target-dosfstools-Debug-fe44264fedc26f34b658.json",
+					"name" : "dosfstools",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "dosfstools_clean::@8f67d8c5e3d1ae36c809",
+					"jsonFile" : "target-dosfstools_clean-Debug-ae214e69f8814014ca87.json",
+					"name" : "dosfstools_clean",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "dropbear_clean::@2de77f85f4c0be788a6c",
+					"jsonFile" : "target-dropbear_clean-Debug-60b6116094b8eb175bde.json",
+					"name" : "dropbear_clean",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "dropbearmulti::@2de77f85f4c0be788a6c",
+					"jsonFile" : "target-dropbearmulti-Debug-5054b11c1787fc6e98d2.json",
+					"name" : "dropbearmulti",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "ntpclient::@6e354afb3f2349f5d28f",
+					"jsonFile" : "target-ntpclient-Debug-1c8c40f2acf3f68d9be5.json",
+					"name" : "ntpclient",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "ntpclient_clean::@6e354afb3f2349f5d28f",
+					"jsonFile" : "target-ntpclient_clean-Debug-f330eb34e203edec91e0.json",
+					"name" : "ntpclient_clean",
+					"projectIndex" : 4
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug",
+		"source" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

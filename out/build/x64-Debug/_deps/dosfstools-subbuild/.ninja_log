@@ -1,0 +1,37 @@
+# ninja log v5
+2	74	7106294830577214	dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-mkdir	94eef7928d928db2
+75	2115	7106294850985296	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-download	b1d4062a2f4fbd34
+2	74	7106294830577214	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-mkdir	94eef7928d928db2
+75	2115	7106294850985296	dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-download	b1d4062a2f4fbd34
+2115	2298	0	dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-update	23c2dccb30a8bbab
+2115	2298	0	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-update	23c2dccb30a8bbab
+2298	2367	7106294853505288	dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-patch	979637166a87c106
+2298	2367	7106294853505288	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-patch	979637166a87c106
+2367	2434	7106294854166613	dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-configure	cc9d698af0fa1d89
+2367	2434	7106294854166613	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-configure	cc9d698af0fa1d89
+2434	2502	7106294854846578	dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-build	e8af6672f24af6
+2434	2502	7106294854846578	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-build	e8af6672f24af6
+2641	2734	7106294857180221	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/CMakeFiles/dosfstools-populate-complete	369868dd8855868c
+2502	2573	7106294855546544	dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-install	8586723de5245f38
+2502	2573	7106294855546544	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-install	8586723de5245f38
+2573	2641	7106294856240638	dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-test	d68389d8712bb47a
+2573	2641	7106294856240638	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-test	d68389d8712bb47a
+2641	2734	7106294857180221	CMakeFiles/dosfstools-populate-complete	369868dd8855868c
+2641	2734	7106294857180221	dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-done	369868dd8855868c
+2641	2734	7106294857180221	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-done	369868dd8855868c
+8	324	0	dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-update	23c2dccb30a8bbab
+8	324	0	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-update	23c2dccb30a8bbab
+324	393	7107811442821622	dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-patch	979637166a87c106
+324	393	7107811442821622	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-patch	979637166a87c106
+393	464	7107811443516368	dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-configure	cc9d698af0fa1d89
+393	464	7107811443516368	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-configure	cc9d698af0fa1d89
+464	538	7107811444266371	dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-build	e8af6672f24af6
+464	538	7107811444266371	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-build	e8af6672f24af6
+538	609	7107811444956360	dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-install	8586723de5245f38
+538	609	7107811444956360	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-install	8586723de5245f38
+609	680	7107811445686363	dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-test	d68389d8712bb47a
+609	680	7107811445686363	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-test	d68389d8712bb47a
+680	779	7107811446666361	CMakeFiles/dosfstools-populate-complete	369868dd8855868c
+680	779	7107811446666361	dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-done	369868dd8855868c
+680	779	7107811446666361	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/CMakeFiles/dosfstools-populate-complete	369868dd8855868c
+680	779	7107811446666361	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-done	369868dd8855868c

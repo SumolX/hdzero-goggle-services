@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/CMakeFiles/dosfstools-populate"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/CMakeFiles/dosfstools-populate.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/CMakeFiles/dosfstools-populate-complete.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-build.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-configure.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-download.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-install.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-mkdir.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-patch.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-test.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dosfstools-subbuild/dosfstools-populate-prefix/src/dosfstools-populate-stamp/dosfstools-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"dosfstools-populate"
+		],
+		"name" : "dosfstools-populate"
+	}
+}

@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/CMakeFiles/dropbear-populate"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/CMakeFiles/dropbear-populate.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/CMakeFiles/dropbear-populate-complete.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-build.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-configure.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-download.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-install.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-mkdir.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-patch.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-test.rule"
+		},
+		{
+			"file" : "D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"dropbear-populate"
+		],
+		"name" : "dropbear-populate"
+	}
+}

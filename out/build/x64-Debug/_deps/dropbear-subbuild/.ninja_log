@@ -1,0 +1,37 @@
+# ninja log v5
+2	73	7106294861017743	dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-mkdir	7a46964ca3d31b1d
+5305	5399	7106294914271699	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/CMakeFiles/dropbear-populate-complete	9316320856b2f274
+2	73	7106294861017743	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-mkdir	7a46964ca3d31b1d
+74	4784	7106294908114613	dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-download	fd1275d13227e85
+4784	4963	0	dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-update	31919f8904fc373
+74	4784	7106294908114613	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-download	fd1275d13227e85
+4784	4963	0	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-update	31919f8904fc373
+4964	5034	7106294910613918	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-patch	5d96937e943fbc08
+4964	5034	7106294910613918	dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-patch	5d96937e943fbc08
+5034	5101	7106294911293932	dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-configure	e723ab1a26ac8871
+5034	5101	7106294911293932	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-configure	e723ab1a26ac8871
+5101	5169	7106294911963943	dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-build	f8f9a043c98d6480
+5101	5169	7106294911963943	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-build	f8f9a043c98d6480
+5169	5238	7106294912663944	dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-install	98e6d26f4f79e331
+5169	5238	7106294912663944	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-install	98e6d26f4f79e331
+5238	5305	7106294913333941	dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-test	b15f7e48b1a0fdbf
+5238	5305	7106294913333941	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-test	b15f7e48b1a0fdbf
+5305	5399	7106294914271699	CMakeFiles/dropbear-populate-complete	9316320856b2f274
+5305	5399	7106294914271699	dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-done	9316320856b2f274
+5305	5399	7106294914271699	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-done	9316320856b2f274
+10	518	0	dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-update	31919f8904fc373
+10	518	0	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-update	31919f8904fc373
+518	591	7107811455852026	dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-patch	5d96937e943fbc08
+518	591	7107811455852026	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-patch	5d96937e943fbc08
+591	666	7107811456582019	dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-configure	e723ab1a26ac8871
+591	666	7107811456582019	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-configure	e723ab1a26ac8871
+667	750	7107811457422020	dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-build	f8f9a043c98d6480
+667	750	7107811457422020	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-build	f8f9a043c98d6480
+750	824	7107811458182051	dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-install	98e6d26f4f79e331
+750	824	7107811458182051	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-install	98e6d26f4f79e331
+824	899	7107811458942054	dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-test	b15f7e48b1a0fdbf
+824	899	7107811458942054	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-test	b15f7e48b1a0fdbf
+899	1001	7107811459932006	CMakeFiles/dropbear-populate-complete	9316320856b2f274
+899	1001	7107811459932006	dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-done	9316320856b2f274
+899	1001	7107811459932006	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/CMakeFiles/dropbear-populate-complete	9316320856b2f274
+899	1001	7107811459932006	D:/Project Source/sandboxGitHub/hdzero-goggle-services/out/build/x64-Debug/_deps/dropbear-subbuild/dropbear-populate-prefix/src/dropbear-populate-stamp/dropbear-populate-done	9316320856b2f274
