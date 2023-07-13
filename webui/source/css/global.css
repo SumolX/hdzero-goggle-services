@@ -38,11 +38,9 @@ html, body {
 }
 
 .left {
-	width: 25%;
 }
 
 .right {
-	width: 75%;
 }
 
 .row:after {
@@ -51,4 +49,29 @@ html, body {
 	clear: both;
 }
 
+/* player */
+#list{
+	width: 140px;
+	padding: 30px;
+}
 
+#player{
+	margin-top: 20px;
+	width: 533px;
+	height: 300px;
+	border: 1px solid black;
+}
+
+#ctrl{
+	margin-top: 20px;
+	width: 533px;
+	height: 50px;
+	border: 1px solid black;
+}
+
+#info{
+	margin-top: 20px;
+	width: 533px;
+	height: 50px;
+	border: 1px solid black;
+}
