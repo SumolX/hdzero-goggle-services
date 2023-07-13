@@ -52,146 +52,42 @@
     <script>
 
         //add event listener for page load
-        document.addEventListener("DOMContentLoaded", get_json_data, false);
+        document.addEventListener("DOMContentLoaded", get_list, false);
 
-        function get_json_data() {
+        function get_listing() {
+            fetch('/cgi-bin/dvr?', {
+                method: 'get'
+            })
+                .then(response => response.json())
+                .then(jsonData => console.log(jsonData))
+                .catch(status, err => {
+                    return console.log(status, err);
+                });
+        }
 
-            var json_data = [
-                {
-                    "file": "/mnt/extsd/movies/hdz_000.jpg",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_000.mp4",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_001.jpg",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_001.mp4",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_002.jpg",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_002.mp4",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_003.jpg",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_003.mp4",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_004.jpg",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_004.mp4",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_005.jpg",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_005.mp4",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_006.jpg",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_006.mp4",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_007.jpg",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_007.mp4",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_008.jpg",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_008.mp4",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_009.jpg",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_009.mp4",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_010.jpg",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_010.mp4",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_011.jpg",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                },
-                {
-                    "file": "/mnt/extsd/movies/hdz_011.mp4",
-                    "date": "Apr 9 21:24",
-                    "size": "6976"
-                }
-            ];
-
-
+        function get_list(){
             var table = document.getElementById('listing');
-            json_data.forEach(function (object) {
-                var tr = document.createElement('tr');
-                var fname = object.file.substring(object.file.lastIndexOf('/') + 1);
-                if (fname.split('.')[1] == 'jpg') {
-                    // put the jpg somewhere maybe
-                }
-                else {
-                    tr.innerHTML = '<td>' + fname.split('.')[0] + '</td>';
+
+            (async () => {
+                const res = await fetch('/cgi-bin/dvr?', {
+                    headers: { Accept: 'application/json' },
+                });
+                const json = await res.json();
+
+                Object.keys(json.dvr).forEach(function (prop) {
+                    var tr = document.createElement('tr');
+                    var fname = json.dvr[prop].file.substring(json.dvr[prop].file.lastIndexOf('/') + 1);
+
+                    if (fname.split('.')[1] == 'jpg') {
+                        // take this out to remove jpg from listing
+                        tr.innerHTML = '<td>' + fname.split('.')[0] + '</td>';
+                    } else {
+                        tr.innerHTML = '<td>' + fname.split('.')[0] + '</td>';
+                    }
                     table.appendChild(tr);
-                }
-            });
+                });
+            })();
+
         }
 
     </script>
