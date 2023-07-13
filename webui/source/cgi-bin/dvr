@@ -9,19 +9,21 @@ on_dvr() {
     echo ""
     for file in /mnt/extsd/movies/*.ts; do
         body="$body $(echo "$(ls -l $file)" | awk '{printf "{\"date\":\"%s %s %s\",\"size\":%s,", $6,$7,$8,$5}')"
-        body="$body \"file\":\"${file##*/}\",\"jpg\":\"$(base64 ${file%.*}.jpg)\","
+        body="$body \"file\":\"${file##*/}\","
     done
     echo "{ \"dvr\":[ $body ] }"
 }
 
 on_dvr_download() {
-    utils_send_file /mnt/extsd/movies $1
+    utils_send_binary_file /mnt/extsd/movies $1
+}
+
+on_dvr_image() {
+    utils_send_image_file /mnt/extsd/movies $1
 }
 
 on_dvr_play() {
-    echo "Content-Type: text/html"
-    echo ""
-    echo "Play command not implemented $1"
+    utils_send_video_file /mnt/extsd/movies $1
 }
 
 on_dvr_stop() {
@@ -37,6 +39,8 @@ else
     kv=(${QUERY_STRING//=/ })
     if [ ${kv[0]} == "download" ]; then
         on_dvr_download ${kv[1]}
+    elif [ ${kv[0]} == "image" ]; then
+        on_dvr_image ${kv[1]}
     elif [ ${kv[0]} == "play" ]; then
         on_dvr_play ${kv[1]}
     elif [ ${kv[0]} == "stop" ]; then

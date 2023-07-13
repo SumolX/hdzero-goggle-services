@@ -9,10 +9,28 @@ utils_has_string() {
     fi
 }
 
-# Transfers a file to client
-utils_send_file() {
-    echo "Content-Type: application/x-download"
-    echo "Content-Disposition: attachment; filename=$2"
+# Transfer binary file to client
+utils_send_binary_file() {
+    echo "content-type: application/x-download"
+    echo "content-disposition: attachment; filename=$2"
+    echo ""
+    
+    cat $1/$2
+}
+
+# Transfer video file to client
+utils_send_video_file() {
+    echo "content-type: video/mp4"
+    echo "content-length: $(wc -c <$1/$2)"
+    echo ""
+    
+    cat $1/$2
+}
+
+# Transfer image file to client
+utils_send_image_file() {
+    echo "content-type: image/jpg"
+    echo "content-length: $(wc -c <$1/$2)"
     echo ""
     
     cat $1/$2
