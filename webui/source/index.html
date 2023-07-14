@@ -5,51 +5,56 @@
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="/css/global.css?version=24">
+    <link rel="stylesheet" href="/css/global.css?version=45">
     <title>HDZero Goggle</title>
 
 </head>
 <body>
     <header>
-        <div class="nav">
-            HDZero Goggle
-
+        <div class="nav row">
+            <div class="column logo">
+                <img id="logo" src="images/HDtou-01.webp" alt="logo" />
+            </div>
+            <div class="column heading">
+                <h1>Goggle Browser</h1>
+            </div>
         </div>
     </header>
-    <article class="row">
-        <section class="column left">
-            <div class="list-panel">
-                <img id="preview-img" src="hdz_000.jpg" alt="preview image" />
-                <div class="list-box">
-                    <table id="listing">
-                        <tbody id="listb">
-                        </tbody>
-                    </table>
+    <form method="post" action=“cgi-bin/dvr?Update”>
+        <article class="row">
+            <section class="column left">
+                <div class="list-panel">
+                    <img id="preview" src="images/hdzero.png" alt="preview image" />
+                    <div style="padding:2px;">
+                        <input id="filename" type="text" name=“filename” class="no-see">
+                    </div>
+                    <div class="instruction">
+                        Click below to load file. Double-click to delete.
+                    </div>
+                    <div class="list-box">
+                        <table id="listing">
+                            <tbody id="listb">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                
-
-
-
-            </div>
-        </section>
-        <section class="column right">
-            <div id="player">
-                player
+            </section>
+            <section class="column right">
+                <div id="player">
+                    player
 
 
 
 
 
 
-            </div>
-	    <div id="ctrl">
-		    control
-	    </div>
-	    <div id="info">
-             file information
-		    </div>
-        </section>
-    </article>
+                </div>
+                <div id="ctrl">
+                    control
+                </div>
+            </section>
+        </article>
+    </form>
     <footer class="footer">
         hddzero footer
 
@@ -59,7 +64,7 @@
         //add event listener for page load
         document.addEventListener("DOMContentLoaded", get_list, false);
 
-        function get_list(){
+        function get_list() {
             //const table = document.getElementById('listing');
             const tbody = document.getElementById('listb');
 
@@ -72,13 +77,25 @@
                 Object.keys(json.dvr).forEach(function (prop) {
                     //const fname = json.dvr[prop].file.split('.')[1];
                     const tr = document.createElement('tr');
+                    tr.onclick = setSelectedFile;
                     console.log(json.dvr[prop]);
 
-                    tr.innerHTML = '<td>' + json.dvr[prop].file + '</td>' + '<td>' + json.dvr[prop].size + '</td>' + '<td>' + json.dvr[prop].date + '</td>';
+                    var msize = Math.round(json.dvr[prop].size / Math.pow(1024, 2), 1);
+
+                    tr.innerHTML = '<td>' + json.dvr[prop].file + '</td>' + '<td>' + msize + " MB" + '</td>' + '<td>' + json.dvr[prop].date + '</td>';
                     tbody.appendChild(tr);
                 });
             })();
 
+        }
+
+        function setSelectedFile() {
+            var inputName = document.getElementById("filename")
+            var preview = document.getElementById("preview");
+            var fName = this.getElementsByTagName("td")[0].innerHTML.split('.')[0];
+            //alert(file);
+            preview.src = "movies/" + fName + '.jpg'
+            inputName.value = fName;
         }
 
     </script>
