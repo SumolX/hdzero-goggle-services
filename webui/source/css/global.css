@@ -6,12 +6,13 @@ html, body {
 	background: #ffffff;
 }
 
-.nav { 
+.nav {
 	top: 0px;
 	border: 1px solid black;
 	height: 50px;
 	width: 100%;
 	background: #fff;
+	padding: 5px,7px,2px,4px;
 }
 
 .footer {
@@ -23,36 +24,28 @@ html, body {
 	background: #fff;
 }
 
-.cssBody {
-	position: absolute;
-	top: 50px;
-	border: 1px solid black;
-	bottom: 50px;
-	width: 100%;
-	background: #0f0;
-}
-
 /*layout*/ 
 .column {
 	float: left;
 }
 
 .left {
+	background: #00ffff;
 }
 
 .right {
+}
+
+article.row {
+	height: 100%;
+	width: 800px;
+	border: 1px solid #00ffff;
 }
 
 .row:after {
 	content: "";
 	display: table;
 	clear: both;
-}
-
-/* player */
-#list{
-	width: 140px;
-	padding: 30px;
 }
 
 #player{
@@ -74,4 +67,26 @@ html, body {
 	width: 533px;
 	height: 50px;
 	border: 1px solid black;
+}
+
+.list-panel {
+	padding: 20px;
+}
+
+#preview-img {
+	border-radius: 20px;
+	width: 200px;
+	height: 200px;
+}
+
+.list-box {
+	border: 1px solid lightgray;    
+	border-radius: 9px;
+	margin-top: 30px;
+	height: 100%;
+}
+
+#listing {
+	width: 100%;
+	margin: 10px, 10px, 10px, 10px;
 }

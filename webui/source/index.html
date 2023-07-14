@@ -5,7 +5,7 @@
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/global.css?version=24">
     <title>HDZero Goggle</title>
 
 </head>
@@ -16,12 +16,17 @@
 
         </div>
     </header>
-    <article class="row" style="width: 900px">
+    <article class="row">
         <section class="column left">
-            <div id="list">
-                <table id="listing">
-               </table>
-
+            <div class="list-panel">
+                <img id="preview-img" src="hdz_000.jpg" alt="preview image" />
+                <div class="list-box">
+                    <table id="listing">
+                        <tbody id="listb">
+                        </tbody>
+                    </table>
+                </div>
+                
 
 
 
@@ -54,19 +59,9 @@
         //add event listener for page load
         document.addEventListener("DOMContentLoaded", get_list, false);
 
-        function get_listing() {
-            fetch('/cgi-bin/dvr?', {
-                method: 'get'
-            })
-                .then(response => response.json())
-                .then(jsonData => console.log(jsonData))
-                .catch(status, err => {
-                    return console.log(status, err);
-                });
-        }
-
         function get_list(){
-            var table = document.getElementById('listing');
+            //const table = document.getElementById('listing');
+            const tbody = document.getElementById('listb');
 
             (async () => {
                 const res = await fetch('/cgi-bin/dvr?', {
@@ -75,16 +70,12 @@
                 const json = await res.json();
 
                 Object.keys(json.dvr).forEach(function (prop) {
-                    var tr = document.createElement('tr');
-                    var fname = json.dvr[prop].file.substring(json.dvr[prop].file.lastIndexOf('/') + 1);
+                    //const fname = json.dvr[prop].file.split('.')[1];
+                    const tr = document.createElement('tr');
+                    console.log(json.dvr[prop]);
 
-                    if (fname.split('.')[1] == 'jpg') {
-                        // take this out to remove jpg from listing
-                        tr.innerHTML = '<td>' + fname.split('.')[0] + '</td>';
-                    } else {
-                        tr.innerHTML = '<td>' + fname.split('.')[0] + '</td>';
-                    }
-                    table.appendChild(tr);
+                    tr.innerHTML = '<td>' + json.dvr[prop].file + '</td>' + '<td>' + json.dvr[prop].size + '</td>' + '<td>' + json.dvr[prop].date + '</td>';
+                    tbody.appendChild(tr);
                 });
             })();
 
