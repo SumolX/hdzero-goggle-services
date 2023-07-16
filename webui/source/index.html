@@ -1,60 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="/css/global.css?version=45">
+    <link rel="stylesheet" href="/css/global.css?version=64">
     <title>HDZero Goggle</title>
 
 </head>
 <body>
     <header>
-        <div class="nav row">
-            <div class="column logo">
-                <img id="logo" src="images/HDtou-01.webp" alt="logo" />
+        <div class="nav">
+            <div class="logo">
+                <img src="images/HDtou-01.webp" height="24" alt="HDZero" />
             </div>
-            <div class="column heading">
-                <h1>Goggle Browser</h1>
+            <div class="heading">
+                <h2>My Goggle</h2>
             </div>
         </div>
     </header>
-    <form method="post" action=“cgi-bin/dvr?Update”>
-        <article class="row">
-            <section class="column left">
-                <div class="list-panel">
-                    <img id="preview" src="images/hdzero.png" alt="preview image" />
-                    <div style="padding:2px;">
-                        <input id="filename" type="text" name=“filename” class="no-see">
-                    </div>
-                    <div class="instruction">
-                        Click below to load file. Double-click to delete.
-                    </div>
-                    <div class="list-box">
-                        <table id="listing">
-                            <tbody id="listb">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-            <section class="column right">
-                <div id="player">
-                    player
+    <article class="row">
+        <section class="column left fileinfo">
+            <div class="preview">
+                <img id="preview-img" src="images/hdzero.png" alt="preview image" />
+            </div>
+            <div class="filename">
+                <input id="file-name" type="text" value="HDZero" name=“filename” onfocus=" " onblur="">
+            </div>
+            <div class="instruction">
+                Click below to load file. Double-click to delete.
+            </div>
+            <div class="listing">
+                <table id="listing-tbl">
+                <thead>
+                    <tr>
+                        <th>File</th>
+                        <th>Size</th>
+                        <th>Created</th>
+                    </tr>
+                </thead>
+                    <tbody id="listing-body">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="column right">
+            <div id="player">
+                player
 
 
 
 
 
 
-                </div>
-                <div id="ctrl">
-                    control
-                </div>
-            </section>
-        </article>
-    </form>
+            </div>
+            <div id="ctrl">
+                control
+            </div>
+        </section>
+    </article>
     <footer class="footer">
         hddzero footer
 
@@ -66,7 +70,7 @@
 
         function get_list() {
             //const table = document.getElementById('listing');
-            const tbody = document.getElementById('listb');
+            const tbody = document.getElementById('listing-body');
 
             (async () => {
                 const res = await fetch('/cgi-bin/dvr?', {
@@ -78,11 +82,12 @@
                     //const fname = json.dvr[prop].file.split('.')[1];
                     const tr = document.createElement('tr');
                     tr.onclick = setSelectedFile;
+                    tr.ondblclick = setDeleteFile;
                     console.log(json.dvr[prop]);
-
                     var msize = Math.round(json.dvr[prop].size / Math.pow(1024, 2), 1);
 
-                    tr.innerHTML = '<td>' + json.dvr[prop].file + '</td>' + '<td>' + msize + " MB" + '</td>' + '<td>' + json.dvr[prop].date + '</td>';
+                    tr.innerHTML = '<td>' + json.dvr[prop].file + '</td>' + '<td>' + msize + " MB"
+                        + '</td>' + '<td>' + json.dvr[prop].date + '</td>';
                     tbody.appendChild(tr);
                 });
             })();
@@ -90,15 +95,24 @@
         }
 
         function setSelectedFile() {
-            var inputName = document.getElementById("filename")
-            var preview = document.getElementById("preview");
+            var inputName = document.getElementById("file-name")
+            var preview = document.getElementById("preview-img");
             var fName = this.getElementsByTagName("td")[0].innerHTML.split('.')[0];
             //alert(file);
             preview.src = "movies/" + fName + '.jpg'
             inputName.value = fName;
         }
 
+        function setDeleteFile() {
+            var inputName = document.getElementById("file-name")
+            var preview = document.getElementById("preview-img");
+            var fName = this.getElementsByTagName("td")[0].innerHTML.split('.')[0];
+            alert("Are you sure!");
+            //preview.src = "movies/" + fName + '.jpg'
+            //inputName.value = fName;
+        }
+
     </script>
 </body>
-</html >
+</html>
 

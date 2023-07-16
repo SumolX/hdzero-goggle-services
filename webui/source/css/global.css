@@ -1,121 +1,133 @@
 html, body {
-	margin: 0px;
-	padding: 0px;
-	font: 13px RaleWay, Open Sans, Helvetica, sans-serif;
-	color: #766D6D;
-	background: #ffffff;
+    margin: 0px;
+    padding: 0px;
+    font: 13px RaleWay, Open Sans, Helvetica, sans-serif;
+    color: #766D6D;
+    background: #fff;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+    font-family: Open sans, sans-serif;
+    font-weight: 500;
+    color: #003133;
 }
 
 .nav {
-	top: 0px;
-	border: 1px solid black;
-	height: 50px;
-	width: 100%;
-	background: #fff;
-	padding: 5px,7px,2px,4px;
+    top: 0px;
+    border-bottom: 1px solid #006466;
+    height: 40px;
+    width: 100%;
+    padding: 5px,7px,2px,4px;
 }
 
-#logo {
-	margin: 10px 10px 0 10px;
-	width: 50%;
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 20px;
 }
 
-h1 {
-	margin: 10px;
-	color: black;
-	font-weight: bold;
-	font-size: 18px;
+.heading {
+    position: absolute;
+    top: 10px;
+    left: 220px;
 }
 
-.footer {
-	position: absolute;
-	bottom: 0;
-	border: 1px solid black;
-	height: 50px;
-	width: 100%;
-	background: #fff;
-}
-
-input.no-see {
-	border: 0;
-	outline: 0;
-	text-align: center;
-	font-size: 1.2em;
-}
-
-/*layout*/
 .column {
-	float: left;
-}
-
-.selected {
-	background: #00ffff;
+    float: left;
 }
 
 .left {
-}
-
-.right {
-}
-
-article.row {
-	height: 100%;
-	width: 800px;
-	border: 1px solid #00ffff;
+    width: 190px;
 }
 
 .row:after {
-	content: "";
-	display: table;
-	clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
 
-#player{
-	margin-top: 20px;
-	width: 533px;
-	height: 300px;
-	border: 1px solid black;
+.footer {
+    position: absolute;
+    bottom: 0;
+    border: 1px solid black;
+    height: 50px;
+    width: 100%;
+    background: #fff;
 }
 
-#ctrl{
-	margin-top: 20px;
-	width: 533px;
-	height: 50px;
-	border: 1px solid black;
+article.row {
+    margin-top: 20px;
+    height: 100%;
+    width: 720px;
 }
 
-#info{
-	margin-top: 20px;
-	width: 533px;
-	height: 50px;
-	border: 1px solid black;
+section.fileinfo {
+    padding: 12px;
 }
 
-.list-panel {
-	padding: 20px;
+div.preview {
+    width: 100%;
+    height: 150px;
+}
+
+img#preview-img {
+    border-radius: 17px;
+    border: 1px solid #006466;
+    width: 100%;
+    height: 100%;
+}
+
+input#file-name {
+    width: 100%;
+    margin-top: 12px;
+    border: 0;
+    outline: 0;
+    text-align: center;
+    font-size: 16px;
+    color: #006466;
 }
 
 div.instruction {
-	padding: 4px;
-	text-align: center;
-	margin-top: 24px;
-	max-width: 200px;
-	overflow-wrap:break-word;
+    padding: 4px;
+    text-align: center;
+    margin-top: 24px;
+    max-width: 180px;
+    overflow-wrap: break-word;
 }
 
-#preview {
-	border-radius: 20px;
-	width: 200px;
-	height: 200px;
+.listing {
+    height: 300px;
+    overflow-y: scroll;
+    font-size: 10px;
 }
 
-.list-box {
-	border: 1px solid lightgray;    
-	border-radius: 9px;
-	height: 100%;
+#listing-tbl {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    color: #006466;
 }
 
-#listing {
-	width: 100%;
-	margin: 10px, 10px, 10px, 10px;
+#listing-tbl th {
+    text-align: left;
+    font-size: 11px;
+}
+
+.selected {
+    background: #00ffff;
+}
+
+#player {
+    width: 500px;
+    height: 280px;
+    border: 1px solid black;
+}
+
+#ctrl {
+    margin-top: 20px;
+    width: 500px;
+    height: 50px;
+    border: 1px solid black;
 }
