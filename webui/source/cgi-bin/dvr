@@ -20,6 +20,13 @@ on_dvr_download() {
     utils_send_binary_file /mnt/extsd/movies $1
 }
 
+on_dvr_delete() {
+    if test -f /mnt/extsd/movies/$1; then
+        rm -rf /mnt/extsd/movies/${1%.*}.*
+    fi
+    echo "Status: 200 OK"
+}
+
 on_dvr_image() {
     utils_send_image_file /mnt/extsd/movies $1
 }
@@ -41,6 +48,8 @@ else
     kv=(${QUERY_STRING//=/ })
     if [ ${kv[0]} == "download" ]; then
         on_dvr_download ${kv[1]}
+    elif [ ${kv[0]} == "delete" ]; then
+        on_dvr_delete ${kv[1]}
     elif [ ${kv[0]} == "image" ]; then
         on_dvr_image ${kv[1]}
     elif [ ${kv[0]} == "play" ]; then
