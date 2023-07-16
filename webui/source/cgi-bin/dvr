@@ -1,9 +1,8 @@
 #!/bin/bash
 
 # Includes
+. constants
 . utils
-
-MOVIE_PATH="/mnt/extsd/movies"
 
 # Handlers
 on_dvr() {
