@@ -3,11 +3,12 @@
 # Includes
 . utils
 
+FILES="/mnt/extsd/movies/"
+
 # Handlers
 on_dvr() {
     echo "Content-Type: text/html"
     echo ""
-    FILES="/mnt/extsd/movies/"
     shopt -s nullglob
     for file in $FILES*.ts $FILES*.mp4; do
         body="$body $(echo "$(ls -l $file)" | awk '{printf "{\"date\":\"%s %s %s\",\"size\":%s,", $6,$7,$8,$5}')"
