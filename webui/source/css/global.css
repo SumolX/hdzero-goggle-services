@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5 {
 
 article {
     height: 100%;
-    width: 720px;
+    width: 100%;
     padding: 10px;
 }
 
@@ -45,18 +45,17 @@ section.row {
     float: left;
 }
 
+.video_selected {
+    text-align: center;
+}
+
 .left {
-    width: 220px;
+    width: 40%;
     height: 300px;
     padding: 4px 15px 4px 15px;
     text-align: left;
     font-size: 11px;
     overflow-wrap: break-word;
-}
-
-.middle {
-    width: 200px;
-    height: 300px;
 }
 
 input#file-name {
@@ -69,7 +68,7 @@ input#file-name {
 }
 
 .right {
-    width: 240px;
+    width: 50%;
     height: 300px;
     padding: 4px 5px 4px 5px;
 }

@@ -19,13 +19,13 @@
         </div>
     </header>
     <article>
-        <section>
+        <section class="video">
             <video id="video-player"
                    class="video-js"
                    controls
                    preload="auto"
-                   width="700"
-                   height="394"
+                   width="410"
+                   height="194"
                    poster="images/HDtou-01.webp"
                    data-setup="{}">
             </video>
@@ -34,17 +34,24 @@
                 var player = videojs('video-player');
             </script>
         </section>
+	<section class="video_selected">
+            <div>
+                <input id="file-name" type="text" value="HDZero" name=“filename” onfocus=" " onblur="">
+            </div>
+	</section>
         <section class="row">
             <div class="column left">
-                <div>
-                    Select the listing on the right to load the video. Double-click the listing to delete the video.
+                <section>
+                    Select the listing on the right to load the video.
+                </section>
+		</br>
+                <section>
+                    Double-click the listing to delete the video.
+                </section>
+		</br>
+                <section>
                     Change the name under the video and click outside to save.
-                </div>
-            </div>
-            <div class="column middle">
-                <div>
-                    <input id="file-name" type="text" value="HDZero" name=“filename” onfocus=" " onblur="">
-                </div>
+                </section>
             </div>
             <div class="listing column right">
                 <table id="listing-tbl">
