@@ -1,0 +1,2 @@
+SDC_PATH="/mnt/extsd"
+MOVIE_PATH="${SDC_PATH}/movies"
