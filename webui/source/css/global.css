@@ -49,6 +49,10 @@ article {
     padding: 10px;
 }
 
+section.video {
+    margin-right: 20px;
+}
+
 section.row {
     margin-top: 10px;
 }
