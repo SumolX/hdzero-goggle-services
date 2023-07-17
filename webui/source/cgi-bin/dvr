@@ -42,7 +42,7 @@ on_dvr_m3u8() {
     echo "#EXT-X-ALLOW-CACHE:YES" >> ${HDZ_M3U8}
     echo "#EXT-X-TARGETDURATION:3600" >> ${HDZ_M3U8}
     echo "#EXTINF:3600.000000," >> ${HDZ_M3U8}
-    echo "movies/$1" >> ${HDZ_M3U8}
+    echo "${MEDIA_PATH}"/$1" >> ${HDZ_M3U8}
     echo "#EXT-X-ENDLIST" >> ${HDZ_M3U8}
 
     echo "Status: 200 OK"

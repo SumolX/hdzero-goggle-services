@@ -1,5 +1,6 @@
 HTML_PATH=".."
 HDZ_M3U8="${HTML_PATH}/hdzero.m3u8"
+MEDIA_PATH="movies"
 
 SDC_PATH="/mnt/extsd"
 MOVIE_PATH="${SDC_PATH}/movies"
