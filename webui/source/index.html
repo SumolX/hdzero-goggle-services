@@ -35,7 +35,7 @@
             </div>
         </section>
         <section class="row">
-            <div class="column left">
+            <div class="left">
                 <section>
                     Select the listing on the right to load the video.
                 </section>
@@ -48,18 +48,22 @@
                     Change the name under the video and click outside to save.
                 </section>
             </div>
-            <div class="listing column right">
-                <table id="listing-tbl">
+            <div class="right">
+                <table class="listing-headers">
                     <thead>
                         <tr>
-                            <th>File</th>
-                            <th>Size (MB)</th>
-                            <th>Created</th>
+                            <th class="column-file">File</th>
+                            <th class="column-size">Size</th>
+                            <th class="column-date">Date</th>
                         </tr>
                     </thead>
-                    <tbody id="listing-body">
-                    </tbody>
                 </table>
+                <div class="listing right">
+                    <table id="listing-tbl">
+                        <tbody id="listing-body">
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
     </article>
@@ -68,7 +72,6 @@
 
     </footer>
     <script>
-
         //add event listener for page load
         document.addEventListener("DOMContentLoaded", get_list, false);
 
@@ -88,8 +91,8 @@
                     console.log(json.dvr[prop]);
                     const msize = Math.round(json.dvr[prop].size / Math.pow(1024, 2), 1);
 
-                    tr.innerHTML = '<td>' + json.dvr[prop].file + '</td>' + '<td>' + msize
-                        + '</td>' + '<td>' + json.dvr[prop].date + '</td>';
+                    tr.innerHTML = '<td class="column-file">' + json.dvr[prop].file + '</td>' + '<td class="column-size">' + msize
+                        + '</td>' + '<td class="column-date">' + json.dvr[prop].date + '</td>';
                     tbody.appendChild(tr);
                 });
             })();

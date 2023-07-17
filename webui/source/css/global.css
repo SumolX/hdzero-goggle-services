@@ -45,19 +45,15 @@ h3 {
 article {
     height: 100%;
     width: 100%;
-    padding: 10px;
+    padding: 5px;
 }
 
 section.video {
-    margin-right: 20px;
+    margin: 0px 10px 0px 0px;
 }
 
 section.row {
-    margin-top: 10px;
-}
-
-.column {
-    float: left;
+    width: 100%;
 }
 
 .video_selected {
@@ -67,9 +63,10 @@ section.row {
 
 .left {
     /*font-size: 11px;*/
-    width: 40%;
-    height: 300px;
-    padding: 4px 15px 4px 15px;
+    float: left;
+    width: 30%;
+    height: 352px;
+    padding: 4px 10px 4px 0px;
     text-align: left;
     overflow-wrap: break-word;
 }
@@ -84,9 +81,10 @@ input#file-name {
 }
 
 .right {
-    width: 50%;
-    height: 300px;
-    padding: 4px 5px 4px 5px;
+    float: right;
+    width: 65%;
+    height: 352px;
+    margin: 0px 10px 0px 0px;
 }
 
 .row:after {
@@ -95,25 +93,41 @@ input#file-name {
     clear: both;
 }
 
-.listing {
-    height: 100%;
-    overflow-y: scroll;
-    /* font-size: 10px;*/
+.listing-headers {
+    width: 100%;
+    background-color: #ff5050;
+    border-bottom: 1px solid #004a4d;
 }
 
-#listing-tbl {
-    margin: 0;
-    padding: 0;
+.listing {
+    overflow: hidden;
+    height: 336px;
     width: 100%;
+    overflow-y: scroll;
+    padding: 0px 0px 0px 0px;
+}
+
+#listing-content {
     color: #006466;
     border-collapse: collapse;
 }
 
-#listing-tbl th {
+.column-file {
+    width: 40%;
     text-align: left;
-    background-color: #ff5050;
-    border-bottom: 1px solid #004a4d;
-    /*font-size: 11px;*/
+    padding: 0px 0px 0px 15px;
+}
+
+.column-size {
+    width: 10%;
+    text-align: right;
+    padding: 0px 15px 0px 10px;
+}
+
+.column-date {
+    width: 200%;
+    text-align: left;
+    padding: 0px 10px 0px 0px;
 }
 
 .selected {
