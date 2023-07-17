@@ -19,33 +19,7 @@ h1, h2, h3, h4, h5 {
     border-bottom: 1px solid #006466;
     height: 40px;
     width: 100%;
-    padding: 5px,7px,2px,4px;
-}
-
-.logo {
-    position: absolute;
-    top: 10px;
-    left: 20px;
-}
-
-.heading {
-    position: absolute;
-    top: 10px;
-    left: 220px;
-}
-
-.column {
-    float: left;
-}
-
-.left {
-    width: 190px;
-}
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
+    padding: 9px 9px 0 20px;
 }
 
 .footer {
@@ -57,48 +31,57 @@ h1, h2, h3, h4, h5 {
     background: #fff;
 }
 
-article.row {
-    margin-top: 20px;
+article {
     height: 100%;
     width: 720px;
+    padding: 10px;
 }
 
-section.fileinfo {
-    padding: 12px;
+section.row {
+    margin-top: 10px;
 }
 
-div.preview {
-    width: 100%;
-    height: 150px;
+.column {
+    float: left;
 }
 
-img#preview-img {
-    border-radius: 17px;
-    border: 1px solid #006466;
-    width: 100%;
-    height: 100%;
-}
-
-input#file-name {
-    width: 100%;
-    margin-top: 12px;
-    border: 0;
-    outline: 0;
-    text-align: center;
-    font-size: 16px;
-    color: #006466;
-}
-
-div.instruction {
-    padding: 4px;
-    text-align: center;
-    margin-top: 24px;
-    max-width: 180px;
+.left {
+    width: 220px;
+    height: 300px;
+    padding: 4px 15px 4px 15px;
+    text-align: left;
+    font-size: 11px;
     overflow-wrap: break-word;
 }
 
-.listing {
+.middle {
+    width: 200px;
     height: 300px;
+}
+
+input#file-name {
+    width: 150px;
+    border: 0;
+    outline: 0;
+    text-align: center;
+    font-size: 14px;
+    color: #006466;
+}
+
+.right {
+    width: 240px;
+    height: 300px;
+    padding: 4px 5px 4px 5px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.listing {
+    height: 100%;
     overflow-y: scroll;
     font-size: 10px;
 }
@@ -119,15 +102,3 @@ div.instruction {
     background: #00ffff;
 }
 
-#player {
-    width: 500px;
-    height: 280px;
-    border: 1px solid black;
-}
-
-#ctrl {
-    margin-top: 20px;
-    width: 500px;
-    height: 50px;
-    border: 1px solid black;
-}

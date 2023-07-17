@@ -7,4 +7,4 @@
 /out/build/x64-Debug/cmake_install.cmake
 /out/build/x64-Debug/Testing/Temporary
 /out/build/x64-Debug/VSInheritEnvironments.txt
-/.vs
+.vs/

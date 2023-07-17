@@ -4,58 +4,60 @@
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="/css/global.css?version=64">
+    <link rel="stylesheet" href="/css/video-js.min.css" />
+    <link rel="stylesheet" href="/css/global.css?version=878">
+    <script src="/script/video.min.js"></script>
     <title>HDZero Goggle</title>
 
 </head>
 <body>
     <header>
         <div class="nav">
-            <div class="logo">
-                <img src="images/HDtou-01.webp" height="24" alt="HDZero" />
-            </div>
-            <div class="heading">
-                <h2>My Goggle</h2>
+            <div>
+                <h1>My Goggle</h1>
             </div>
         </div>
     </header>
-    <article class="row">
-        <section class="column left fileinfo">
-            <div class="preview">
-                <img id="preview-img" src="images/hdzero.png" alt="preview image" />
+    <article>
+        <section>
+            <video id="video-player"
+                   class="video-js"
+                   controls
+                   preload="none"
+                   width="700"
+                   height="394"
+                   poster="images/HDtou-01.webp"
+                   data-setup="{}">
+            </video>
+            <script>
+                // Initializing the video player with video options
+                var player = videojs('video-player');
+            </script>
+        </section>
+        <section class="row">
+            <div class="column left">
+                <div>
+                    Select the listing on the right to load the video. Double-click the listing to delete the video.
+                    Change the name under the video and click outside to save.
+                </div>
             </div>
-            <div class="filename">
-                <input id="file-name" type="text" value="HDZero" name=“filename” onfocus=" " onblur="">
+            <div class="column middle">
+                <div>
+                    <input id="file-name" type="text" value="HDZero" name=“filename” onfocus=" " onblur="">
+                </div>
             </div>
-            <div class="instruction">
-                Click below to load file. Double-click to delete.
-            </div>
-            <div class="listing">
+            <div class="listing column right">
                 <table id="listing-tbl">
-                <thead>
-                    <tr>
-                        <th>File</th>
-                        <th>Size</th>
-                        <th>Created</th>
-                    </tr>
-                </thead>
+                    <thead>
+                        <tr>
+                            <th>File</th>
+                            <th>Size</th>
+                            <th>Created</th>
+                        </tr>
+                    </thead>
                     <tbody id="listing-body">
                     </tbody>
                 </table>
-            </div>
-        </section>
-        <section class="column right">
-            <div id="player">
-                player
-
-
-
-
-
-
-            </div>
-            <div id="ctrl">
-                control
             </div>
         </section>
     </article>
@@ -95,21 +97,16 @@
         }
 
         function setSelectedFile() {
-            var inputName = document.getElementById("file-name")
-            var preview = document.getElementById("preview-img");
+            var ipFileName = document.getElementById("file-name")
+            var player = document.getElementById("video-player")
             var fName = this.getElementsByTagName("td")[0].innerHTML.split('.')[0];
-            //alert(file);
-            preview.src = "movies/" + fName + '.jpg'
-            inputName.value = fName;
+            ipFileName.value = fName;
+            //player.poster("movies/" + fName + '.jpg');
+            //player.srs({ type: TYPE, src: fName });
         }
 
         function setDeleteFile() {
-            var inputName = document.getElementById("file-name")
-            var preview = document.getElementById("preview-img");
-            var fName = this.getElementsByTagName("td")[0].innerHTML.split('.')[0];
-            alert("Are you sure!");
-            //preview.src = "movies/" + fName + '.jpg'
-            //inputName.value = fName;
+              alert("Are you sure!");
         }
 
     </script>
