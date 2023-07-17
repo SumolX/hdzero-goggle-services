@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,6 +11,7 @@
     <title>HDZero Goggle</title>
 
 </head>
+
 <body>
     <header>
         <div class="nav">
@@ -20,12 +22,8 @@
     </header>
     <article>
         <section class="video">
-            <video id="video-player"
-                   class="video-js vjs-default-skin vjs-fluid"
-                   controls
-                   preload="auto"
-                   poster="images/HDtou-01.webp"
-                   data-setup="{}">
+            <video id="video-player" class="video-js vjs-default-skin vjs-fluid" playsinline controls preload="auto"
+                poster="images/HDtou-01.webp" data-setup="{}">
             </video>
             <script>
                 var player = videojs('video-player');
@@ -101,14 +99,22 @@
         function setSelectedFile() {
             var ipFileName = document.getElementById("file-name")
             var fName = this.getElementsByTagName("td")[0].innerHTML.split('.')[0];
+            var fType = this.getElementsByTagName("td")[0].innerHTML.split('.')[1];
             ipFileName.value = fName;
             toggleSelection(fName);
-            (async () => {
-                const res = await fetch("/cgi-bin/dvr?m3u8=" + fName + ".ts", {
-                });
-                player.poster("movies/" + fName + '.jpg');
-                player.src({ type: "application/x-mpegURL", src: "hdzero.m3u8" });
-            })();
+
+            player.poster("movies/" + fName + '.jpg');
+
+            if (fType === "ts") {
+                (async () => {
+                    const res = await fetch("/cgi-bin/dvr?m3u8=" + fName + ".ts", {
+                    });
+                    player.src({ type: "application/x-mpegURL", src: "hdzero.m3u8" });
+                })();
+            }
+            else {
+                player.src({ type: "video/mp4", src: "movies/" + fName + ".mp4" });
+            }
         }
 
         function setDeleteFile() {
@@ -130,5 +136,5 @@
 
     </script>
 </body>
-</html>
 
+</html>
