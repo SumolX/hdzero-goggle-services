@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/css/video-js.min.css" />
-    <link rel="stylesheet" href="/css/global.css?version=84">
+    <link rel="stylesheet" href="/css/global.css?version=86">
     <script src="/script/video.min.js"></script>
     <title>HDZero Goggle</title>
 
@@ -49,18 +49,16 @@
                 </section>
             </div>
             <div class="right">
-                <table class="listing-headers">
-                    <thead>
-                        <tr>
-                            <th class="column-file">File</th>
-                            <th class="column-size">Size</th>
-                            <th class="column-date">Date</th>
-                        </tr>
-                    </thead>
-                </table>
                 <div class="listing right">
                     <table id="listing-tbl">
-                        <tbody id="listing-body">
+                        <thead id="listing-heading">
+                            <tr>
+                                <th class="column-file">File</th>
+                                <th class="column-size">Size (MB)</th>
+                                <th class="column-date">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listing-content">
                         </tbody>
                     </table>
                 </div>
@@ -76,7 +74,7 @@
         document.addEventListener("DOMContentLoaded", get_list, false);
 
         function get_list() {
-            const tbody = document.getElementById('listing-body');
+            const tbody = document.getElementById('listing-content');
 
             (async () => {
                 const res = await fetch('/cgi-bin/dvr?', {
@@ -125,7 +123,7 @@
         }
 
         function toggleSelection(fName) {
-            const tbody = document.getElementById('listing-body');
+            const tbody = document.getElementById('listing-content');
 
             for (var i = 0, row; row = tbody.rows[i]; i++) {
                 if (row.cells[0].innerHTML.split('.')[0] === fName) {
