@@ -1,8 +1,8 @@
 html, body {
     margin: 0px;
     padding: 0px;
-    font: 13px RaleWay, Open Sans, Helvetica, sans-serif;
-    color: #766D6D;
+    font: 1em RaleWay, Open Sans, Helvetica, sans-serif;
+    color: #006366;
     background: #fff;
 }
 
@@ -11,7 +11,19 @@ h1, h2, h3, h4, h5 {
     padding: 0;
     font-family: Open sans, sans-serif;
     font-weight: 500;
-    color: #003133;
+    color: #004a4d;
+}
+
+h1 {
+    font-size: 2em;  /* 32px/16=2.5em */
+}
+
+h2 {
+    font-size: 1.5em; 
+}
+
+h3 {
+    font-size: 1.2em;
 }
 
 .nav {
@@ -47,14 +59,15 @@ section.row {
 
 .video_selected {
     text-align: center;
+    padding-top: 4px;
 }
 
 .left {
+    /*font-size: 11px;*/
     width: 40%;
     height: 300px;
     padding: 4px 15px 4px 15px;
     text-align: left;
-    font-size: 11px;
     overflow-wrap: break-word;
 }
 
@@ -63,7 +76,7 @@ input#file-name {
     border: 0;
     outline: 0;
     text-align: center;
-    font-size: 14px;
+    font-size: 1.2em;
     color: #006466;
 }
 
@@ -82,7 +95,7 @@ input#file-name {
 .listing {
     height: 100%;
     overflow-y: scroll;
-    font-size: 10px;
+    /* font-size: 10px;*/
 }
 
 #listing-tbl {
@@ -90,14 +103,16 @@ input#file-name {
     padding: 0;
     width: 100%;
     color: #006466;
+    border-collapse: collapse;
 }
 
 #listing-tbl th {
     text-align: left;
-    font-size: 11px;
+    background-color: #ff5050;
+    border-bottom: 1px solid #004a4d;
+    /*font-size: 11px;*/
 }
 
 .selected {
-    background: #00ffff;
+    background: #00dee6;
 }
-

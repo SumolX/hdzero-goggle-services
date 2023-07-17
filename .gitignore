@@ -1,1 +1,10 @@
-﻿/out/
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/out/build/x64-Debug/build.ninja
+/out/build/x64-Debug/CMakeCache.txt
+/out/build/x64-Debug/cmake_install.cmake
+/out/build/x64-Debug/Testing/Temporary
+/out/build/x64-Debug/VSInheritEnvironments.txt
+/.vs

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/css/video-js.min.css" />
-    <link rel="stylesheet" href="/css/global.css?version=878">
+    <link rel="stylesheet" href="/css/global.css?version=84">
     <script src="/script/video.min.js"></script>
     <title>HDZero Goggle</title>
 
@@ -21,34 +21,31 @@
     <article>
         <section class="video">
             <video id="video-player"
-                   class="video-js"
+                   class="video-js vjs-default-skin vjs-fluid"
                    controls
                    preload="auto"
-                   width="410"
-                   height="194"
                    poster="images/HDtou-01.webp"
                    data-setup="{}">
             </video>
             <script>
-                // Initializing the video player with video options
                 var player = videojs('video-player');
             </script>
         </section>
-	<section class="video_selected">
+        <section class="video_selected">
             <div>
                 <input id="file-name" type="text" value="HDZero" name=“filename” onfocus=" " onblur="">
             </div>
-	</section>
+        </section>
         <section class="row">
             <div class="column left">
                 <section>
                     Select the listing on the right to load the video.
                 </section>
-		</br>
+                </br>
                 <section>
                     Double-click the listing to delete the video.
                 </section>
-		</br>
+                </br>
                 <section>
                     Change the name under the video and click outside to save.
                 </section>
@@ -58,7 +55,7 @@
                     <thead>
                         <tr>
                             <th>File</th>
-                            <th>Size</th>
+                            <th>Size (MB)</th>
                             <th>Created</th>
                         </tr>
                     </thead>
@@ -78,7 +75,6 @@
         document.addEventListener("DOMContentLoaded", get_list, false);
 
         function get_list() {
-            //const table = document.getElementById('listing');
             const tbody = document.getElementById('listing-body');
 
             (async () => {
@@ -88,14 +84,13 @@
                 const json = await res.json();
 
                 Object.keys(json.dvr).forEach(function (prop) {
-                    //const fname = json.dvr[prop].file.split('.')[1];
                     const tr = document.createElement('tr');
                     tr.onclick = setSelectedFile;
                     tr.ondblclick = setDeleteFile;
                     console.log(json.dvr[prop]);
-                    var msize = Math.round(json.dvr[prop].size / Math.pow(1024, 2), 1);
+                    const msize = Math.round(json.dvr[prop].size / Math.pow(1024, 2), 1);
 
-                    tr.innerHTML = '<td>' + json.dvr[prop].file + '</td>' + '<td>' + msize + " MB"
+                    tr.innerHTML = '<td>' + json.dvr[prop].file + '</td>' + '<td>' + msize
                         + '</td>' + '<td>' + json.dvr[prop].date + '</td>';
                     tbody.appendChild(tr);
                 });
@@ -107,16 +102,30 @@
             var ipFileName = document.getElementById("file-name")
             var fName = this.getElementsByTagName("td")[0].innerHTML.split('.')[0];
             ipFileName.value = fName;
-	    (async () => {
-                const res = await fetch("/cgi-bin/dvr?m3u8=" + fName + ".ts" , {
-		});
+            toggleSelection(fName);
+            (async () => {
+                const res = await fetch("/cgi-bin/dvr?m3u8=" + fName + ".ts", {
+                });
                 player.poster("movies/" + fName + '.jpg');
-                player.src({ type: "application/x-mpegURL", src: "hdzero.m3u8"});
+                player.src({ type: "application/x-mpegURL", src: "hdzero.m3u8" });
             })();
         }
 
         function setDeleteFile() {
-              alert("Are you sure!");
+            alert("Are you sure!");
+        }
+
+        function toggleSelection(fName) {
+            const tbody = document.getElementById('listing-body');
+
+            for (var i = 0, row; row = tbody.rows[i]; i++) {
+                if (row.cells[0].innerHTML.split('.')[0] === fName) {
+                    row.classList.toggle("selected", true);
+                }
+                else {
+                    row.classList.toggle("selected", false);
+                }
+            }
         }
 
     </script>
