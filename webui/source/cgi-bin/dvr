@@ -9,7 +9,7 @@ on_dvr() {
     echo "Content-Type: text/html"
     echo ""
     body=""
-    if [ ! -z "$(mount | grep ${SDC_PATH})" ]; then
+#    if [ ! -z "$(mount | grep ${SDC_PATH})" ]; then
         for file in ${MOVIE_PATH}/*.ts ${MOVIE_PATH}/*.mp4; do
             body="$body $(echo "$(ls -l $file)" | awk '{printf "{\"date\":\"%s %s %s\",\"size\":%s,", $6,$7,$8,$5}')"
             body="$body \"file\":\"${file##*/}\"},"
@@ -17,7 +17,7 @@ on_dvr() {
         if [ ! -z "${body}" ]; then
             body="${body%,}"
         fi
-    fi
+#    fi
     echo "{ \"dvr\":[ $body ] }"
 }
 
