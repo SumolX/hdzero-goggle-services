@@ -69,21 +69,28 @@ on_dvr_stop() {
 if [ -z $QUERY_STRING ]; then
     on_dvr
 else
-    kv=(${QUERY_STRING//=/ })
-    if [ ${kv[0]} == "download" ]; then
-        on_dvr_download "${kv[1]}"
-    elif [ ${kv[0]} == "rename" ]; then
-        on_dvr_rename "${kv[1]}" "${kv[2]}"
-    elif [ ${kv[0]} == "delete" ]; then
-        on_dvr_delete "${kv[1]}"
-    elif [ ${kv[0]} == "m3u8" ]; then
-        on_dvr_m3u8 "${kv[1]}"
-    elif [ ${kv[0]} == "image" ]; then
-        on_dvr_image "${kv[1]}"
-    elif [ ${kv[0]} == "play" ]; then
-        on_dvr_play "${kv[1]}"
-    elif [ ${kv[0]} == "stop" ]; then
-        on_dvr_stop
-    fi
+    QS="${QUERY_STRING}"
+    while [ "${QS}" != "" ]; do
+	kv="${QS%%&*}"
+	QS="${QS#$kv}"
+	QS="${QS#&}"
+	key="${kv%%=*}"
+	val="${kv#$key}"
+	val="${val#=}"
+        if [ ${key} == "download" ]; then
+            on_dvr_download "${val}"
+        elif [ ${key} == "rename" ]; then
+            on_dvr_rename "${val}"
+        elif [ ${key} == "delete" ]; then
+            on_dvr_delete "${val}"
+        elif [ ${key} == "m3u8" ]; then
+            on_dvr_m3u8 "${val}"
+        elif [ ${key} == "image" ]; then
+            on_dvr_image "${val}"
+        elif [ ${key} == "play" ]; then
+            on_dvr_play "${val}"
+        elif [ ${key} == "stop" ]; then
+            on_dvr_stop
+        fi
+    done
 fi
-
