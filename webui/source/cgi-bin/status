@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Includes
+. ./utils
+
+# Handlers
+on_status() {
+    if [ ! -z "$(ls ${HDZ_LIVE_M3U8} 2> /dev/null)" ]; then
+        echo "Status: 200 OK"
+    else
+        echo "Status: 503 Service Unavailable"
+    fi
+}
+
+# Parse Request
+if [ -z $QUERY_STRING ]; then
+    on_status
+fi
