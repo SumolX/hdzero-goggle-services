@@ -8,12 +8,15 @@
 on_dvr() {
     echo "Content-Type: text/html"
     echo ""
-    shopt -s nullglob
+    body=""
     for file in ${MOVIE_PATH}/*.ts ${MOVIE_PATH}/*.mp4; do
         body="$body $(echo "$(ls -l $file)" | awk '{printf "{\"date\":\"%s %s %s\",\"size\":%s,", $6,$7,$8,$5}')"
         body="$body \"file\":\"${file##*/}\"},"
     done
-    echo "{ \"dvr\":[ $(sed 's/,*$//'<<<$body) ] }"
+    if [[ ! -z ${body} ]]; then
+        body="${body%,}"
+    fi
+    echo "{ \"dvr\":[ $body ] }"
 }
 
 on_dvr_download() {
