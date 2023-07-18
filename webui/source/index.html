@@ -23,7 +23,8 @@
     <article>
         <section class="video">
             <video id="video-player" class="video-js vjs-default-skin vjs-fluid" playsinline controls preload="auto"
-                   poster="images/HDtou-01.webp" data-setup="{}">
+                poster="images/HDtou-01.webp" data-setup="{}">
+                <source src="hdz_live.m3u8" type="application/x-mpegURL" />
             </video>
             <script>
                 var player = videojs('video-player');
@@ -102,7 +103,7 @@
                 (async () => {
                     const res = await fetch("/cgi-bin/dvr?m3u8=" + fName + ".ts", {
                     });
-                    player.src({ type: "application/x-mpegURL", src: "hdzero.m3u8" });
+                    player.src({ type: "application/x-mpegURL", src: "hdz_dvr.m3u8" });
                 })();
             }
             else {
