@@ -52,23 +52,15 @@ section.video {
     margin: 0px 10px 0px 0px;
 }
 
+.video-name {
+    text-align: center;
+    padding-top: .2em;
+    padding-bottom: .2em;
+}
+
 section.row {
     width: 100%;
-}
-
-.video_selected {
-    text-align: center;
-    padding-top: 4px;
-}
-
-.left {
-    /*font-size: 11px;*/
-    float: left;
-    width: 30%;
-    height: 352px;
-    padding: 4px 10px 4px 0px;
-    text-align: left;
-    overflow-wrap: break-word;
+    font-size: .875em;
 }
 
 input#file-name {
@@ -80,11 +72,34 @@ input#file-name {
     color: #006466;
 }
 
+.column {
+    float: left;
+}
+
+.left {
+    width: 35%;
+    height: 352px;
+    padding: 10px 10px 4px 0px;
+    text-align: left;
+    overflow-wrap: break-word;
+}
+
+ul.instruction {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.instruction li {
+    margin: 10px;
+}
+
 .right {
-    float: right;
-    width: 65%;
+    width: 60%;
     height: 352px;
     margin: 0px 10px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    border: 1px solid lightgray;
 }
 
 .row:after {
@@ -93,41 +108,55 @@ input#file-name {
     clear: both;
 }
 
-.listing {
-    overflow: hidden;
-    height: 336px;
+.listing-table {
     width: 100%;
-    overflow-y: scroll;
-    padding: 0px 0px 0px 0px;
-}
-
-#listing-tbl {
     color: #006466;
     border-collapse: collapse;
 }
 
-#listing-heading {
-    border-bottom: 1px solid #004a4d;
+@media screen and (max-width: 414px) {
+    .left {
+        width: 100%;
+    }
+
+    .right {
+        width: 100%;
+    }
 }
 
-.column-file {
-    width: 35%;
-    text-align: left;
-    padding: 0px 0px 0px 15px;
+@media screen and (min-width: 415px) and (max-width: 485px) {
+    .left {
+        width: 25%;
+    }
+
+    .right {
+        width: 65%;
+    }
 }
 
-.column-size {
-    width: 15%;
-    text-align: right;
-    padding: 0px 15px 0px 10px;
-}
+    .listing-heading {
+        color: #e6feff;
+        background-color: #004a4d;
+    }
 
-.column-date {
-    width: 50%;
-    text-align: left;
-    padding: 0px 10px 0px 0px;
-}
+    .column-file {
+        width: 35%;
+        text-align: left;
+        padding: 0px 0px 0px 15px;
+    }
 
-.selected {
-    background: #00dee6;
-}
+    .column-size {
+        width: 15%;
+        text-align: right;
+        padding: 0px 15px 0px 10px;
+    }
+
+    .column-date {
+        width: 50%;
+        text-align: left;
+        padding: 0px 10px 0px 0px;
+    }
+
+    .selected {
+        background: #00f7ff;
+    }
