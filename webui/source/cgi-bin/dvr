@@ -25,9 +25,8 @@ on_dvr_download() {
 
 on_dvr_rename() {
     for file in ${MOVIE_PATH}/$1.*; do
-        #mv file $2+ext
-	echo ""
-    done
+        mv $file ${MOVIE_PATH}/$2.${file##*.}
+	done
     echo "Status: 200 OK"
 }
 
@@ -70,27 +69,22 @@ if [ -z $QUERY_STRING ]; then
     on_dvr
 else
     QS="${QUERY_STRING}"
-    while [ "${QS}" != "" ]; do
-	kv="${QS%%&*}"
-	QS="${QS#$kv}"
-	QS="${QS#&}"
-	key="${kv%%=*}"
-	val="${kv#$key}"
-	val="${val#=}"
-        if [ ${key} == "download" ]; then
-            on_dvr_download "${val}"
-        elif [ ${key} == "rename" ]; then
-            on_dvr_rename "${val}"
-        elif [ ${key} == "delete" ]; then
-            on_dvr_delete "${val}"
-        elif [ ${key} == "m3u8" ]; then
-            on_dvr_m3u8 "${val}"
-        elif [ ${key} == "image" ]; then
-            on_dvr_image "${val}"
-        elif [ ${key} == "play" ]; then
-            on_dvr_play "${val}"
-        elif [ ${key} == "stop" ]; then
-            on_dvr_stop
-        fi
-    done
+    IFS="&"
+    set -- $QUERY_STRING
+    key="${1%=*}"
+    if [ ${key} == "download" ]; then
+        on_dvr_download "${2#*=}"
+    elif [ ${key} == "rename" ]; then
+        on_dvr_rename "${2#*=}" "${3#*=}"
+    elif [ ${key} == "delete" ]; then
+        on_dvr_delete "${2#*=}"
+    elif [ ${key} == "m3u8" ]; then
+        on_dvr_m3u8 "${2#*=}"
+    elif [ ${key} == "image" ]; then
+        on_dvr_image "${2#*=}"
+    elif [ ${key} == "play" ]; then
+        on_dvr_play "${2#*=}"
+    elif [ ${key} == "stop" ]; then
+        on_dvr_stop
+    fi
 fi

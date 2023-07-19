@@ -23,7 +23,7 @@
     <article>
         <section class="video">
             <video id="video-player" class="video-js vjs-default-skin vjs-fluid" playsinline controls preload="auto"
-                poster="images/HDtou-01.webp" data-setup="{}">
+                   poster="images/HDtou-01.webp" data-setup="{}">
                 <source src="hdz_live.m3u8" type="application/x-mpegURL" />
             </video>
             <script>
@@ -32,7 +32,8 @@
         </section>
         <section class="video-name">
             <div>
-                <input id="file-name" type="text" value="HDZero" name=“filename” onfocus=" " onblur="">
+                <input id="file-name" type="text" value="HDZero" name=“filename”
+                       onblur="RenameFile()">
             </div>
         </section>
         <section class="row">
@@ -66,8 +67,9 @@
         //add event listener for page load
         document.addEventListener("DOMContentLoaded", get_list, false);
 
-        function get_list() {
+        function get_list(clear) {
             const tbody = document.getElementById('listing-content');
+            while (tbody.firstChild) { tbody.removeChild(tbody.firstChild); }
 
             (async () => {
                 const res = await fetch('/cgi-bin/dvr?', {
@@ -101,8 +103,7 @@
 
             if (fType === "ts") {
                 (async () => {
-                    const res = await fetch("/cgi-bin/dvr?m3u8=" + fName + ".ts", {
-                    });
+                    const res = await fetch("/cgi-bin/dvr?m3u8=" + fName + ".ts", {});
                     player.src({ type: "application/x-mpegURL", src: "hdz_dvr.m3u8" });
                 })();
             }
@@ -111,8 +112,28 @@
             }
         }
 
+        function RenameFile(e) {
+            const toFile = document.getElementById("file-name").value;
+            const frFile = getSelectedRow().split('.')[0];
+
+            (async () => {
+                const res = await fetch('/cgi-bin/dvr?rename=&fr=' + frFile
+                    + '&to=' + toFile, {
+                    headers: { Accept: 'application/json' },
+                });
+            })();
+            get_list();
+        }
+
         function setDeleteFile() {
-            alert("Are you sure!");
+            const result = confirm("Sure you want to delete?");
+            if (result) {
+                (async () => {
+                    const res = await fetch('/cgi-bin/dvr?', {
+                        headers: { Accept: 'application/json' },
+                    });
+                })();
+            }
         }
 
         function toggleSelection(fName) {
@@ -126,6 +147,19 @@
                     row.classList.toggle("selected", false);
                 }
             }
+        }
+
+        function getSelectedRow() {
+            const tbody = document.getElementById('listing-content');
+            var result = "";
+
+            for (var i = 0, row; row = tbody.rows[i]; i++) {
+                if (row.classList.contains("selected")) {
+                    result = row.cells[0].innerHTML;
+                    break;
+                }
+            }
+            return result;
         }
 
     </script>
