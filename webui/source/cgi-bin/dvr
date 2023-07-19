@@ -9,13 +9,15 @@ on_dvr() {
     echo "Content-Type: text/html"
     echo ""
     body=""
-    for file in ${MOVIE_PATH}/*.ts ${MOVIE_PATH}/*.mp4; do
-        body="$body $(echo "$(ls -l $file)" | awk '{printf "{\"date\":\"%s %s %s\",\"size\":%s,", $6,$7,$8,$5}')"
-        body="$body \"file\":\"${file##*/}\"},"
-    done
-    if [[ ! -z ${body} ]]; then
-        body="${body%,}"
-    fi
+#    if [ ! -z "$(mount | grep ${SDC_PATH})" ]; then
+        for file in ${MOVIE_PATH}/*.ts ${MOVIE_PATH}/*.mp4; do
+            body="$body $(echo "$(ls -l $file)" | awk '{printf "{\"date\":\"%s %s %s\",\"size\":%s,", $6,$7,$8,$5}')"
+            body="$body \"file\":\"${file##*/}\"},"
+        done
+        if [ ! -z "${body}" ]; then
+            body="${body%,}"
+        fi
+#    fi
     echo "{ \"dvr\":[ $body ] }"
 }
 
@@ -38,14 +40,14 @@ on_dvr_delete() {
 }
 
 on_dvr_m3u8() {
-    echo "#EXTM3U" > ${HDZ_M3U8}
-    echo "#EXT-X-VERSION:3" >> ${HDZ_M3U8}
-    echo "#EXT-X-MEDIA-SEQUENCE:0" >> ${HDZ_M3U8}
-    echo "#EXT-X-ALLOW-CACHE:YES" >> ${HDZ_M3U8}
-    echo "#EXT-X-TARGETDURATION:900" >> ${HDZ_M3U8}
-    echo "#EXTINF:900.000000," >> ${HDZ_M3U8}
-    echo "${MEDIA_PATH}/$1" >> ${HDZ_M3U8}
-    echo "#EXT-X-ENDLIST" >> ${HDZ_M3U8}
+    echo "#EXTM3U" > ${HDZ_DVR_M3U8}
+    echo "#EXT-X-VERSION:3" >> ${HDZ_DVR_M3U8}
+    echo "#EXT-X-MEDIA-SEQUENCE:0" >> ${HDZ_DVR_M3U8}
+    echo "#EXT-X-ALLOW-CACHE:YES" >> ${HDZ_DVR_M3U8}
+    echo "#EXT-X-TARGETDURATION:900" >> ${HDZ_DVR_M3U8}
+    echo "#EXTINF:900.000000," >> ${HDZ_DVR_M3U8}
+    echo "${MEDIA_PATH}/$1" >> ${HDZ_DVR_M3U8}
+    echo "#EXT-X-ENDLIST" >> ${HDZ_DVR_M3U8}
 
     echo "Status: 200 OK"
 }

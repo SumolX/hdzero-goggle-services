@@ -1,5 +1,6 @@
 HTML_PATH=".."
-HDZ_M3U8="${HTML_PATH}/hdz_dvr.m3u8"
+HDZ_DVR_M3U8="${HTML_PATH}/hdz_dvr.m3u8"
+HDZ_LIVE_M3U8="${HTML_PATH}/hdz_live.m3u8"
 MEDIA_PATH="movies"
 
 SDC_PATH="/mnt/extsd"
