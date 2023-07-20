@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/css/video-js.min.css" />
-    <link rel="stylesheet" href="/css/global.css?version=92">
+    <link rel="stylesheet" href="/css/global.css?version=97">
     <script src="/script/video.min.js"></script>
     <title>HDZero Goggle</title>
 
@@ -23,7 +23,7 @@
     <article>
         <section class="video">
             <video id="video-player" class="video-js vjs-default-skin vjs-fluid" playsinline controls preload="auto"
-                poster="images/HDtou-01.webp" data-setup="{}">
+                   poster="images/HDtou-01.webp" data-setup="{}">
                 <source src="hdz_live.m3u8" type="application/x-mpegURL" />
             </video>
             <script>
@@ -40,20 +40,25 @@
                 <ul class="instruction">
                     <li>Single-click to load a video.</li>
                     <li>Double-click to delete a video.</li>
-                    <li>Rename video file by editing the title below the video player and click outside to save.
+                    <li>
+                        Rename video file by editing the title below the video player and click outside to save.
                     </li>
                 </ul>
+                <div class="action">
+                    <input type="button" value="Save" />
+                    <input type="button" value="Delete" />
+                </div>
             </div>
             <div class="column right">
-                <table class="listing-table">
-                    <thead class="listing-heading">
+                <table class="list">
+                    <thead class="list-head">
                         <tr>
                             <th class="column-file">File</th>
                             <th class="column-size">Size (MB)</th>
                             <th class="column-date">Date</th>
                         </tr>
                     </thead>
-                    <tbody id="listing-content">
+                    <tbody id="list-content">
                     </tbody>
                 </table>
             </div>
@@ -68,7 +73,7 @@
         document.addEventListener("DOMContentLoaded", get_list, false);
 
         function get_list(clear) {
-            const tbody = document.getElementById('listing-content');
+            const tbody = document.getElementById('list-content');
             while (tbody.firstChild) { tbody.removeChild(tbody.firstChild); }
 
             (async () => {
@@ -143,7 +148,7 @@
         }
 
         function toggleSelection(fName) {
-            const tbody = document.getElementById('listing-content');
+            const tbody = document.getElementById('list-content');
 
             for (var i = 0, row; row = tbody.rows[i]; i++) {
                 if (row.cells[0].innerHTML.split('.')[0] === fName) {
@@ -156,7 +161,7 @@
         }
 
         function getSelectedRow() {
-            const tbody = document.getElementById('listing-content');
+            const tbody = document.getElementById('list-content');
             var result = "";
 
             for (var i = 0, row; row = tbody.rows[i]; i++) {

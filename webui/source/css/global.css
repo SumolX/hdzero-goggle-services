@@ -78,7 +78,6 @@ input#file-name {
 
 .left {
     width: 35%;
-    height: 352px;
     padding: 10px 10px 4px 0px;
     text-align: left;
     overflow-wrap: break-word;
@@ -96,10 +95,10 @@ ul.instruction {
 
 .right {
     width: 60%;
-    height: 352px;
     margin: 0px 10px 0px 0px;
     padding: 0px 0px 0px 0px;
     border: 1px solid lightgray;
+    overflow: hidden;
 }
 
 .row:after {
@@ -108,10 +107,31 @@ ul.instruction {
     clear: both;
 }
 
-.listing-table {
+.list {
     width: 100%;
     color: #006466;
     border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.list thead, tbody {
+    display: block; /* added*/
+}
+
+.list tbody {
+    height: 350px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.list-head {
+    color: #e6feff;
+    background-color: #004a4d;
+}
+
+.list-head tr th {
+    height: 16px;
+    line-height: 16px;
 }
 
 @media screen and (max-width: 414px) {
@@ -134,29 +154,24 @@ ul.instruction {
     }
 }
 
-    .listing-heading {
-        color: #e6feff;
-        background-color: #004a4d;
-    }
+.column-file {
+    width: 35%;
+    text-align: left;
+    padding: 0px 0px 0px 15px;
+}
 
-    .column-file {
-        width: 35%;
-        text-align: left;
-        padding: 0px 0px 0px 15px;
-    }
+.column-size {
+    width: 15%;
+    text-align: right;
+    padding: 0px 15px 0px 10px;
+}
 
-    .column-size {
-        width: 15%;
-        text-align: right;
-        padding: 0px 15px 0px 10px;
-    }
+.column-date {
+    width: 50%;
+    text-align: left;
+    padding: 0px 10px 0px 0px;
+}
 
-    .column-date {
-        width: 50%;
-        text-align: left;
-        padding: 0px 10px 0px 0px;
-    }
-
-    .selected {
-        background: #00f7ff;
-    }
+.selected {
+    background: #00f7ff;
+}
