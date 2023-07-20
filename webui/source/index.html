@@ -23,7 +23,7 @@
     <article>
         <section class="video">
             <video id="video-player" class="video-js vjs-default-skin vjs-fluid" playsinline controls preload="auto"
-                   poster="images/HDtou-01.webp" data-setup="{}">
+                poster="images/HDtou-01.webp" data-setup="{}">
                 <source src="hdz_live.m3u8" type="application/x-mpegURL" />
             </video>
             <script>
@@ -32,16 +32,16 @@
         </section>
         <section class="video-name">
             <div>
-                <input id="file-name" type="text" value="HDZero" name=“filename”
-                       onblur="RenameFile()">
+                <input id="file-name" type="text" value="HDZero" name=“filename” onblur="RenameFile()">
             </div>
         </section>
         <section class="row">
             <div class="column left">
                 <ul class="instruction">
-                    <li>Select the listing on the right to load the video.</li>
-                    <li>Double-click the listing to delete the video.</li>
-                    <li>Change the name under the video and click outside to save.</li>
+                    <li>Single-click to load a video.</li>
+                    <li>Double-click to delete a video.</li>
+                    <li>Rename video file by editing the title below the video player and click outside to save.
+                    </li>
                 </ul>
             </div>
             <div class="column right">
@@ -113,16 +113,22 @@
         }
 
         function RenameFile(e) {
-            const toFile = document.getElementById("file-name").value;
-            const frFile = getSelectedRow().split('.')[0];
+            const result = confirm("Sure you want to rename?");
+            if (result) {
+                const toFile = document.getElementById("file-name").value;
+                const frFile = getSelectedRow().split('.')[0];
+                const ext = getSelectedRow().split('.')[1];
 
-            (async () => {
-                const res = await fetch('/cgi-bin/dvr?rename=&fr=' + frFile
-                    + '&to=' + toFile, {
-                    headers: { Accept: 'application/json' },
-                });
-            })();
-            get_list();
+                (async () => {
+                    const res = await fetch('/cgi-bin/dvr?rename=&fr=' + frFile + "." + ext
+                        + '&to=' + toFile + "." + ext, {
+                        headers: { Accept: 'application/json' },
+                    });
+                    get_list();
+                })();
+            } else {
+                document.getElementById("file-name").value = getSelectedRow().split('.')[0];
+            }
         }
 
         function setDeleteFile() {

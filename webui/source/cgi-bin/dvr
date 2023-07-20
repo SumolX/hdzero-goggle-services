@@ -26,9 +26,10 @@ on_dvr_download() {
 }
 
 on_dvr_rename() {
-    for file in ${MOVIE_PATH}/$1.*; do
-        mv $file ${MOVIE_PATH}/$2.${file##*.}
-	done
+    if test -f ${MOVIE_PATH}/$1; then
+        mv ${MOVIE_PATH}/${1%.*}.jpg ${MOVIE_PATH}/${2%.*}.jpg
+        mv ${MOVIE_PATH}/$1 ${MOVIE_PATH}/$2
+    fi
     echo "Status: 200 OK"
 }
 
