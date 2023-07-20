@@ -115,7 +115,7 @@ ul.instruction {
     float: right;
     text-align: right;
     width: 65%;
-    border: 2px solid #ff0000;
+    border: 1px solid #646464;
     overflow: hidden;
 }
 
@@ -145,8 +145,8 @@ tbody {
 }
 
 .list-head {
-    color: #e6feff;
-    background-color: #444444;
+    color: #ffffff;
+    background-color: #646464;
 }
 
 .list-head tr th {
