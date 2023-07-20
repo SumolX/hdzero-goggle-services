@@ -69,28 +69,30 @@ article {
 }
 
 section.row {
+
     width: 100%;
     font-size: .875em;
 }
 
-input#file-name {
-    width: 150px;
-    border: 0;
-    outline: 0;
-    text-align: center;
-    font-size: 1.2em;
-    color: #ffffff;
-    background-color: #313131;
+input#filename {
+    width: 95%;
+    background-color: rgba(255,255,255,0.6);
+    border-radius: 10%
 }
 
-.column {
-    float: left;
+.buttons {
+    margin-top: 5px;
+    border-radius: 20%
+}
+
+.delet {
+    float: right;
 }
 
 .left {
-    margin: 0px;
-    padding: 0px;
     width: 30%;
+    margin: 0px;
+    padding: 10px 2px 4px 0px;
     float: left;
     text-align: left;
     overflow-wrap: break-word;
@@ -108,7 +110,7 @@ ul.instruction {
 }
 
 .right {
-    margin: 0px;
+    margin-top: 10px;
     padding: 0px;
     float: right;
     text-align: right;
