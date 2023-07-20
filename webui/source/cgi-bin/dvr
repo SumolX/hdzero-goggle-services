@@ -70,7 +70,6 @@ on_dvr_stop() {
 if [ -z $QUERY_STRING ]; then
     on_dvr
 else
-    QS="${QUERY_STRING}"
     IFS="&"
     set -- $QUERY_STRING
     key="${1%=*}"
