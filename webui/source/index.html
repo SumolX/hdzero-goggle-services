@@ -15,15 +15,16 @@
 <body>
     <header>
         <div class="nav">
-            <div>
-                <h1>My Goggle</h1>
+            <div class="header">
+                <img src="images/hdzero.png" />
+                <h1>HDZero Goggle</h1>
             </div>
         </div>
     </header>
     <article>
         <section class="video">
             <video id="video-player" class="video-js vjs-default-skin vjs-fluid" playsinline controls preload="auto"
-                   poster="images/HDtou-01.webp" data-setup="{}">
+                poster="images/HDtou-01.webp" data-setup="{}">
                 <source src="hdz_live.m3u8" type="application/x-mpegURL" />
             </video>
             <script>
@@ -36,31 +37,33 @@
             </div>
         </section>
         <section class="row">
-            <div class="column left">
-                <ul class="instruction">
-                    <li>Single-click to load a video.</li>
-                    <li>Double-click to delete a video.</li>
-                    <li>
-                        Rename video file by editing the title below the video player and click outside to save.
-                    </li>
-                </ul>
-                <div class="action">
-                    <input type="button" value="Save" />
-                    <input type="button" value="Delete" />
+            <div>
+                <div class="left">
+                    <ul class="instruction">
+                        <li>Single-click to load a video.</li>
+                        <li>Double-click to delete a video.</li>
+                        <li>
+                            Rename video file by editing the title below the video player and click outside to save.
+                        </li>
+                    </ul>
+                    <div class="action">
+                        <input type="button" value="Save" />
+                        <input type="button" value="Delete" />
+                    </div>
                 </div>
-            </div>
-            <div class="column right">
-                <table class="list">
-                    <thead class="list-head">
-                        <tr>
-                            <th class="column-file">File</th>
-                            <th class="column-size">Size (MB)</th>
-                            <th class="column-date">Date</th>
-                        </tr>
-                    </thead>
-                    <tbody id="list-content">
-                    </tbody>
-                </table>
+                <div class="right">
+                    <table class="list">
+                        <thead class="list-head">
+                            <tr>
+                                <th class="column-file">File</th>
+                                <th class="column-size">Size (MB)</th>
+                                <th class="column-date">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="list-content">
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
     </article>
@@ -89,8 +92,8 @@
                     console.log(json.dvr[prop]);
                     const msize = Math.round(json.dvr[prop].size / Math.pow(1024, 2), 1);
 
-                    tr.innerHTML = '<td class="column-file">' + json.dvr[prop].file + '</td>' + '<td class="column-size">' + msize
-                        + '</td>' + '<td class="column-date">' + json.dvr[prop].date + '</td>';
+                    tr.innerHTML = '<td class="column-files">' + json.dvr[prop].file + '</td>' + '<td class="column-sizes">' + msize
+                        + '</td>' + '<td class="column-dates">' + json.dvr[prop].date + '</td>';
                     tbody.appendChild(tr);
                 });
             })();

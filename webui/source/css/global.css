@@ -1,37 +1,50 @@
-html, body {
-    margin: 0px;
-    padding: 0px;
+html,
+body {
     font: 1em RaleWay, Open Sans, Helvetica, sans-serif;
-    color: #006366;
-    background: #fff;
+    color: #ffffff;
+    background: #313131;
+
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
     margin: 0;
     padding: 0;
     font-family: Open sans, sans-serif;
     font-weight: 500;
-    color: #004a4d;
+    color: #ff0000;
 }
 
 h1 {
-    font-size: 2em;  /* 32px/16=2.5em */
+    color: #ffffff;
+    font-size: 2em;
+    top: 18px;
+    left: 48px;
 }
 
 h2 {
-    font-size: 1.5em; 
+    font-size: 1.5em;
 }
 
 h3 {
     font-size: 1.2em;
 }
 
+.header img {
+    float: left;
+    width: 35px;
+    height: 35px;
+    background: #313131;
+}
+
 .nav {
     top: 0px;
-    border-bottom: 1px solid #006466;
+    border-bottom: 1px solid #ff0000;
     height: 40px;
     width: 100%;
-    padding: 9px 9px 0 20px;
 }
 
 .footer {
@@ -39,17 +52,13 @@ h3 {
     border: 1px solid black;
     height: 50px;
     width: 100%;
-    background: #fff;
+    background: #313131;
 }
 
 article {
     height: 100%;
     width: 100%;
-    padding: 5px;
-}
-
-section.video {
-    margin: 0px 10px 0px 0px;
+    padding-top: 5px;
 }
 
 .video-name {
@@ -69,7 +78,8 @@ input#file-name {
     outline: 0;
     text-align: center;
     font-size: 1.2em;
-    color: #006466;
+    color: #ffffff;
+    background-color: #313131;
 }
 
 .column {
@@ -77,8 +87,10 @@ input#file-name {
 }
 
 .left {
-    width: 35%;
-    padding: 10px 10px 4px 0px;
+    margin: 0px;
+    padding: 0px;
+    width: 30%;
+    float: left;
     text-align: left;
     overflow-wrap: break-word;
 }
@@ -90,14 +102,17 @@ ul.instruction {
 }
 
 .instruction li {
-    margin: 10px;
+    margin: 10px 0px 10px 0px;
+    padding: 0px;
 }
 
 .right {
-    width: 60%;
-    margin: 0px 10px 0px 0px;
-    padding: 0px 0px 0px 0px;
-    border: 1px solid lightgray;
+    margin: 0px;
+    padding: 0px;
+    float: right;
+    text-align: right;
+    width: 65%;
+    border: 1px solid #ff0000;
     overflow: hidden;
 }
 
@@ -108,17 +123,19 @@ ul.instruction {
 }
 
 .list {
-    width: 100%;
-    color: #006466;
+    width: 105%;
+    color: #ffffff;
     border-collapse: collapse;
     border-spacing: 0;
 }
 
-.list thead, tbody {
-    display: block; /* added*/
+.list thead,
+tbody {
+    display: block;
 }
 
 .list tbody {
+    width: 100%;
     height: 350px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -126,7 +143,7 @@ ul.instruction {
 
 .list-head {
     color: #e6feff;
-    background-color: #004a4d;
+    background-color: #444444;
 }
 
 .list-head tr th {
@@ -134,44 +151,39 @@ ul.instruction {
     line-height: 16px;
 }
 
-@media screen and (max-width: 414px) {
-    .left {
-        width: 100%;
-    }
-
-    .right {
-        width: 100%;
-    }
-}
-
-@media screen and (min-width: 415px) and (max-width: 485px) {
-    .left {
-        width: 25%;
-    }
-
-    .right {
-        width: 65%;
-    }
-}
-
 .column-file {
-    width: 35%;
+    width: 45%;
     text-align: left;
-    padding: 0px 0px 0px 15px;
+    padding-left: 5px;
+}
+
+.column-files {
+    text-align: left;
+    padding-left: 10px;
+    overflow: visible;
 }
 
 .column-size {
-    width: 15%;
+    width: 30%;
+    text-align: center;
+}
+
+.column-sizes {
     text-align: right;
-    padding: 0px 15px 0px 10px;
+    padding-left: 0px;
 }
 
 .column-date {
-    width: 50%;
     text-align: left;
-    padding: 0px 10px 0px 0px;
+    padding-left: 10px;
+}
+
+.column-dates {
+    text-align: left;
+    padding-left: 20px;
 }
 
 .selected {
-    background: #00f7ff;
+    color: #ffffff;
+    background: #ff0000;
 }
