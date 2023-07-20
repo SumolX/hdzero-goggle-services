@@ -126,6 +126,7 @@ ul.instruction {
 .list {
     width: 105%;
     color: #ffffff;
+    background-color: #444444;
     border-collapse: collapse;
     border-spacing: 0;
 }
