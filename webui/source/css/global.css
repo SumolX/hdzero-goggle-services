@@ -42,7 +42,7 @@ h3 {
 
 .nav {
     top: 0px;
-    border-bottom: 1px solid #ff0000;
+    border-bottom: 3px solid #ff0000;
     height: 40px;
     width: 100%;
 }
@@ -53,7 +53,7 @@ h3 {
     padding-top: 5px;
     height: 25px;
     background: #313131;
-    border: 1px solid #ff0000;
+    border-top: 3px solid #ff0000;
 }
 
 article {
@@ -113,7 +113,7 @@ ul.instruction {
     float: right;
     text-align: right;
     width: 65%;
-    border: 1px solid #ff0000;
+    border: 2px solid #ff0000;
     overflow: hidden;
 }
 
