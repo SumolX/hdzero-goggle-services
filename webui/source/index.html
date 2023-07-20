@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/css/video-js.min.css" />
-    <link rel="stylesheet" href="/css/global.css?version=97">
+    <link rel="stylesheet" href="/css/global.css?version=107">
     <script src="/script/video.min.js"></script>
     <title>HDZero Goggle</title>
 
@@ -31,25 +31,20 @@
                 var player = videojs('video-player');
             </script>
         </section>
-        <section class="video-name">
-            <div>
-                <input id="file-name" type="text" value="HDZero" name=“filename” onblur="RenameFile()">
-            </div>
-        </section>
         <section class="row">
             <div>
                 <div class="left">
-                    <ul class="instruction">
-                        <li>Single-click to load a video.</li>
-                        <li>Double-click to delete a video.</li>
-                        <li>
-                            Rename video file by editing the title below the video player and click outside to save.
-                        </li>
-                    </ul>
-                    <div class="action">
-                        <input type="button" value="Save" />
-                        <input type="button" value="Delete" />
+                    <label class="filename">File Name</label>
+                    <input id="filename" type="text">
+                    <div class="buttons">
+                        <input type="button" value="Save" onclick="RenameFile()" />
+                        <input class="delete" type="button" value="Delete" onclick="setDeleteFile()" />
                     </div>
+                    <ul class="instruction">
+                        <li>Click the directory listing to select file.</li>
+                        <li>Press the delete button to delete the selected file.</li>
+                        <li>Press the save button to rename the selected file.</li>
+                    </ul>
                 </div>
                 <div class="right">
                     <table class="list">
@@ -98,7 +93,7 @@
         }
 
         function setSelectedFile() {
-            var ipFileName = document.getElementById("file-name")
+            var ipFileName = document.getElementById("filename")
             var fName = this.getElementsByTagName("td")[0].innerHTML.split('.')[0];
             var fType = this.getElementsByTagName("td")[0].innerHTML.split('.')[1];
             ipFileName.value = fName;
@@ -120,7 +115,7 @@
         function RenameFile(e) {
             const result = confirm("Sure you want to rename?");
             if (result) {
-                const toFile = document.getElementById("file-name").value;
+                const toFile = document.getElementById("filename").value;
                 const frFile = getSelectedRow().split('.')[0];
                 const ext = getSelectedRow().split('.')[1];
 
@@ -132,7 +127,7 @@
                     get_list();
                 })();
             } else {
-                document.getElementById("file-name").value = getSelectedRow().split('.')[0];
+                document.getElementById("filename").value = getSelectedRow().split('.')[0];
             }
         }
 
