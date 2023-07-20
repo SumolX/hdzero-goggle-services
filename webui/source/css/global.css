@@ -48,11 +48,12 @@ h3 {
 }
 
 .footer {
-    bottom: 0;
-    border: 1px solid black;
-    height: 50px;
-    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+    padding-top: 5px;
+    height: 25px;
     background: #313131;
+    border: 1px solid #ff0000;
 }
 
 article {
