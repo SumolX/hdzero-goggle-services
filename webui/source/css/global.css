@@ -75,18 +75,41 @@ section.row {
 }
 
 input#filename {
-    width: 95%;
+    width: 100%;
+    text-align: center;
     color: #ffffff;
+    box-sizing: border-box;
     background-color: #646464;
+    border-radius: 4px;
+}
+
+.modify {
+    width: 46%;
+    color: #000000;
+    margin-top: 2px;
+    border-radius: 4px;
+    display: inline flex;
+    justify-content: center;
+}
+
+.remove {
+    width: 46%;
+    color: #000000;
+    float: right;
+    display: inline flex;
+    justify-content: center;
+    margin-top: 2px;
+    border-radius: 4px;
 }
 
 .buttons {
+    width: 100%;
     margin-top: 5px;
-    border-radius: 20%
+    border-radius: 2px;
 }
 
-.delet {
-    float: right;
+input {
+    -webkit-appearance: none;
 }
 
 .left {
