@@ -56,6 +56,10 @@ footer {
     border-top: 3px solid #ff0000;
 }
 
+.hidden {
+    display: none;
+}
+
 article {
     height: 100%;
     width: 100%;
@@ -68,8 +72,12 @@ article {
     padding-bottom: .2em;
 }
 
-section.row {
+section#host {
+    height: 370px;
+    padding: 10px 2px 4px 0px;
+}
 
+section.row {
     width: 100%;
     font-size: .875em;
 }
