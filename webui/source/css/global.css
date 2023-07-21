@@ -47,10 +47,10 @@ h3 {
     width: 100%;
 }
 
-.footer {
+footer {
     text-align: center;
     margin-top: 5px;
-    padding-top: 5px;
+    padding-top: 10px;
     height: 25px;
     background: #313131;
     border-top: 3px solid #ff0000;
