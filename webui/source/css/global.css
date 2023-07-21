@@ -60,6 +60,12 @@ footer {
     display: none;
 }
 
+.dashboard {
+    width: 100%;
+    border-bottom: .5px solid #fff;
+    margin-bottom: 3px;
+}
+
 article {
     height: 100%;
     width: 100%;
@@ -91,6 +97,24 @@ input#filename {
     border-radius: 4px;
 }
 
+input#password {
+    width: 30%;
+    text-align: center;
+    color: #ffffff;
+    box-sizing: border-box;
+    background-color: #646464;
+    border-radius: 4px;
+}
+
+.passwordBtn {
+    width: 48%;
+    color: #000000;
+    margin-top: 2px;
+    border-radius: 4px;
+    display: inline flex;
+    justify-content: center;
+}
+
 .liveViewBtn {
     width: 100%;
     color: #000000;
@@ -119,7 +143,7 @@ input#filename {
     border-radius: 4px;
 }
 
-.buttons {
+.button {
     width: 100%;
     margin-top: 5px;
     border-radius: 2px;

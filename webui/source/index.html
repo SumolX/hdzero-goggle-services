@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/css/video-js.min.css" />
-    <link rel="stylesheet" href="/css/global.css?version=108">
+    <link rel="stylesheet" href="/css/global.css?version=110">
     <script src="/script/video.min.js"></script>
     <title>HDZero Goggle</title>
 
@@ -32,27 +32,26 @@
             </script>
         </section>
         <section id="host" class="row">
-            <div>
+            <div class="dashboard">
                 <label class="input">Host Mode</label>
-                <input id="host-input" type="image" src="images/comphost.gif" height="15"
+                <input id="host-input" type="image" src="images/comphost.gif" height="20"
                        onclick="toggleMode()" alt="">
             </div>
             <div>
                 <label class="input">Client Password</label>
                 <input id="password" type="text" maxlength="10">
-                <label class="input">Show Password</label>
-                <input id="showpwd" type="checkbox" />
             </div>
             <div>
                 <input id="submitpwd" type="button" value="Submit" />
             </div>
+            <input class="passwordBtn" type="button" value="Live View" onclick="liveView()" />
         </section>
         <section id="client" class="row hidden">
             <div>
                 <div class="left">
-                    <div>
+                    <div class="dashboard">
                         <label class="input">Client Mode</label>
-                        <input id="client-input" type="image" src="images/compclient.gif" height="15"
+                        <input id="client-input" type="image" src="images/compclient.gif" height="20"
                                onclick="toggleMode()" alt="">
                     </div>
                     <label class="filename">Video</label>
