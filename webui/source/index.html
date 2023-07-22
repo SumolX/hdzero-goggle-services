@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/css/video-js.min.css" />
-    <link rel="stylesheet" href="/css/global.css?version=107">
+    <link rel="stylesheet" href="/css/global.css?version=110">
     <script src="/script/video.min.js"></script>
     <title>HDZero Goggle</title>
 
@@ -24,16 +24,40 @@
     <article>
         <section class="video">
             <video id="video-player" class="video-js vjs-default-skin vjs-fluid" playsinline controls preload="auto"
-                poster="images/HDtou-01.webp" data-setup="{}">
+                   poster="images/HDtou-01.webp" data-setup="{}">
                 <source src="hdz_live.m3u8" type="application/x-mpegURL" />
             </video>
             <script>
                 var player = videojs('video-player');
             </script>
         </section>
-        <section class="row">
+        <section id="host" class="row">
+            <div class="dashboard">
+                <label class="input">Host Mode</label>
+                <input id="host-input" type="image" src="images/comphost.gif" height="20"
+                       onclick="toggleMode()" alt="">
+            </div>
+            <div>
+                <label class="input">Client Password</label>
+                <input id="password" type="text" maxlength="10">
+            </div>
+            <div>
+                <input id="submitpwd" type="button" value="Submit" />
+            </div>
+            <input class="passwordBtn" type="button" value="Live View" onclick="liveView()" />
+            <ul class="instruction">
+                <li>Click the live view button to watch goggle stream.</li>
+                <li>Click icon to change mode view.</li>
+            </ul>
+        </section>
+        <section id="client" class="row hidden">
             <div>
                 <div class="left">
+                    <div class="dashboard">
+                        <label class="input">Client Mode</label>
+                        <input id="client-input" type="image" src="images/compclient.gif" height="20"
+                               onclick="toggleMode()" alt="">
+                    </div>
                     <label class="filename">Video</label>
                     <input id="filename" type="text">
                     <div class="buttons">
@@ -46,6 +70,7 @@
                         <li>Click the modify button to rename selected file.</li>
                         <li>Click the remove button to delete selected file.</li>
                         <li>Click the live view button to watch goggle stream.</li>
+                        <li>Click icon to change mode view.</li>
                     </ul>
                 </div>
                 <div class="right">
@@ -64,7 +89,7 @@
             </div>
         </section>
     </article>
-    <footer><label id="rtsp"/></footer>
+    <footer><label id="rtsp" /></footer>
     <script>
         //add event listener for page load
         document.addEventListener("DOMContentLoaded", get_list, false);
@@ -180,6 +205,16 @@
                 }
             }
             return result;
+        }
+
+        function toggleMode() {
+            const hostSect = document.getElementById("host");
+            const clientSect = document.getElementById("client");
+            const scrollingElement = (document.scrollingElement || document.body);
+
+            hostSect.classList.toggle("hidden");
+            clientSect.classList.toggle("hidden");
+            scrollingElement.scrollTop = scrollingElement.scrollHeight;
         }
 
     </script>
