@@ -10,7 +10,7 @@ on_dvr() {
     echo ""
     body=""
 #    if [ ! -z "$(mount | grep ${SDC_PATH})" ]; then
-        for file in ${MOVIE_PATH}/*.ts ${MOVIE_PATH}/*.mp4; do
+        for file in ${MOVIE_PATH}/*.ts ${MOVIE_PATH}/*.m*; do
             body="$body $(echo "$(ls -l $file)" | awk '{printf "{\"date\":\"%s %s %s\",\"size\":%s,", $6,$7,$8,$5}')"
             body="$body \"file\":\"${file##*/}\"},"
         done
@@ -75,17 +75,17 @@ else
     set -- $QUERY_STRING
     key="${1%=*}"
     if [ ${key} == "download" ]; then
-        on_dvr_download "${2#*=}"
+        on_dvr_download "${1#*=}"
     elif [ ${key} == "rename" ]; then
         on_dvr_rename "${2#*=}" "${3#*=}"
     elif [ ${key} == "delete" ]; then
-        on_dvr_delete "${2#*=}"
+        on_dvr_delete "${1#*=}"
     elif [ ${key} == "m3u8" ]; then
-        on_dvr_m3u8 "${2#*=}"
+        on_dvr_m3u8 "${1#*=}"
     elif [ ${key} == "image" ]; then
-        on_dvr_image "${2#*=}"
+        on_dvr_image "${1#*=}"
     elif [ ${key} == "play" ]; then
-        on_dvr_play "${2#*=}"
+        on_dvr_play "${1#*=}"
     elif [ ${key} == "stop" ]; then
         on_dvr_stop
     fi
