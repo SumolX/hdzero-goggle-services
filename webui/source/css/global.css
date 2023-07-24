@@ -1,9 +1,10 @@
 html,
 body {
+    margin:0;
+    padding: 0 2px 0 2px;
     font: 1em RaleWay, Open Sans, Helvetica, sans-serif;
     color: #ffffff;
     background: #313131;
-
 }
 
 h1,
@@ -15,14 +16,10 @@ h5 {
     padding: 0;
     font-family: Open sans, sans-serif;
     font-weight: 500;
-    color: #ff0000;
 }
 
 h1 {
-    color: #ffffff;
     font-size: 2em;
-    top: 18px;
-    left: 48px;
 }
 
 h2 {
@@ -33,6 +30,20 @@ h3 {
     font-size: 1.2em;
 }
 
+.nav {
+    padding: 0;
+    border-bottom: 3px solid #ff0000;
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+    height: 40px;
+}
+
+.header {
+    width: 100%;
+    margin-right: auto;
+}
+
 .header img {
     float: left;
     width: 35px;
@@ -40,30 +51,31 @@ h3 {
     background: #313131;
 }
 
-.nav {
-    top: 0px;
-    border-bottom: 3px solid #ff0000;
-    height: 40px;
-    width: 100%;
+.header h1 {
+    color: #ffffff;
+    margin-top: 2px;
 }
 
-footer {
-    text-align: center;
-    margin-top: 5px;
-    padding-top: 10px;
-    height: 25px;
-    background: #313131;
-    border-top: 3px solid #ff0000;
+.login {
+    padding-right: 5px;
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+}
+
+.login img {
+    height: 30px;
+    width: 30px;
+    margin: 4px 6px;
+}
+
+.login h3 {
+    color: #ffffff;
+    margin-top: 10px;
 }
 
 .hidden {
     display: none;
-}
-
-.dashboard {
-    width: 100%;
-    border-bottom: .5px solid #fff;
-    margin-bottom: 3px;
 }
 
 article {
@@ -78,14 +90,38 @@ article {
     padding-bottom: .2em;
 }
 
-section#host {
-    height: 370px;
-    padding: 10px 2px 4px 0px;
-}
-
 section.row {
     width: 100%;
     font-size: .875em;
+}
+
+.left {
+    width: 30%;
+    margin: 0px;
+    padding: 10px 2px 4px 0px;
+    float: left;
+    text-align: left;
+    overflow-wrap: break-word;
+}
+
+.console {
+    padding: 0;
+    display: flex;
+    width: auto;
+    height: 40px;
+}
+
+.console img {
+    float: left;
+    height: 30px;
+    width: 30px;
+    margin: 4px 6px;
+    border: 1px solid white;
+}
+
+.filename {
+    display: inline-block;
+    width: 100%;
 }
 
 input#filename {
@@ -95,33 +131,6 @@ input#filename {
     box-sizing: border-box;
     background-color: #646464;
     border-radius: 4px;
-}
-
-input#password {
-    width: 30%;
-    text-align: center;
-    color: #ffffff;
-    box-sizing: border-box;
-    background-color: #646464;
-    border-radius: 4px;
-}
-
-.passwordBtn {
-    width: 48%;
-    color: #000000;
-    margin-top: 2px;
-    border-radius: 4px;
-    display: inline flex;
-    justify-content: center;
-}
-
-.liveViewBtn {
-    width: 100%;
-    color: #000000;
-    margin-top: 5px;
-    border-radius: 4px;
-    display: inline flex;
-    justify-content: center;
 }
 
 .modifyFileBtn {
@@ -143,6 +152,25 @@ input#password {
     border-radius: 4px;
 }
 
+input#password {
+    width: 30%;
+    text-align: center;
+    color: #ffffff;
+    box-sizing: border-box;
+    background-color: #646464;
+    border-radius: 4px;
+}
+
+.passwordBtn {
+    width: 48%;
+    color: #000000;
+    margin-top: 2px;
+    border-radius: 4px;
+    display: inline flex;
+    justify-content: center;
+}
+
+
 .button {
     width: 100%;
     margin-top: 5px;
@@ -153,14 +181,7 @@ input {
     -webkit-appearance: none;
 }
 
-.left {
-    width: 30%;
-    margin: 0px;
-    padding: 10px 2px 4px 0px;
-    float: left;
-    text-align: left;
-    overflow-wrap: break-word;
-}
+
 
 ul.instruction {
     list-style-type: none;
@@ -255,3 +276,13 @@ tbody {
     color: #ffffff;
     background: #ff0000;
 }
+
+footer {
+    text-align: center;
+    margin-top: 5px;
+    padding-top: 10px;
+    height: 25px;
+    background: #313131;
+    border-top: 3px solid #ff0000;
+}
+
