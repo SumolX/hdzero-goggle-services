@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/css/video-js.min.css" />
-    <link rel="stylesheet" href="/css/global.css?version=132">
+    <link rel="stylesheet" href="/css/global.css?version=137">
     <script src="/script/video.min.js"></script>
     <title>HDZero Goggle</title>
 </head>
@@ -36,14 +36,18 @@
         <section class="row">
             <div>
                 <div class="left">
-                    <input id="streaming" type="hidden" value=""/>
+                    <input id="streaming" type="hidden" value="" />
                     <div class="console">
-                        <img id="liveImg" src="images/HDZLive.gif" onmouseover="liveHover(this);"
-                             onmouseout="liveUnhover(this);" onclick="live(this);" />
-                        <div class="filename">
-                            <label for="filename">Video</label>
-                            <input id="filename" type="text">
-                        </div>
+                            <h3>Stream</h3>
+                            <label class="switch">
+                                <input type="checkbox" />
+                                <span class="slider"></span>
+                            </label>
+                            <h3>DVR</h3>
+                    </div>
+                    <div class="filename">
+                        <label for="filename">Video</label>
+                        <input id="filename" type="text">
                     </div>
                     <div class="buttons">
                         <input class="modifyFileBtn" type="button" value="Modify" onclick="modifyFile()" />
