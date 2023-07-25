@@ -82,20 +82,47 @@ h5 {
     margin-top: 10px;
 }
 
-.hidden {
-    display: none;
+/* elements common */
+
+input {
+    display: inline-block;
+    box-sizing:border-box;
+    color: #ffffff;
+    background-color: #646464;
+    border-radius: 4px;
+    font-size: 1em;
+    width: 100%;
 }
 
+button {
+    color: #ffffff;
+    box-sizing: border-box;
+    background-color: #646464;
+    border-radius: 4px;
+    padding: 2px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+span {
+    display: block;
+    overflow: hidden;
+}
+
+label {
+    margin: 3px 3px;
+    float: left;
+}
+ 
 article {
     height: 100%;
     width: 100%;
     padding-top: 5px;
-}
-
-.video-name {
-    text-align: center;
-    padding-top: .2em;
-    padding-bottom: .2em;
 }
 
 section.row {
@@ -117,6 +144,7 @@ section.row {
     display: flex;
     width: auto;
     height: 24px;
+    margin-bottom: 4px;
 }
 
 .console h3 {
@@ -150,7 +178,6 @@ section.row {
     transition: .4s;
 }
 
-/* slider */
 .slider:before {
     position: absolute;
     content: "";
@@ -173,7 +200,6 @@ input:checked + .slider:before {
     transform: translateX(16px);
 }
 
-/* Rounded sliders */
 .slider {
     border-radius:9px;
 }
@@ -182,75 +208,14 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
-
-
-.filename {
-    display: inline-block;
-    width: 100%;
+.video-name {
+    margin-bottom: 8px;
 }
 
-input#filename {
-    width: 100%;
-    text-align: center;
-    color: #ffffff;
-    box-sizing: border-box;
-    background-color: #646464;
-    border-radius: 4px;
+.edit-button {
+    display: inline block;
+    width: 49%;
 }
-
-
-
-
-
-.modifyFileBtn {
-    width: 48%;
-    color: #000000;
-    margin-top: 2px;
-    border-radius: 4px;
-    display: inline flex;
-    justify-content: center;
-}
-
-.removeFileBtn {
-    width: 48%;
-    color: #000000;
-    float: right;
-    display: inline flex;
-    justify-content: center;
-    margin-top: 2px;
-    border-radius: 4px;
-}
-
-input#password {
-    width: 30%;
-    text-align: center;
-    color: #ffffff;
-    box-sizing: border-box;
-    background-color: #646464;
-    border-radius: 4px;
-}
-
-.passwordBtn {
-    width: 48%;
-    color: #000000;
-    margin-top: 2px;
-    border-radius: 4px;
-    display: inline flex;
-    justify-content: center;
-}
-
-
-.button {
-    width: 100%;
-    margin-top: 5px;
-    border-radius: 2px;
-}
-
-input {
-    -webkit-appearance: none;
-}
-
-
 
 ul.instruction {
     list-style-type: none;
@@ -355,3 +320,65 @@ footer {
     border-top: 3px solid #ff0000;
 }
 
+/* login */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 60px;
+}
+
+.loginForm {
+    background-color: #313131;
+    margin: 60px auto;
+    border: 1px solid #888;
+    width: 300px;
+}
+
+.logincontainer {
+    padding: 20px 16px;
+}
+
+.logincontainer button {
+    margin-top: 16px;
+}
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+/* Change styles for span and cancel button on extra small screens
+    @media screen and (max-width: 300px) {
+        span .psw {
+            display: block;
+            float: none;
+        }
+
+        .cancelbtn {
+            width: 100%;
+        }
+    } */

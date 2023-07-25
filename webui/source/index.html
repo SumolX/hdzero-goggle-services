@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/css/video-js.min.css" />
-    <link rel="stylesheet" href="/css/global.css?version=137">
+    <link rel="stylesheet" href="/css/global.css?version=147">
     <script src="/script/video.min.js"></script>
     <title>HDZero Goggle</title>
 </head>
@@ -24,6 +24,18 @@
         </div>
     </header>
     <article>
+        <section id="login" class="modal">
+            <form class="loginForm animate" method="POST" action="#">
+                <div class="logincontainer">
+                    <div>
+                        <label for="psw"><b>Password</b></label>
+                        <span><input type="password" name="psw" required></span>
+                    </div>
+                    <button type="submit">Login</button>
+                    <button type="button" onclick="document.getElementById('login').style.display='none'">Cancel</button>
+                </div>
+            </form>
+        </section>
         <section class="video">
             <video id="video-player" class="video-js vjs-default-skin vjs-fluid" playsinline controls preload="auto"
                    poster="images/HDtou-01.webp" data-setup="{}">
@@ -45,13 +57,13 @@
                             </label>
                             <h3>DVR</h3>
                     </div>
-                    <div class="filename">
-                        <label for="filename">Video</label>
-                        <input id="filename" type="text">
+                    <div class="video-name">
+                        <label><b>Video</b></label>
+                        <span><input id="videoname" type="text"></span>
                     </div>
-                    <div class="buttons">
-                        <input class="modifyFileBtn" type="button" value="Modify" onclick="modifyFile()" />
-                        <input class="removeFileBtn" type="button" value="Remove" onclick="removeFile()" />
+                    <div>
+                        <input class="edit-button" type="button" value="Modify" onclick="modifyFile()" />
+                        <input class="edit-button" type="button" value="Remove" onclick="removeFile()" />
                     </div>
                     <ul class="instruction">
                         <li>Click the directory listing to select file.</li>
@@ -116,7 +128,7 @@
         }
 
         function selectVideo() {
-            var ipFileName = document.getElementById("filename")
+            var ipFileName = document.getElementById("videoname")
             var fName = this.getElementsByTagName("td")[0].innerHTML.split('.')[0];
             var fType = this.getElementsByTagName("td")[0].innerHTML.split('.')[1];
             ipFileName.value = fName;
@@ -142,7 +154,7 @@
         function modifyFile() {
             const result = confirm("Sure you want to rename?");
             if (result) {
-                const toFile = document.getElementById("filename").value;
+                const toFile = document.getElementById("videoname").value;
                 const frFile = getSelectedRow().split('.')[0];
                 const ext = getSelectedRow().split('.')[1];
 
@@ -154,7 +166,7 @@
                     get_list();
                 })();
             } else {
-                document.getElementById("filename").value = getSelectedRow().split('.')[0];
+                document.getElementById("videoname").value = getSelectedRow().split('.')[0];
             }
         }
 
@@ -206,7 +218,7 @@
         }
 
         function login() {
-            alert("display login page");
+            document.getElementById('login').style.display = 'block';
         }
 
         function loginhover(element) {
