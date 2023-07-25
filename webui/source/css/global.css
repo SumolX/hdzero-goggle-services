@@ -1,6 +1,6 @@
 html,
 body {
-    margin:0;
+    margin: 0;
     padding: 0 2px 0 2px;
     font: 1em RaleWay, Open Sans, Helvetica, sans-serif;
     color: #ffffff;
@@ -38,6 +38,47 @@ h5 {
     font-size: .9em;
 }
 
+input {
+    display: inline-block;
+    box-sizing: border-box;
+    color: #ffffff;
+    background-color: #646464;
+    border-radius: 4px;
+    font-size: 1em;
+    width: 100%;
+}
+
+.inputcontainer {
+    margin-bottom: 4px;
+}
+
+button {
+    color: #ffffff;
+    box-sizing: border-box;
+    background-color: #646464;
+    border-radius: 4px;
+    padding: 3px;
+    cursor: pointer;
+    width: 100%;
+}
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+span {
+    display: block;
+    overflow: hidden;
+}
+
+label {
+    margin-top: 3px;
+    margin-right: 3px;
+    float: left;
+}
+
+/* page layout */
+
 .nav {
     padding: 0;
     border-bottom: 3px solid #ff0000;
@@ -47,78 +88,6 @@ h5 {
     height: 40px;
 }
 
-.header {
-    width: 100%;
-    margin-right: auto;
-}
-
-.header img {
-    float: left;
-    width: 35px;
-    height: 35px;
-    background: #313131;
-}
-
-.header h1 {
-    color: #ffffff;
-    margin-top: 2px;
-}
-
-.login {
-    padding-right: 10px;
-    display: flex;
-    justify-content: flex-end;
-    width: auto;
-}
-
-.login img {
-    height: 30px;
-    width: 30px;
-    margin: 4px 6px;
-}
-
-.login h3 {
-    color: #ffffff;
-    margin-top: 10px;
-}
-
-/* elements common */
-
-input {
-    display: inline-block;
-    box-sizing:border-box;
-    color: #ffffff;
-    background-color: #646464;
-    border-radius: 4px;
-    font-size: 1em;
-    width: 100%;
-}
-
-button {
-    color: #ffffff;
-    box-sizing: border-box;
-    background-color: #646464;
-    border-radius: 4px;
-    padding: 2px;
-    margin: 8px 0;
-    cursor: pointer;
-    width: 100%;
-}
-
-button:hover {
-    opacity: 0.8;
-}
-
-span {
-    display: block;
-    overflow: hidden;
-}
-
-label {
-    margin: 3px 3px;
-    float: left;
-}
- 
 article {
     height: 100%;
     width: 100%;
@@ -127,7 +96,6 @@ article {
 
 section.row {
     width: 100%;
-    font-size: .875em;
 }
 
 .left {
@@ -137,95 +105,6 @@ section.row {
     float: left;
     text-align: left;
     overflow-wrap: break-word;
-}
-
-.console {
-    padding: 0;
-    display: flex;
-    width: auto;
-    height: 24px;
-    margin-bottom: 4px;
-}
-
-.console h3 {
-    color: #ffffff;
-    margin-top: 2px;
-}
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 21px;
-    margin: 0 4px 0 4px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #646464;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 4px;
-    bottom: 2px;
-    background-color: #ff0000;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-.slider {
-    box-shadow: rgba(0, 0, 0, .4) 0 1px inset;
-}
-
-input:checked + .slider:before {
-    -webkit-transform: translateX(16px);
-    -ms-transform: translateX(16px);
-    transform: translateX(16px);
-}
-
-.slider {
-    border-radius:9px;
-}
-
-.slider:before {
-    border-radius: 50%;
-}
-
-.video-name {
-    margin-bottom: 8px;
-}
-
-.edit-button {
-    display: inline block;
-    width: 49%;
-}
-
-ul.instruction {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.instruction li {
-    margin: 10px 0px 10px 0px;
-    padding: 0px;
 }
 
 .right {
@@ -244,6 +123,205 @@ ul.instruction {
     clear: both;
 }
 
+footer {
+    text-align: center;
+    margin-top: 5px;
+    padding-top: 10px;
+    height: 25px;
+    background: #313131;
+    border-top: 3px solid #ff0000;
+}
+
+.header {
+    width: 100%;
+    margin-right: auto;
+}
+
+    .header img {
+        float: left;
+        width: 35px;
+        height: 35px;
+        background: #313131;
+    }
+
+    .header h1 {
+        color: #ffffff;
+        margin-top: 2px;
+    }
+
+.console {
+    padding: 0;
+    display: flex;
+    width: auto;
+    height: 24px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid #646464;
+}
+
+    .console h3 {
+        color: #ffffff;
+        margin-top: 2px;
+    }
+   
+/* login */
+
+.login {
+    padding-right: 10px;
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+}
+
+    .login img {
+        height: 30px;
+        width: 30px;
+        margin: 4px 6px;
+    }
+
+    .login h3 {
+        color: #ffffff;
+        margin-top: 10px;
+    }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 60px;
+}
+
+.loginForm {
+    background-color: #313131;
+    margin: 60px auto;
+    display: block;
+    border: 1px solid #646464;
+    width: 300px;
+}
+
+.logincontainer {
+    margin: 21px 17px;
+}
+
+    .logincontainer button {
+        margin-top: 14px;
+    }
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+/* video switch */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 21px;
+    margin: 0 4px 0 4px;
+}
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #646464;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 4px;
+        bottom: 2px;
+        background-color: #ff0000;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+.slider {
+    box-shadow: rgba(0, 0, 0, .4) 0 1px inset;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+}
+
+.slider {
+    border-radius: 9px;
+}
+
+    .slider:before {
+        border-radius: 50%;
+    }
+
+/* left panel elements */
+
+.videoname {
+    margin-bottom: 8px;
+}
+
+.editcontainer {
+    margin: 14px 17px;
+}
+
+    .editcontainer button {
+        display: inline-block;
+        width: 49%;
+    }
+
+ul.instruction {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.instruction li {
+    font-size: .875em;
+    margin: 10px 0px 10px 0px;
+    padding: 0px;
+}
+
+/* right panel elements */
+
 .list {
     width: 105%;
     color: #ffffff;
@@ -252,27 +330,28 @@ ul.instruction {
     border-spacing: 0;
 }
 
-.list thead,
-tbody {
-    display: block;
-}
+    .list thead,
+    tbody {
+        display: block;
+    }
 
-.list tbody {
-    width: 100%;
-    height: 350px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
+    .list tbody {
+        font-size: .875em;
+        width: 100%;
+        height: 350px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
 
 .list-head {
     color: #ffffff;
     background-color: #646464;
 }
 
-.list-head tr th {
-    height: 16px;
-    line-height: 16px;
-}
+    .list-head tr th {
+        height: 16px;
+        line-height: 16px;
+    }
 
 .column-file {
     width: 94px;
@@ -310,75 +389,3 @@ tbody {
     color: #ffffff;
     background: #ff0000;
 }
-
-footer {
-    text-align: center;
-    margin-top: 5px;
-    padding-top: 10px;
-    height: 25px;
-    background: #313131;
-    border-top: 3px solid #ff0000;
-}
-
-/* login */
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 2;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    padding-top: 60px;
-}
-
-.loginForm {
-    background-color: #313131;
-    margin: 60px auto;
-    border: 1px solid #888;
-    width: 300px;
-}
-
-.logincontainer {
-    padding: 20px 16px;
-}
-
-.logincontainer button {
-    margin-top: 16px;
-}
-
-.animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-    from {
-        -webkit-transform: scale(0)
-    }
-    to {
-        -webkit-transform: scale(1)
-    }
-}
-
-@keyframes animatezoom {
-    from {
-        transform: scale(0)
-    }
-    to {
-        transform: scale(1)
-    }
-}
-
-/* Change styles for span and cancel button on extra small screens
-    @media screen and (max-width: 300px) {
-        span .psw {
-            display: block;
-            float: none;
-        }
-
-        .cancelbtn {
-            width: 100%;
-        }
-    } */
