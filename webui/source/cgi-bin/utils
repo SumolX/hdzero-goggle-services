@@ -35,3 +35,53 @@ utils_send_image_file() {
     
     cat $1/$2
 }
+
+# Verify if client is allowed access
+utils_is_client_authorized() {
+    salt="hdzgoggles"
+    pw="$(cat /mnt/app/setting.ini | grep "root_pw" | awk -F '=' '{print $2}')"
+
+    if ! -f /tmp/mkpw.sh; then
+        echo "mkpasswd -m sha512crypt --salt="$salt" --stdin << EOF" > /tmp/mkpw.sh
+        echo "\$1" >> /tmp/mkpw.sh
+        echo "EOF" >> /tmp/mkpw.sh
+        chmod +x /tmp/mkpw.sh
+    fi
+
+    if ! -f /tmp/mktoken.sh; then
+        echo "mkpasswd -m sha512crypt --stdin << EOF" > /tmp/mktoken.sh
+        echo "\$1" >> /tmp/mktoken.sh
+        echo "EOF" >> /tmp/mktoken.sh
+        chmod +x /tmp/mktoken.sh
+    fi
+
+    hash_server="$(/tmp/mkpw.sh "$pw")"
+    hash_client="$(/tmp/mkpw.sh "$1")"
+
+    if [ "$hash_server" == "$hash_client" ]; then
+        touch /tmp/auth.list
+        token="$(/tmp/mktoken.sh \"$hash_server\")"
+        if [ -z "$(cat /tmp/auth.list | grep $token)" ]; then
+            echo "$token" >> /tmp/auth.list
+        fi
+        
+        echo "Content-Type: text/html"
+        echo ""
+        echo -n "$token"
+    else
+        echo "Status: 401 Not Authorized"
+    fi
+}
+
+# Verify if action is allowed access
+utils_is_action_authorized() {
+    if [ -f /tmp/auth.list ]; then
+        if [ ${#1} -gt 64 ]; then
+            if ! -z "$(cat /tmp/auth.list | grep '$1')"; then
+                return 0
+            fi
+        fi
+    fi
+
+    return 1
+}

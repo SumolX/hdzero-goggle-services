@@ -12,6 +12,10 @@ on_status() {
     fi
 }
 
+on_status_authorize() {
+    utils_is_client_authorized $1
+}
+
 on_status_ip() {
     echo "Content-Type: text/html"
     echo ""
@@ -25,7 +29,9 @@ else
     IFS="&"
     set -- $QUERY_STRING
     key="${1%=*}"
-    if [ ${key} == "ip" ]; then
+    if [ ${key} == "authorize" ]; then
+        on_status_authorize "${1#*=}"
+    elif [ ${key} == "ip" ]; then
         on_status_ip
     fi
 fi
