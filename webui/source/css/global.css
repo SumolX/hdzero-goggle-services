@@ -403,3 +403,7 @@ tbody {
     .column-dates {
     }
 }
+
+.video-js .vjs-remaining-time {
+    display: contents;
+}
