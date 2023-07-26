@@ -99,7 +99,7 @@ section.row {
 }
 
 section.console {
-    margin-top: 2px;
+    margin-top:2px;
     margin-bottom: 5px;
 }
 
@@ -199,8 +199,8 @@ footer {
     }
 
 .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
+    -webkit-animation: animatezoom 0.4s;
+    animation: animatezoom 0.4s
 }
 
 @-webkit-keyframes animatezoom {
@@ -279,9 +279,8 @@ ul.instruction {
     /* left panel elements */
 
 .list {
-    width: 105%;
+    width: 100%;
     color: #ffffff;
-    background-color: #444444;
     border-collapse: collapse;
     border-spacing: 0;
     border-radius: 4px;
@@ -289,63 +288,78 @@ ul.instruction {
 
 .list thead,
 tbody {
-    display: block;
+    display: inline-block;
+    background-color: #4d4d4d;
+    border-radius: 4px;
+    width: 94%;
 }
 
 .list thead {
     color: #ffffff;
     background-color: #646464;
-    border-radius: 4px;
-}
-
-.list thead tr th {
-    height: 16px;
-    line-height: 16px;
 }
 
 .list tbody {
-    /*font-size: .875em;*/
-    width: 100%;
-    height: 100%;
+    margin-top: 4px;
+    height: 300px;
     overflow-y: auto;
     overflow-x: hidden;
+    border: 1px solid #646464;
 }
 
-.column-file {
-    width: 94px;
-    text-align: left;
-    padding-left: 5px;
+.list tbody tr {
+    width: 100%;
+    display: block;
 }
 
-.column-files {
-    width: 106px;
+.list thead tr th:first-child {
+    width: 180px;
+    /*width: 94px;*/
     text-align: left;
-    padding-left: 10px;
+    padding: 4px 2px 4px 7px;
+}
+
+.list tbody tr td:first-child {
+    width: 180px;
+    /*width: 106px;*/
+    text-align: left;
+    padding: 0 0 0 7px;
     overflow: visible;
 }
 
-.column-size {
-    width: 74px;
-    text-align: left;
-}
-
-.column-sizes {
-    width: 42px;
+.list thead tr th:nth-child(2) {
+    width: 90px;
+    /*width: 74px;*/
     text-align: right;
+    padding: 0 0 0 4px;
 }
 
-.column-date {
-    text-align: left;
+.list tbody tr td:nth-child(2) {
+    width: 90px;
+    /*width: 42px;*/
+    text-align: right;
+    padding: 0 0 0 4px;
 }
 
-.column-dates {
+.list thead tr th:nth-child(3) {
+    width: 140px;
     text-align: left;
-    padding-left: 22px;
+    padding: 0 0 0 24px;
+}
+
+.list tbody tr td:nth-child(3) {
+    width: 140px;
+    text-align: left;
+    padding: 0 0 0 24px;
 }
 
 .selected {
     color: #ffffff;
     background: #ff0000;
+}
+
+.highlight {
+    opacity: .7;
 }
 
 @media only screen and (max-width: 415px) {
@@ -360,50 +374,103 @@ tbody {
     .right {
         width: 100%;
     }
+
+    .list thead tr th:first-child {
+        width: 160px;
+        text-align: left;
+        padding: 4px 2px 4px 7px;
+    }
+
+    .list tbody tr td:first-child {
+        width: 160px;
+        text-align: left;
+        padding: 0 0 0 7px;
+        overflow: visible;
+    }
+
+    .list thead tr th:nth-child(2) {
+        width: 90px;
+        text-align: right;
+        padding: 0 0 0 4px;
+    }
+
+    .list tbody tr td:nth-child(2) {
+        width: 90px;
+        text-align: right;
+        padding: 0 0 0 4px;
+    }
+
+    .list thead tr th:nth-child(3) {
+        width: 120px;
+        text-align: left;
+        padding: 0 0 0 24px;
+    }
+
+    .list tbody tr td:nth-child(3) {
+        width: 120px;
+        text-align: left;
+        padding: 0 0 0 24px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    section.row {
+        font-size: .75em;
+    }
 }
 
 @media only screen and (min-width: 416px) and (max-width: 991px) {
-    section.row {
-        font-size: .875em;
+
+        .editcontainer button {
+            width: 48%;
+        }
+
+        .left {
+            width: 65%;
+        }
+
+        .right {
+            width: 33%;
+        }
+
+        .list thead tr th:first-child {
+            width: 80px;
+            text-align: left;
+            padding: 4px 2px 4px 7px;
+        }
+
+        .list tbody tr td:first-child {
+            width: 90px;
+            text-align: left;
+            padding: 0 0 0 7px;
+            word-wrap: break-word;
+        }
+
+        .list thead tr th:nth-child(2) {
+            width: 80px;
+            text-align: right;
+            padding: 0 0 0 4px;
+        }
+
+        .list tbody tr td:nth-child(2) {
+            width: 70px;
+            text-align: right;
+            padding: 0 0 0 4px;
+        }
+
+        .list thead tr th:nth-child(3) {
+            width: 90px;
+            text-align: left;
+            padding: 0 0 0 24px;
+        }
+
+        .list tbody tr td:nth-child(3) {
+            width: 90px;
+            text-align: left;
+            padding: 0 0 0 24px;
+        }
     }
 
-    .editcontainer button {
-        width: 48%;
+    .video-js .vjs-remaining-time {
+        display: contents;
     }
-
-    .left {
-        width: 65%;
-    }
-
-    .right {
-        width: 33%;
-    }
-}
-
-@media only screen and (min-width: 992px) {
-    .column-file {
-        width: 120px;
-    }
-
-    .column-files {
-        width: 120px;
-    }
-
-    .column-size {
-        width: 100px;
-    }
-
-    .column-sizes {
-        width: 100px;
-    }
-
-    .column-date {
-    }
-
-    .column-dates {
-    }
-}
-
-.video-js .vjs-remaining-time {
-    display: contents;
-}

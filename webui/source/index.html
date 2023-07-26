@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/css/video-js.min.css" />
-    <link rel="stylesheet" href="/css/global.css?version=161">
+    <link rel="stylesheet" href="/css/global.css?version=167">
     <script src="/script/video.min.js"></script>
     <title>HDZero Goggle</title>
 </head>
@@ -60,9 +60,9 @@
                 <table class="list">
                     <thead>
                         <tr>
-                            <th class="column-file">File</th>
-                            <th class="column-size">Size (MB)</th>
-                            <th class="column-date">Date</th>
+                            <th>File</th>
+                            <th>Size (MB)</th>
+                            <th>Date</th>
                         </tr>
                     </thead>
                     <tbody id="list-content">
@@ -84,8 +84,7 @@
                     <li>Click the directory listing to select file.</li>
                     <li>Click the modify button to rename selected file.</li>
                     <li>Click the remove button to delete selected file.</li>
-                    <li>Click the live view button to watch goggle stream.</li>
-                    <li>Click icon to change mode view.</li>
+                    <li>Click the Stream or DVR to select viewing mode.</li>
                 </ul>
             </div>
         </section>
@@ -98,7 +97,7 @@
         function get_list(clear) {
             const tbody = document.getElementById('list-content');
             while (tbody.firstChild) { tbody.removeChild(tbody.firstChild); }
-
+            
             (async () => {
                 const res = await fetch('/cgi-bin/dvr?', {
                     headers: { Accept: 'application/json' },
@@ -111,10 +110,11 @@
                     console.log(json.dvr[prop]);
                     const msize = Math.round(json.dvr[prop].size / Math.pow(1024, 2), 1);
 
-                    tr.innerHTML = '<td class="column-files">' + json.dvr[prop].file + '</td>' + '<td class="column-sizes">' + msize
-                        + '</td>' + '<td class="column-dates">' + json.dvr[prop].date + '</td>';
+                    tr.innerHTML = '<td>' + json.dvr[prop].file + '</td>' + '<td>' + msize
+                        + '</td>' + '<td>' + json.dvr[prop].date + '</td>';
                     tbody.appendChild(tr);
                 });
+                toggleSelection(null);
             })();
 
             get_ip();
@@ -188,9 +188,15 @@
             for (var i = 0, row; row = tbody.rows[i]; i++) {
                 if (row.cells[0].innerHTML.split('.')[0] === fName) {
                     row.classList.toggle("selected", true);
+                    row.classList.toggle("highlight", false);
+                }
+                else if (i % 2 === 0) {
+                    row.classList.toggle("selected", false);
+                    row.classList.toggle("highlight", true);
                 }
                 else {
                     row.classList.toggle("selected", false);
+                    row.classList.toggle("highlight", false);
                 }
             }
         }
