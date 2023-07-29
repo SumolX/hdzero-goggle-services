@@ -80,7 +80,21 @@
     <footer><label id="rtsp" /></footer>
     <script>
         //add event listener for page load
-        document.addEventListener("DOMContentLoaded", get_list, false);
+        document.addEventListener("DOMContentLoaded", get_access, false);
+
+        function get_access() {
+            
+            alert("cookie: " + document.cookie);
+
+
+
+
+        }
+
+
+
+
+
 
         function get_list(clear) {
             const tbody = document.getElementById('list-content');
@@ -213,7 +227,7 @@
         }*/
 
         function login() {
-            document.getElementById('login').style.display = 'block';
+            window.location = '/login.html';
         }
 
         function loginhover(element) {

@@ -12,8 +12,18 @@ on_status() {
     fi
 }
 
-on_status_authorize() {
+on_status_authenticate() {
     utils_is_client_authorized $1
+}
+
+on_status_authorize() {
+    echo "$HTTP_COOKIE" >> test.tmp
+    #utils_is_action_authorized $1
+    if [ "$?" -eq 0 ]; then
+        echo "Status: 200 OK"
+    else
+        echo "Status: 403 Forbidden" 
+    fi
 }
 
 on_status_ip() {
@@ -29,8 +39,10 @@ else
     IFS="&"
     set -- $QUERY_STRING
     key="${1%=*}"
-    if [ ${key} == "authorize" ]; then
-        on_status_authorize "${1#*=}"
+    if [ ${key} == "authenticate" ]; then
+        on_status_authenticate "${1#*=}"
+    elif [ ${key} == "authorize" ]; then
+        on_status_authorize
     elif [ ${key} == "ip" ]; then
         on_status_ip
     fi

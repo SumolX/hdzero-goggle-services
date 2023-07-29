@@ -44,7 +44,6 @@
 
         function login() {
             const pswd = document.getElementById("pswd").value;
-            const cook = document.cookie;
             const settings = {
                 method: 'POST',
                 headers: {
@@ -53,7 +52,7 @@
                 }
             };
 
-            fetch('/cgi-bin/status?authorize=' + pswd, settings).then(res => {
+            fetch('/cgi-bin/status?authenticate=' + pswd, settings).then(res => {
                 if (!res.ok) {
                     let err = new Error("http status code: " + res.status);
                     err.response = res;
@@ -69,7 +68,7 @@
                         loginSuccess(data);
                     }
                     else {
-                        loginFailed("no key")
+                        loginFailed("Invalid responce from server.")
                     }
                 })
                 .catch((err) => {
@@ -91,7 +90,7 @@
         }
 
         function cancelLogin() {
-            document.getElementById('login').style.display = 'none';
+            window.location = '/index.html';
         }
 
     </script>
