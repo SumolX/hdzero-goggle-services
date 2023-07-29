@@ -67,7 +67,8 @@ utils_is_client_authorized() {
         
         echo "Content-Type: text/html"
         echo ""
-        echo -n "$token"
+        #echo -n "$token"
+        printf '{"token":"%s"}\n' "$token"
     else
         echo "Status: 401 Not Authorized"
     fi

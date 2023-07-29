@@ -1,0 +1,287 @@
+section.player {
+}
+
+section.console {
+    margin-top:2px;
+    margin-bottom: 5px;
+    display: none;
+}
+
+section.owner {
+    display: none;
+}
+
+.left {
+    width: 55%;
+    margin-right: 5px;
+    float: left;
+    text-align: left;
+    overflow: hidden;
+}
+
+.right {
+    padding: 0px;
+    float: left;
+    text-align: left;
+    width: 43%;
+    overflow-wrap: break-word;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* video */
+
+.video {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.video input[type="radio"] {
+    display: none;
+}
+
+.video label {
+    color: #ffffff;
+    box-sizing: content-box;
+    background-color: #646464;
+    border-radius: 4px;
+    text-align: center;
+    padding: 3px;
+    cursor: pointer;
+    width: 50%;
+}
+
+.video label:hover {
+    opacity: 0.8;
+}
+
+.video input[type="radio"]:checked + label {
+    color: #ffffff;
+    background-color: #ff0000;
+}
+
+/* right panel elements */
+
+.videoname {
+    margin-bottom: 8px;
+}
+
+.editcontainer button {
+    display: inline-block;
+    width: 49%;
+}
+
+ul.instruction {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.instruction li {
+    margin: 10px 0px 10px 10px;
+    padding: 0px;
+}
+
+    /* left panel elements */
+
+.list {
+    width: 100%;
+    color: #ffffff;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 4px;
+}
+
+.list thead,
+tbody {
+    display: inline-block;
+    background-color: #4d4d4d;
+    border-radius: 4px;
+    width: 94%;
+}
+
+.list thead {
+    color: #ffffff;
+    background-color: #646464;
+    border: 1px solid #646464;
+}
+
+.list tbody {
+    margin-top: 4px;
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #646464;
+}
+
+.list tbody tr {
+    width: 100%;
+    display: block;
+}
+
+.list thead tr th:first-child {
+    width: 180px;
+    /*width: 94px;*/
+    text-align: left;
+    padding: 4px 2px 4px 7px;
+}
+
+.list tbody tr td:first-child {
+    width: 180px;
+    /*width: 106px;*/
+    text-align: left;
+    padding: 0 0 0 7px;
+    overflow: visible;
+}
+
+.list thead tr th:nth-child(2) {
+    width: 90px;
+    /*width: 74px;*/
+    text-align: right;
+    padding: 0 0 0 4px;
+}
+
+.list tbody tr td:nth-child(2) {
+    width: 90px;
+    /*width: 42px;*/
+    text-align: right;
+    padding: 0 0 0 4px;
+}
+
+.list thead tr th:nth-child(3) {
+    width: 140px;
+    text-align: left;
+    padding: 0 0 0 24px;
+}
+
+.list tbody tr td:nth-child(3) {
+    width: 140px;
+    text-align: left;
+    padding: 0 0 0 24px;
+}
+
+.selected {
+    color: #ffffff;
+    background: #ff0000;
+}
+
+.highlight {
+    opacity: .7;
+}
+
+@media only screen and (max-width: 415px) {
+    section.row{
+        font-size: .75em;
+    }
+    
+    .left {
+        width: 100%;
+    }
+
+    .right {
+        width: 100%;
+    }
+
+    .list thead tr th:first-child {
+        width: 160px;
+        text-align: left;
+        padding: 4px 2px 4px 7px;
+    }
+
+    .list tbody tr td:first-child {
+        width: 160px;
+        text-align: left;
+        padding: 0 0 0 7px;
+        overflow: visible;
+    }
+
+    .list thead tr th:nth-child(2) {
+        width: 90px;
+        text-align: right;
+        padding: 0 0 0 4px;
+    }
+
+    .list tbody tr td:nth-child(2) {
+        width: 90px;
+        text-align: right;
+        padding: 0 0 0 4px;
+    }
+
+    .list thead tr th:nth-child(3) {
+        width: 120px;
+        text-align: left;
+        padding: 0 0 0 24px;
+    }
+
+    .list tbody tr td:nth-child(3) {
+        width: 120px;
+        text-align: left;
+        padding: 0 0 0 24px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    section.row {
+        font-size: .75em;
+    }
+}
+
+@media only screen and (min-width: 416px) and (max-width: 991px) {
+
+        .editcontainer button {
+            width: 48%;
+        }
+
+        .left {
+            width: 65%;
+        }
+
+        .right {
+            width: 33%;
+        }
+
+        .list thead tr th:first-child {
+            width: 80px;
+            text-align: left;
+            padding: 4px 2px 4px 7px;
+        }
+
+        .list tbody tr td:first-child {
+            width: 90px;
+            text-align: left;
+            padding: 0 0 0 7px;
+            word-wrap: break-word;
+        }
+
+        .list thead tr th:nth-child(2) {
+            width: 80px;
+            text-align: right;
+            padding: 0 0 0 4px;
+        }
+
+        .list tbody tr td:nth-child(2) {
+            width: 70px;
+            text-align: right;
+            padding: 0 0 0 4px;
+        }
+
+        .list thead tr th:nth-child(3) {
+            width: 90px;
+            text-align: left;
+            padding: 0 0 0 24px;
+        }
+
+        .list tbody tr td:nth-child(3) {
+            width: 90px;
+            text-align: left;
+            padding: 0 0 0 24px;
+        }
+    }
+
+    .video-js .vjs-remaining-time {
+        display: contents;
+    }

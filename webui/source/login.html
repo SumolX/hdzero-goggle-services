@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/css/global.css?version=5">
+    <link rel="stylesheet" href="/css/login.css?version=5">
+    <title>Goggle Login</title>
+
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <div class="header">
+                <img src="images/hdzero.png" />
+                <h1>HDZero Goggle</h1>
+            </div>
+        </div>
+    </header>
+    <article>
+        <section class="login">
+            <div id="dialog" class="animate modal">
+                <p id="message">
+                </p>
+            </div>
+            <div class="logincontainer">
+                <div class="inputcontainer">
+                    <label for="usr"><b>User</b></label>
+                    <input id="usr" type="text" value="root" name="user" tabindex="-1">
+                </div>
+                <div class="inputcontainer">
+                    <label for="pswd"><b>Password</b></label>
+                    <input id="pswd" type="password" name="password" maxlength="20" required>
+                </div>
+                <button type="submit" onclick="login()">Login</button>
+                <button type="button" onclick="cancelLogin()">Cancel</button>
+            </div>
+        </section>
+    </article>
+    <footer></footer>
+    <script>
+
+        function login() {
+            const pswd = document.getElementById("pswd").value;
+            const cook = document.cookie;
+            const settings = {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                }
+            };
+
+            fetch('/cgi-bin/status?authorize=' + pswd, settings).then(res => {
+                if (!res.ok) {
+                    let err = new Error("http status code: " + res.status);
+                    err.response = res;
+                    err.status = res.status;
+                    throw err
+                }
+                console.log(res);
+                return res.json();
+          
+            })
+                .then(data => {
+                    if (data) {
+                        loginSuccess(data);
+                    }
+                    else {
+                        loginFailed("no key")
+                    }
+                })
+                .catch((err) => {
+                    loginFailed(err.message);
+                });
+
+        }
+
+        function loginSuccess(data) {
+            document.cookie = 'token=' + data.token + ';expires="";path=/';
+            window.location = '/index.html';
+        }
+
+        function loginFailed(statusText) {
+            const dialog = document.getElementById("dialog");
+            const message = document.getElementById("message");
+            message.innerHTML = statusText;
+            dialog.style.display = 'block';
+        }
+
+        function cancelLogin() {
+            document.getElementById('login').style.display = 'none';
+        }
+
+    </script>
+</body>
+
+</html>
