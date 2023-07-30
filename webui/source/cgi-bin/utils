@@ -62,14 +62,16 @@ utils_is_client_authorized() {
         touch /tmp/auth.list
         token="$(/tmp/mktoken.sh \"$hash_server\")"
         if [ -z "$(cat /tmp/auth.list | grep $token)" ]; then
-            echo "$token" >> /tmp/auth.list
+            echo "$token" > /tmp/auth.list
         fi
         
+        echo "Set-Cookie: token=$token;expires=;path=/"      
         echo "Content-Type: text/html"
         echo ""
-        #echo -n "$token"
-        printf '{"token":"%s"}\n' "$token"
+        echo "Status: 200 OK"
     else
+        dt=`TZ=GMT date -d '-1 day' '+%a, %d %b %Y %T %Z'`
+        echo "Set-Cookie: token=$token;expires=$dt;path=/"      
         echo "Status: 401 Not Authorized"
     fi
 }

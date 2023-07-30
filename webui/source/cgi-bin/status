@@ -17,7 +17,7 @@ on_status_authenticate() {
 }
 
 on_status_authorize() {
-    echo "$HTTP_COOKIE" >> test.tmp
+    echo "$HTTP_COOKIE" > test.tmp
     #utils_is_action_authorized $1
     if [ "$?" -eq 0 ]; then
         echo "Status: 200 OK"
