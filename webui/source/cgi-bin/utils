@@ -41,14 +41,14 @@ utils_is_client_authorized() {
     salt="hdzgoggles"
     pw="$(cat /mnt/app/setting.ini | grep "root_pw" | awk -F '=' '{print $2}')"
 
-    if ! -f /tmp/mkpw.sh; then
+    if [ ! -f /tmp/mkpw.sh ]; then
         echo "mkpasswd -m sha512crypt --salt="$salt" --stdin << EOF" > /tmp/mkpw.sh
         echo "\$1" >> /tmp/mkpw.sh
         echo "EOF" >> /tmp/mkpw.sh
         chmod +x /tmp/mkpw.sh
     fi
 
-    if ! -f /tmp/mktoken.sh; then
+    if [ ! -f /tmp/mktoken.sh ]; then
         echo "mkpasswd -m sha512crypt --stdin << EOF" > /tmp/mktoken.sh
         echo "\$1" >> /tmp/mktoken.sh
         echo "EOF" >> /tmp/mktoken.sh

@@ -18,6 +18,7 @@ set(ARCHIVE_NAME "hdzgoggle-services-${BUILD_NUMBER}")
 add_subdirectory(busybox)
 add_subdirectory(dosfstools)
 add_subdirectory(dropbear)
+add_subdirectory(ffmpeg)
 add_subdirectory(ntpclient)
 
 add_custom_command(
@@ -44,6 +45,13 @@ add_custom_command(
 )
 
 add_custom_command(
+	OUTPUT FFMPEG
+	COMMAND mkdir -p ${BIN_DIR}/ffmpeg
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/ffmpeg/out/* ${BIN_DIR}/ffmpeg/
+	DEPENDS ffmpeg
+)
+
+add_custom_command(
 	OUTPUT NTPCLIENT
 	COMMAND mkdir -p ${BIN_DIR}/ntpclient
 	COMMAND cp ${PROJECT_BINARY_DIR}/ntpclient/out/ntpclient ${BIN_DIR}/ntpclient/
@@ -62,12 +70,13 @@ add_custom_command(
 	COMMAND cp ${busybox_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${dosfstools_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${dropbear_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
+	COMMAND cp ${ffmpeg_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${ntpclient_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${ntpclient_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${PROJECT_SOURCE_DIR}/webui/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${SCRIPTS_DIR}/* ${BIN_DIR}/
 	COMMAND cp ${CMAKE_SOURCE_DIR}/VERSION ${BIN_DIR}/
-	DEPENDS BUSYBOX DOSFSTOOLS DROPBEARMULTI NTPCLIENT WEBUI
+	DEPENDS BUSYBOX DOSFSTOOLS DROPBEARMULTI FFMPEG NTPCLIENT WEBUI
 )
 
 add_custom_command(
@@ -81,7 +90,7 @@ add_custom_command(
 add_custom_command(
 	OUTPUT CLEAN_ALL
 	COMMAND rm -rf ${BIN_DIR} ${OUT_DIR}
-	DEPENDS busybox_clean dropbear_clean ntpclient_clean
+	DEPENDS busybox_clean dropbear_clean ffmpeg_clean ntpclient_clean
 )
 
 add_custom_target(
@@ -94,4 +103,4 @@ add_custom_target(
 	DEPENDS CLEAN_ALL
 )
 
-add_dependencies(${PROJECT_NAME} busybox dropbearmulti ntpclient)
+add_dependencies(${PROJECT_NAME} busybox dropbearmulti ffmpeg ntpclient)
