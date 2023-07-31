@@ -96,9 +96,10 @@ label {
 article {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: auto;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
+    height: auto;
     padding-top: 4px;
 }
 
