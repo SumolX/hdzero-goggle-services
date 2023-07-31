@@ -47,7 +47,7 @@ add_custom_command(
 add_custom_command(
 	OUTPUT FFMPEG
 	COMMAND mkdir -p ${BIN_DIR}/ffmpeg
-	COMMAND cp ${PROJECT_BINARY_DIR}/ffmpeg/out/ffpmeg ${BIN_DIR}/ffmpeg/
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/ffmpeg/out/* ${BIN_DIR}/ffmpeg/
 	DEPENDS ffmpeg
 )
 
@@ -64,6 +64,7 @@ add_custom_command(
 	COMMAND cp ${busybox_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${dosfstools_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${dropbear_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
+	COMMAND cp ${ffmpeg_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${ntpclient_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${SCRIPTS_DIR}/* ${BIN_DIR}/
 	COMMAND cp ${CMAKE_SOURCE_DIR}/VERSION ${BIN_DIR}/

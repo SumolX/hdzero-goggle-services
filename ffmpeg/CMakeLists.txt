@@ -18,14 +18,16 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(ffmpeg)
 
 set(
-	FFMPEG_COMMON
-       	--enable-gpl
-       	--enable-version3
+    FFMPEG_COMMON
+    --enable-pic
+    --extra-ldexeflags=-pie
+    --enable-shared
+    --prefix="${ffmpeg_BINARY_DIR}"
 )
 
 if(DEFINED CMAKE_TOOLCHAIN_FILE)
 execute_process(
-	COMMAND ./configure ${FFMPEG_COMMON} --enable-cross-compile --cross-prefix=${COMPILER_PATH}/${TARGET_PLATFORM}- --arch=arm --target-os=linux
+	COMMAND ./configure ${FFMPEG_COMMON} --enable-cross-compile --cross-prefix=${COMPILER_PATH}/${TARGET_PLATFORM}- --arch=arm --target-os=linux --disable-ffplay
 	WORKING_DIRECTORY ${ffmpeg_SOURCE_DIR}
 )
 else()
@@ -37,16 +39,14 @@ endif()
 
 add_custom_command(
 	OUTPUT ffmpeg_build
-	COMMAND cd ${ffmpeg_SOURCE_DIR} && make -j6
-	COMMAND cp ${ffmpeg_SOURCE_DIR}/ffmpeg ${ffmpeg_BINARY_DIR}
-	COMMAND cp ${ffmpeg_SOURCE_DIR}/ffplay ${ffmpeg_BINARY_DIR}
-	COMMAND cp ${ffmpeg_SOURCE_DIR}/ffprobe ${ffmpeg_BINARY_DIR}
+	COMMAND cd ${ffmpeg_SOURCE_DIR} && make -j6 && make install
 )
 
 add_custom_command(
 	OUTPUT ffmpeg_cleanall
 	COMMAND find . -name '*.o' -delete
 	COMMAND find . -name '*.a' -delete
+	COMMAND find . -name '*.so*' -delete
 	COMMAND rm -rf ${ffmpeg_BINARY_DIR}/*
 )
 
