@@ -10,7 +10,7 @@ on_dvr() {
     echo ""
     body=""
 #    if [ ! -z "$(mount | grep ${SDC_PATH})" ]; then
-        for file in ${MOVIE_PATH}/*.ts ${MOVIE_PATH}/*.m*; do
+        for file in $(ls $MOVIE_PATH/*.ts $MOVIE_PATH/*.mp4 2>/dev/null); do
             body="$body $(echo "$(ls -l $file)" | awk '{printf "{\"date\":\"%s %s %s\",\"size\":%s,", $6,$7,$8,$5}')"
             body="$body \"file\":\"${file##*/}\"},"
         done
