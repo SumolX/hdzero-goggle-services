@@ -6,7 +6,7 @@
 busybox:    Software Suite Version 1.27.2
 dosfstools: V4.2 Programs used to create, modify, and check the FAT filesystem
 dropbear:   Network communications (SSH/SCP) via WiFi Module
-ffmpeg:     v6.0 A complete solution to record, convert and stream audio and video.
+ffmpeg:     v5.0.1 Complete solution to record, convert and stream audio and video.
 ntpclient:  Synchronize time with NTP Server via WiFi Module
 webui:      Provides goggle access via a HTML interface
 ```
