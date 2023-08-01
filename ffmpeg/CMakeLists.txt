@@ -11,31 +11,69 @@ include(FetchContent)
 FetchContent_Declare(
 	ffmpeg
 	GIT_REPOSITORY "https://github.com/ffmpeg/ffmpeg.git"
-	GIT_TAG        "n6.0"
+	GIT_TAG        "n5.0.1"
 	SOURCE_DIR     "src"
 	BINARY_DIR     "out"
 )
 FetchContent_MakeAvailable(ffmpeg)
 
 set(
-    FFMPEG_COMMON
-    --enable-pic
-    --extra-ldexeflags=-pie
+    FFMPEG_OPTIONS
+    --prefix=${ffmpeg_BINARY_DIR}
+    --disable-everything
+    --disable-static
     --enable-shared
-    --prefix="${ffmpeg_BINARY_DIR}"
+    --enable-version3
+    
+    # libavcodec
+    --disable-faan
+    --disable-iconv
+    --disable-v4l2-m2m
+    --disable-vaapi
+    --disable-vdpau
+
+    # libavformat
+    --disable-network
+    --disable-bzlib
+    --disable-xlib
+    --disable-zlib
+
+    --enable-avcodec
+    --enable-avfilter
+    --enable-protocol=file
+    --enable-demuxer=h264
+    --enable-parser=h264
+    --enable-demuxer=hevc
+    --enable-parser=hevc
+    --enable-bsf=h264_metadata
+    --enable-bsf=h264_redundant_pps
+    --enable-bsf=hevc_metadata
+    --enable-bsf=extract_extradata
+    --enable-muxer=mpegts
+    --enable-muxer=mp4
+    --enable-demuxer=mov
+    --enable-demuxer=mpegts 
 )
 
 if(DEFINED CMAKE_TOOLCHAIN_FILE)
-execute_process(
-	COMMAND ./configure ${FFMPEG_COMMON} --enable-cross-compile --cross-prefix=${COMPILER_PATH}/${TARGET_PLATFORM}- --arch=arm --target-os=linux --disable-ffplay
-	WORKING_DIRECTORY ${ffmpeg_SOURCE_DIR}
-)
-else()
-execute_process(
-	COMMAND ./configure ${FFMPEG_COMMON}
-	WORKING_DIRECTORY ${ffmpeg_SOURCE_DIR}
+list(
+    APPEND
+    FFMPEG_OPTIONS
+    --enable-cross-compile
+    --cross-prefix=${COMPILER_PATH}/${TARGET_PLATFORM}-
+    --arch=arm
+    --target-os=linux
+
+    # disable ffplay dependencies
+    --disable-swscale
+    --disable-swresample
 )
 endif()
+
+execute_process(
+	COMMAND ./configure ${FFMPEG_OPTIONS} 
+	WORKING_DIRECTORY ${ffmpeg_SOURCE_DIR}
+)
 
 add_custom_command(
 	OUTPUT ffmpeg_build
