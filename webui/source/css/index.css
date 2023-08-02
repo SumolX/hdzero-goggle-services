@@ -92,8 +92,8 @@ section.owner {
 
 ul.instruction {
     list-style-type: none;
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
 }
 
 .instruction li {
@@ -107,7 +107,7 @@ ul.instruction {
     width: 100%;
     color: #ffffff;
     border-collapse: collapse;
-    border-spacing: 0;
+    border-spacing: 0px;
     border-radius: 4px;
 }
 
@@ -149,7 +149,7 @@ tbody {
     width: 180px;
     /*width: 106px;*/
     text-align: left;
-    padding: 0 0 0 7px;
+    padding: 0px 0px 0px 7px;
     overflow: visible;
 }
 
@@ -157,26 +157,26 @@ tbody {
     width: 90px;
     /*width: 74px;*/
     text-align: right;
-    padding: 0 0 0 4px;
+    padding: 0px 0px 0px 4px;
 }
 
 .list tbody tr td:nth-child(2) {
     width: 90px;
     /*width: 42px;*/
     text-align: right;
-    padding: 0 0 0 4px;
+    padding: 0px 0px 0px 4px;
 }
 
 .list thead tr th:nth-child(3) {
     width: 140px;
     text-align: left;
-    padding: 0 0 0 24px;
+    padding: 0px 0px 0px 24px;
 }
 
 .list tbody tr td:nth-child(3) {
     width: 140px;
     text-align: left;
-    padding: 0 0 0 24px;
+    padding: 0px 0px 0px 24px;
 }
 
 .selected {
@@ -210,32 +210,32 @@ tbody {
     .list tbody tr td:first-child {
         width: 160px;
         text-align: left;
-        padding: 0 0 0 7px;
+        padding: 0px 0px 0px 7px;
         overflow: visible;
     }
 
     .list thead tr th:nth-child(2) {
         width: 90px;
         text-align: right;
-        padding: 0 0 0 4px;
+        padding: 0px 0px 0px 4px;
     }
 
     .list tbody tr td:nth-child(2) {
         width: 90px;
         text-align: right;
-        padding: 0 0 0 4px;
+        padding: 0px 0px 0px 4px;
     }
 
     .list thead tr th:nth-child(3) {
         width: 120px;
         text-align: left;
-        padding: 0 0 0 24px;
+        padding: 0px 0px 0px 24px;
     }
 
     .list tbody tr td:nth-child(3) {
         width: 120px;
         text-align: left;
-        padding: 0 0 0 24px;
+        padding: 0px 0px 0px 24px;
     }
 }
 
@@ -247,56 +247,56 @@ tbody {
 
 @media only screen and (min-width: 416px) and (max-width: 991px) {
 
-        .editcontainer button {
-            width: 48%;
-        }
-
-        .left {
-            width: 65%;
-        }
-
-        .right {
-            width: 33%;
-        }
-
-        .list thead tr th:first-child {
-            width: 80px;
-            text-align: left;
-            padding: 4px 2px 4px 7px;
-        }
-
-        .list tbody tr td:first-child {
-            width: 90px;
-            text-align: left;
-            padding: 0 0 0 7px;
-            word-wrap: break-word;
-        }
-
-        .list thead tr th:nth-child(2) {
-            width: 80px;
-            text-align: right;
-            padding: 0 0 0 4px;
-        }
-
-        .list tbody tr td:nth-child(2) {
-            width: 70px;
-            text-align: right;
-            padding: 0 0 0 4px;
-        }
-
-        .list thead tr th:nth-child(3) {
-            width: 90px;
-            text-align: left;
-            padding: 0 0 0 24px;
-        }
-
-        .list tbody tr td:nth-child(3) {
-            width: 90px;
-            text-align: left;
-            padding: 0 0 0 24px;
-        }
+    .editcontainer button {
+        width: 48%;
     }
 
-    .video-js .vjs-remaining-time {
-        display: contents;
+    .left {
+        width: 65%;
     }
+
+    .right {
+        width: 33%;
+    }
+
+    .list thead tr th:first-child {
+        width: 80px;
+        text-align: left;
+        padding: 4px 2px 4px 7px;
+    }
+
+    .list tbody tr td:first-child {
+        width: 90px;
+        text-align: left;
+        padding: 0px 0px 0px 7px;
+        word-wrap: break-word;
+    }
+
+    .list thead tr th:nth-child(2) {
+        width: 80px;
+        text-align: right;
+        padding: 0px 0px 0px 4px;
+    }
+
+    .list tbody tr td:nth-child(2) {
+        width: 70px;
+        text-align: right;
+        padding: 0px 0px 0px 4px;
+    }
+
+    .list thead tr th:nth-child(3) {
+        width: 90px;
+        text-align: left;
+        padding: 0px 0px 0px 24px;
+    }
+
+    .list tbody tr td:nth-child(3) {
+        width: 90px;
+        text-align: left;
+        padding: 0px 0px 0px 24px;
+    }
+}
+
+.video-js .vjs-remaining-time {
+    display: contents;
+}
