@@ -28,7 +28,7 @@ section.owner {
 
 .left {
     width: 55%;
-    margin-right: 5px;
+    margin-right: 6px;
     float: left;
     text-align: left;
     overflow: hidden;
@@ -38,7 +38,7 @@ section.owner {
     padding: 0px;
     float: left;
     text-align: left;
-    width: 43%;
+    width: 45%;
     overflow-wrap: break-word;
 }
 
@@ -97,11 +97,11 @@ ul.instruction {
 }
 
 .instruction li {
-    margin: 10px 0px 10px 10px;
+    margin: 10px 0px 0px 10px;
     padding: 0px;
 }
 
-    /* left panel elements */
+/* left panel elements */
 
 .list {
     width: 100%;
@@ -116,7 +116,16 @@ tbody {
     display: inline-block;
     background-color: #4d4d4d;
     border-radius: 4px;
-    width: 94%;
+    width: 100%;
+}
+.list table {
+    table-layout: fixed;
+}
+
+.list th, td {
+    width: 100px;
+    overflow: hidden;
+    border: 1px solid pink;
 }
 
 .list thead {
@@ -127,7 +136,7 @@ tbody {
 
 .list tbody {
     margin-top: 4px;
-    height: 300px;
+    height: 330px;
     overflow-y: auto;
     overflow-x: hidden;
     border: 1px solid #646464;
