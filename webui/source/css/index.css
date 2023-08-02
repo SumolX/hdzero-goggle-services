@@ -151,14 +151,14 @@ tbody {
     width: 180px;
     /*width: 94px;*/
     text-align: left;
-    padding: 4px 2px 4px 7px;
+    padding-left: 4px;
 }
 
 .list tbody tr td:first-child {
     width: 180px;
     /*width: 106px;*/
     text-align: left;
-    padding: 0px 0px 0px 7px;
+    padding-left: 8px;
     overflow: visible;
 }
 
@@ -166,26 +166,23 @@ tbody {
     width: 90px;
     /*width: 74px;*/
     text-align: right;
-    padding: 0px 0px 0px 4px;
 }
 
 .list tbody tr td:nth-child(2) {
     width: 90px;
     /*width: 42px;*/
     text-align: right;
-    padding: 0px 0px 0px 4px;
 }
 
 .list thead tr th:nth-child(3) {
     width: 140px;
     text-align: left;
-    padding: 0px 0px 0px 24px;
 }
 
 .list tbody tr td:nth-child(3) {
     width: 140px;
     text-align: left;
-    padding: 0px 0px 0px 24px;
+    padding-left: 10px;
 }
 
 .selected {
@@ -213,38 +210,32 @@ tbody {
     .list thead tr th:first-child {
         width: 160px;
         text-align: left;
-        padding: 4px 2px 4px 7px;
     }
 
     .list tbody tr td:first-child {
         width: 160px;
         text-align: left;
-        padding: 0px 0px 0px 7px;
         overflow: visible;
     }
 
     .list thead tr th:nth-child(2) {
         width: 90px;
         text-align: right;
-        padding: 0px 0px 0px 4px;
     }
 
     .list tbody tr td:nth-child(2) {
         width: 90px;
         text-align: right;
-        padding: 0px 0px 0px 4px;
     }
 
     .list thead tr th:nth-child(3) {
         width: 120px;
         text-align: left;
-        padding: 0px 0px 0px 24px;
     }
 
     .list tbody tr td:nth-child(3) {
         width: 120px;
         text-align: left;
-        padding: 0px 0px 0px 24px;
     }
 }
 
@@ -271,38 +262,32 @@ tbody {
     .list thead tr th:first-child {
         width: 80px;
         text-align: left;
-        padding: 4px 2px 4px 7px;
     }
 
     .list tbody tr td:first-child {
-        width: 90px;
+        width: 120px;
         text-align: left;
-        padding: 0px 0px 0px 7px;
         word-wrap: break-word;
     }
 
     .list thead tr th:nth-child(2) {
         width: 80px;
         text-align: right;
-        padding: 0px 0px 0px 4px;
     }
 
     .list tbody tr td:nth-child(2) {
-        width: 70px;
+        width: 35px;
         text-align: right;
-        padding: 0px 0px 0px 4px;
     }
 
     .list thead tr th:nth-child(3) {
-        width: 90px;
+        width: 108px;
         text-align: left;
-        padding: 0px 0px 0px 24px;
     }
 
     .list tbody tr td:nth-child(3) {
-        width: 90px;
+        width: 100px;
         text-align: left;
-        padding: 0px 0px 0px 24px;
     }
 }
 
