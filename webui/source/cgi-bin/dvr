@@ -26,18 +26,24 @@ on_dvr_download() {
 }
 
 on_dvr_rename() {
-    if test -f ${MOVIE_PATH}/$1; then
+    utils_is_action_authorized "${HTTP_COOKIE#token=}"
+    if test "$?" -eq 0 -a -f ${MOVIE_PATH}/$1; then
         mv ${MOVIE_PATH}/${1%.*}.jpg ${MOVIE_PATH}/${2%.*}.jpg
         mv ${MOVIE_PATH}/$1 ${MOVIE_PATH}/$2
+        echo "Status: 200 OK"
+    else
+        echo "Status: 404 Not Found"
     fi
-    echo "Status: 200 OK"
 }
 
 on_dvr_delete() {
-    if test -f ${MOVIE_PATH}/$1; then
+    utils_is_action_authorized "${HTTP_COOKIE#token=}"
+    if test "$?" -eq 0 -a -f ${MOVIE_PATH}/$1; then
         rm -rf ${MOVIE_PATH}/${1%.*}.*
+        echo "Status: 200 OK"
+    else
+        echo "Status: 404 Not Found"
     fi
-    echo "Status: 200 OK"
 }
 
 on_dvr_m3u8() {

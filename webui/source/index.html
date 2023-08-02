@@ -136,32 +136,6 @@
             })();
         }
 
-        function get_authorization(au) {
-            const pswd = document.getElementById("pswd").value;
-            const settings = {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                }
-            };
-
-            fetch('/cgi-bin/status?authenticate=' + pswd, settings).then(res => {
-                if (!res.ok) {
-                    let err = new Error("http status code: " + res.status);
-                    err.response = res;
-                    err.status = res.status;
-                    throw err
-                }
-                loginSuccess(res.status);
-
-            })
-                .catch((err) => {
-                    loginFailed(err.message);
-                });
-
-        }
-
         function selectVideo() {
             var ipFileName = document.getElementById("videoname")
             var fName = this.getElementsByTagName("td")[0].innerHTML.split('.')[0];
@@ -196,7 +170,7 @@
                 (async () => {
                     const res = await fetch('/cgi-bin/dvr?rename=&fr=' + frFile + "." + ext
                         + '&to=' + toFile + "." + ext, {
-                        headers: { Accept: 'application/json' },
+                        headers: { Accept: 'application/text' },
                     });
                     get_list();
                 })();
@@ -210,7 +184,7 @@
             if (result) {
                 (async () => {
                     const res = await fetch('/cgi-bin/dvr?', {
-                        headers: { Accept: 'application/json' },
+                        headers: { Accept: 'application/text' },
                     });
                 })();
             }
