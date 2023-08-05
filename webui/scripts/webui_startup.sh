@@ -1,4 +1,6 @@
 #!/bin/sh
 
-ln -sfn /mnt/extsd/movies /mnt/app/services/webui/movies
-httpd -v -h /mnt/app/services/webui > /tmp/webui.log 2>&1
+
+ln -sfn /mnt/app/services/www/busybox /mnt/app/services/www/httpd
+ln -sfn /mnt/extsd/movies /mnt/app/services/www/movies
+httpd -v -h /mnt/app/services/www > /tmp/www.log 2>&1
