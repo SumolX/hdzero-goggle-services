@@ -73,7 +73,6 @@ add_custom_command(
 	COMMAND cp ${ffmpeg_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${ntpclient_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${ntpclient_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
-	COMMAND cp ${PROJECT_SOURCE_DIR}/webui/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${SCRIPTS_DIR}/* ${BIN_DIR}/
 	COMMAND cp ${CMAKE_SOURCE_DIR}/VERSION ${BIN_DIR}/
 	DEPENDS BUSYBOX DOSFSTOOLS DROPBEARMULTI FFMPEG NTPCLIENT WEBUI
