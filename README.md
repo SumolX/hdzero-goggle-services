@@ -8,6 +8,7 @@ dosfstools: V4.2 Programs used to create, modify, and check the FAT filesystem.
 dropbear:   Network communications (SSH/SCP) via WiFi Module
 ffmpeg:     v5.0.1 Complete solution to record, convert and stream audio and video.
 ntpclient:  Synchronize time with NTP Server via WiFi Module
+untrunc:    MP4 Repair tool for corrupt video files.
 ```
 
 ## Building
