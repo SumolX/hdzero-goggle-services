@@ -15,12 +15,19 @@ set(OUT_DIR ${CMAKE_SOURCE_DIR}/out)
 set(SCRIPTS_DIR ${CMAKE_SOURCE_DIR}/scripts)
 set(ARCHIVE_NAME "hdzgoggle-services-${BUILD_NUMBER}")
 
+add_subdirectory(bearssl)
 add_subdirectory(busybox)
 add_subdirectory(dosfstools)
 add_subdirectory(dropbear)
 add_subdirectory(ffmpeg)
 add_subdirectory(ntpclient)
+add_subdirectory(tinycurl)
 add_subdirectory(untrunc)
+
+add_dependencies(
+	tinycurl
+	bearssl
+)
 
 add_custom_command(
 	OUTPUT ALL_TARGETS
@@ -41,6 +48,9 @@ add_custom_command(
 	COMMAND mkdir -p ${BIN_DIR}/ntpclient
 	COMMAND cp ${PROJECT_BINARY_DIR}/ntpclient/out/ntpclient ${BIN_DIR}/ntpclient/
 
+	COMMAND mkdir -p ${BIN_DIR}/tinycurl
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/tinycurl/out/bin/curl ${BIN_DIR}/tinycurl/
+
 	COMMAND mkdir -p ${BIN_DIR}/untrunc
 	COMMAND cp ${PROJECT_BINARY_DIR}/untrunc/out/untrunc ${BIN_DIR}/untrunc/
 
@@ -50,9 +60,10 @@ add_custom_command(
 	COMMAND cp ${dropbear_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${ffmpeg_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${ntpclient_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
+	COMMAND cp ${tinycurl_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp ${SCRIPTS_DIR}/* ${BIN_DIR}/
 	COMMAND cp ${CMAKE_SOURCE_DIR}/VERSION ${BIN_DIR}/
-	DEPENDS busybox dosfstools dropbear ffmpeg ntpclient untrunc
+	DEPENDS bearssl busybox dosfstools dropbear ffmpeg ntpclient tinycurl untrunc
 )
 
 add_custom_command(
@@ -66,7 +77,7 @@ add_custom_command(
 add_custom_command(
 	OUTPUT CLEAN_ALL
 	COMMAND rm -rf ${BIN_DIR} ${OUT_DIR}
-	DEPENDS busybox_clean dropbear_clean ffmpeg_clean ntpclient_clean untrunc_clean
+	DEPENDS bearssl_clean busybox_clean dropbear_clean ffmpeg_clean ntpclient_clean tinycurl_clean untrunc_clean
 )
 
 add_custom_target(
@@ -79,4 +90,4 @@ add_custom_target(
 	DEPENDS CLEAN_ALL
 )
 
-add_dependencies(${PROJECT_NAME} busybox dosfstools dropbearmulti ffmpeg ntpclient untrunc)
+add_dependencies(${PROJECT_NAME} bearssl busybox dosfstools dropbearmulti ffmpeg ntpclient tinycurl untrunc)
