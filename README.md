@@ -20,7 +20,7 @@ cd build
 make -j
 ```
 
-## Building Target: Host
+## Building Target: Host (Optional)
 ```shell
 mkdir build-host
 cd build-host
