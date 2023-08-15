@@ -1,0 +1,5 @@
+Add goggle in windows hosts file. Windows does not support port in host file.
+
+192.168.4.97 goggle.debug
+192.168.4.104 goggle.hdz
+

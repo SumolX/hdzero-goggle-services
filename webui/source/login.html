@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/css/global.css?version=9">
     <link rel="stylesheet" href="/css/login.css?version=9">
+    <script src="/script/global.js"></script>
     <title>Goggle Login</title>
 
 </head>
@@ -39,7 +40,7 @@
                         <label for="pswd"><b>Password</b></label>
                         <input id="pswd" type="password" name="password" maxlength="20" required>
                     </div>
-                    <button type="submit" onclick="login()">Login</button>
+                    <button type="submit" onclick="getAuthorization()">Login</button>
                     <button type="button" onclick="returnFromLogin()">Cancel</button>
                 </div>
         </section>
@@ -47,84 +48,7 @@
     <footer></footer>
     <script>
 
-        function login() {
-            const au = document.cookie.split("=")[1];
-
-            if (au) {
-                const dialog = document.getElementById("dialog");
-                const dbuttons = document.getElementById("d-buttons");
-                document.getElementById("d-title").innerHTML = "Warning";
-                document.getElementById("d-message").innerHTML = "A session already exists.<br /> Click OK to overwritten it.";
-
-                const btn1 = document.createElement("button");
-                btn1.innerHTML = "OK"
-                btn1.onclick = function () {
-                    getAuthorization();
-                }
-
-                const btn2 = document.createElement("button");
-                btn2.innerHTML = "Abort"
-                btn2.onclick = function () {
-                    returnFromLogin();
-                }
-
-                dbuttons.appendChild(btn1);
-                dbuttons.appendChild(btn2);
-                dialog.style.display = "block";
-            }
-            else {
-                getAuthorization();
-            }
-        }
-
-        function getAuthorization() {
-            const pswd = document.getElementById("pswd").value;
-            const settings = {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                }
-            };
-
-            fetch('/cgi-bin/status?authenticate=' + pswd, settings).then(res => {
-                if (!res.ok) {
-                    let err = new Error("http status code: " + res.status);
-                    err.response = res;
-                    err.status = res.status;
-                    throw err
-                }
-                returnFromLogin();
-            })
-                .catch((err) => {
-                    displayError(err.message);
-                });
-        }
-
         
-        function returnFromLogin() {
-            window.location = '/index.html';
-        }
-
-        function hideElement(element) {
-            element.classList.toggle("display-block");
-        }
-
-        function displayError(errMessage) {
-            const dialog = document.getElementById("dialog");
-            const dbuttons = document.getElementById("d-buttons");
-            document.getElementById("d-title").innerHTML = "Error";
-            document.getElementById("d-message").innerHTML = errMessage;
-
-            const btn1 = document.createElement("button");
-            btn1.innerHTML = "OK"
-            btn1.onclick = function () {
-                hideElement(dialog);
-            }
-
-            dbuttons.appendChild(btn1);
-            dialog.style.display = "block";
-        }
 
     </script>
 </body>
