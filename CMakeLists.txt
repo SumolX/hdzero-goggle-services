@@ -31,6 +31,10 @@ add_dependencies(
 
 add_custom_command(
 	OUTPUT ALL_TARGETS
+
+	COMMAND mkdir -p ${BIN_DIR}/bearssl
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/bearssl/out/* ${BIN_DIR}/bearssl/
+
 	COMMAND mkdir -p ${BIN_DIR}/busybox
 	COMMAND cp -a ${PROJECT_BINARY_DIR}/busybox/out/busybox ${BIN_DIR}/busybox/
 
@@ -58,6 +62,7 @@ add_custom_command(
 	COMMAND cp -a ${PROJECT_SOURCE_DIR}/webui/source/* ${BIN_DIR}/webui/
 
 	COMMAND mkdir -p ${BIN_DIR}/scripts
+	COMMAND cp -a ${bearssl_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp -a ${busybox_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp -a ${dosfstools_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp -a ${dropbear_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
@@ -66,6 +71,7 @@ add_custom_command(
 	COMMAND cp -a ${tinycurl_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp -a ${SCRIPTS_DIR}/* ${BIN_DIR}/
 	COMMAND cp -a ${CMAKE_SOURCE_DIR}/VERSION ${BIN_DIR}/
+
 	DEPENDS bearssl busybox dosfstools dropbear ffmpeg ntpclient tinycurl untrunc
 )
 

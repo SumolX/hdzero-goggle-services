@@ -6,7 +6,7 @@ if [ $# -ne 2 ]; then
 fi
 
 ROOT=$2
-OUTPUT="$ROOT/scripts/01_busybox_startup.sh"
+OUTPUT="$ROOT/scripts/10_busybox_startup.sh"
 BUSYBOX="/mnt/app/services/busybox/busybox"
 BIN_SYM=$(find $1/_install/bin -type l | sort -h)
 SBIN_SYM=$(find $1/_install/sbin -type l | sort -h)
