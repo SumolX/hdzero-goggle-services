@@ -59,6 +59,7 @@ add_custom_command(
 	COMMAND cp -a ${PROJECT_BINARY_DIR}/untrunc/out/untrunc ${BIN_DIR}/untrunc/
 
 	COMMAND mkdir -p ${BIN_DIR}/scripts
+	COMMAND cp -a ${bearssl_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp -a ${busybox_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp -a ${dosfstools_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp -a ${dropbear_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
