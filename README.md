@@ -3,20 +3,28 @@
 
 ## Services
 ```
-bearssl:    V0.6 Implementation of the SSL/TLS protocol.
-busybox:    Software Suite Version 1.27.2
-dosfstools: V4.2 Programs used to create, modify, and check the FAT filesystem.
+bearssl:    v0.6 Implementation of the SSL/TLS protocol.
+busybox:    v1.27.2 Software Suite Version
+dosfstools: v4.2 Programs used to create, modify, and check the FAT filesystem.
 dropbear:   Network communications (SSH/SCP) via WiFi Module
 ffmpeg:     v5.0.1 Complete solution to record, convert and stream audio and video.
 ntpclient:  Synchronize time with NTP Server via WiFi Module
-tinycurl:   V7.79.1 A low memory footprint of Curl designed for smaller systems.
+tinycurl:   v7.79.1 A low memory footprint of Curl designed for smaller systems.
 untrunc:    MP4 Repair tool for corrupt video files.
 ```
 
-## Building
+## Building Target: Goggle
 ```shell
 ./setup.sh
 cd build
+make -j
+```
+
+## Building Target: Host
+```shell
+mkdir build-host
+cd build-host
+cmake ..
 make -j
 ```
 
