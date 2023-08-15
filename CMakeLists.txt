@@ -31,38 +31,43 @@ add_dependencies(
 
 add_custom_command(
 	OUTPUT ALL_TARGETS
+
+	COMMAND mkdir -p ${BIN_DIR}/bearssl
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/bearssl/out/* ${BIN_DIR}/bearssl/
+
 	COMMAND mkdir -p ${BIN_DIR}/busybox
-	COMMAND cp ${PROJECT_BINARY_DIR}/busybox/out/busybox ${BIN_DIR}/busybox/
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/busybox/out/busybox ${BIN_DIR}/busybox/
 
 	COMMAND mkdir -p ${BIN_DIR}/dosfstools
-	COMMAND cp ${PROJECT_BINARY_DIR}/dosfstools/out/fatlabel ${BIN_DIR}/dosfstools/
-	COMMAND cp ${PROJECT_BINARY_DIR}/dosfstools/out/fsck.fat ${BIN_DIR}/dosfstools/
-	COMMAND cp ${PROJECT_BINARY_DIR}/dosfstools/out/mkfs.fat ${BIN_DIR}/dosfstools/
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/dosfstools/out/fatlabel ${BIN_DIR}/dosfstools/
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/dosfstools/out/fsck.fat ${BIN_DIR}/dosfstools/
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/dosfstools/out/mkfs.fat ${BIN_DIR}/dosfstools/
 	
 	COMMAND mkdir -p ${BIN_DIR}/dropbear
-	COMMAND cp ${PROJECT_BINARY_DIR}/dropbear/out/dropbearmulti ${BIN_DIR}/dropbear/
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/dropbear/out/dropbearmulti ${BIN_DIR}/dropbear/
 
 	COMMAND mkdir -p ${BIN_DIR}/ffmpeg
 	COMMAND cp -a ${PROJECT_BINARY_DIR}/ffmpeg/out/* ${BIN_DIR}/ffmpeg/
 
 	COMMAND mkdir -p ${BIN_DIR}/ntpclient
-	COMMAND cp ${PROJECT_BINARY_DIR}/ntpclient/out/ntpclient ${BIN_DIR}/ntpclient/
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/ntpclient/out/ntpclient ${BIN_DIR}/ntpclient/
 
 	COMMAND mkdir -p ${BIN_DIR}/tinycurl
 	COMMAND cp -a ${PROJECT_BINARY_DIR}/tinycurl/out/bin/curl ${BIN_DIR}/tinycurl/
 
 	COMMAND mkdir -p ${BIN_DIR}/untrunc
-	COMMAND cp ${PROJECT_BINARY_DIR}/untrunc/out/untrunc ${BIN_DIR}/untrunc/
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/untrunc/out/untrunc ${BIN_DIR}/untrunc/
 
 	COMMAND mkdir -p ${BIN_DIR}/scripts
-	COMMAND cp ${busybox_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
-	COMMAND cp ${dosfstools_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
-	COMMAND cp ${dropbear_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
-	COMMAND cp ${ffmpeg_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
-	COMMAND cp ${ntpclient_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
-	COMMAND cp ${tinycurl_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
-	COMMAND cp ${SCRIPTS_DIR}/* ${BIN_DIR}/
-	COMMAND cp ${CMAKE_SOURCE_DIR}/VERSION ${BIN_DIR}/
+	COMMAND cp -a ${busybox_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
+	COMMAND cp -a ${dosfstools_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
+	COMMAND cp -a ${dropbear_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
+	COMMAND cp -a ${ffmpeg_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
+	COMMAND cp -a ${ntpclient_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
+	COMMAND cp -a ${tinycurl_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
+	COMMAND cp -a ${SCRIPTS_DIR}/* ${BIN_DIR}/
+	COMMAND cp -a ${CMAKE_SOURCE_DIR}/VERSION ${BIN_DIR}/
+
 	DEPENDS bearssl busybox dosfstools dropbear ffmpeg ntpclient tinycurl untrunc
 )
 
