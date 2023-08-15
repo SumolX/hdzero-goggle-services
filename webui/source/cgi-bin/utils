@@ -65,7 +65,7 @@ utils_is_client_authorized() {
         dt=`TZ=GMT date -d '-1 day' '+%a, %d %b %Y %T %Z'`
         echo "Set-Cookie: token=$token;expires=$dt;path=/"      
     
-        if [-z $1] then
+        if [ -z "$1" ]; then
             echo "Content-Type: text/html"
             echo ""
             echo "Status: 200 OK"
