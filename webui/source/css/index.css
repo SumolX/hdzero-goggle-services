@@ -102,7 +102,7 @@ main {
     margin-right: 4px;
 }
 
-ul .instruction {
+ul.instruction {
     list-style-type: none;
     padding: 0px;
     margin: 0px;
