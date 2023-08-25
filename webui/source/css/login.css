@@ -1,22 +1,26 @@
-#dialog div:first-child {
-    margin: 300px auto;
-    padding: 10px;
-    border: 3px solid #646464;
-    background-color: #313131;
-    border-radius: 10px;
-    width: 250px;
-}
 
-#dialog h3 {
-    width: 100%;
-    padding: 5px;
-    text-align: center;
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: auto;
+    /*min-height: 100vh;*/
+    height: auto;
+    padding-top: 4px;
 }
 
 section.login {
     display: block;
     width: 350px;
     margin: 100px auto;
+}
+
+label {
+    float: left;
+}
+
+.inputcontainer {
+    margin-bottom: 4px;
 }
 
 .logincontainer {

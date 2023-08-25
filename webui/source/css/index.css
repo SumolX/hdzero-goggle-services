@@ -1,93 +1,101 @@
-#dialog div:first-child {
-    margin: 300px auto;
-    padding: 10px;
-    border: 3px solid #646464;
-    background-color: #313131;
-    border-radius: 10px;
-    width: 250px;
+
+.video-js .vjs-remaining-time {
+    display: contents;
 }
 
-#dialog h3 {
-    width: 100%;
-    padding: 5px;
-    text-align: center;
+main {
+    display: block;
+    width: auto;
+    height: auto;
 }
 
-section.player {
+.video {
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    padding-top: 4px;
 }
 
-section.console {
-    margin-top:2px;
-    margin-bottom: 5px;
-    display: none;
+.video > * {
+    flex: 1 100%;
 }
 
-section.owner {
-    display: none;
+.player {
+    margin-bottom: 3px;
 }
 
-.left {
-    width: 55%;
-    margin-right: 6px;
-    float: left;
+.list {
+    margin-top: 4px;
+    min-height: 260px;
+    max-height: 380px;
+    border: 1px solid pink;
+    border-radius: 4px;
+    overflow: scroll;
+}
+
+#console {
+    min-height: 140px;
     text-align: left;
-    overflow: hidden;
-}
-
-.right {
-    width: 45%;
-    padding: 0px;
-    float: left;
-    text-align: left;
+    border-radius: 4px;
     overflow-wrap: break-word;
 }
 
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* video */
-
-.video {
+/* console elements*/
+.video-mode {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-evenly;
+    margin-bottom: 3px;
 }
 
-.video input[type="radio"] {
+.video-mode input[type="radio"] {
     display: none;
+    margin: 0;
 }
 
-.video label {
+.video-mode label {
     color: #ffffff;
-    box-sizing: content-box;
+    /*box-sizing: content-box;*/
     background-color: #646464;
     border-radius: 4px;
     text-align: center;
     padding: 3px;
     cursor: pointer;
-    width: 50%;
+    flex: 1 50%;
 }
 
-.video label:hover {
+.video-mode label:hover {
     opacity: 0.8;
 }
 
-.video input[type="radio"]:checked + label {
+.video-mode input[type="radio"]:checked + label {
     color: #ffffff;
     background-color: #ff0000;
 }
 
-/* right panel elements */
-
-.videoname {
-    margin-bottom: 8px;
+.editcontainer {
+    margin-top: 5px;
 }
 
-.editcontainer button {
-    display: inline-block;
-    width: 49%;
+.editcontainer div:first-child label {
+    font-size: .85em;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.editcontainer div:first-child input {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 2px auto 0 auto;
+}
+
+.editcontainer div:nth-child(2) {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 3px auto 0 auto;
 }
 
 ul.instruction {
@@ -97,92 +105,59 @@ ul.instruction {
 }
 
 .instruction li {
-    margin: 10px 0px 0px 10px;
+    margin: 0px 0px 0px 4px;
     padding: 0px;
+    font-size: .9em;
 }
 
-/* left panel elements */
-
-.list {
+/* list elements */
+.list table {
     width: 100%;
+    height: 100%;
     color: #ffffff;
+    table-layout: fixed;
     border-collapse: collapse;
     border-spacing: 0px;
-    border-radius: 4px;
 }
 
-.list thead,
+.list table thead,
 tbody {
-    display: inline-block;
-    background-color: #4d4d4d;
-    border-radius: 4px;
-    width: 100%;
-}
-.list table {
-    table-layout: fixed;
+    box-sizing: border-box;
+    width: auto;
 }
 
-.list th, td {
-    width: 100px;
-    overflow: hidden;
-    border: 1px solid pink;
-}
-
-.list thead {
-    color: #ffffff;
+.list table thead {
     background-color: #646464;
-    border: 1px solid #646464;
 }
 
-.list tbody {
-    margin-top: 4px;
-    height: 330px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    border: 1px solid #646464;
+.list table tbody {
+    background-color: #4d4d4d;
 }
 
-.list tbody tr {
-    width: 100%;
-    display: block;
+.list table tbody tr {
+    border-bottom: 1px solid pink;
 }
 
-.list thead tr th:first-child {
-    width: 180px;
-    /*width: 94px;*/
+.list table thead tr th:first-child, td:first-child {
+    text-align: left;
+    padding-left: 4px;
+    border-right: 1px solid pink;
+}
+
+.list table thead tr th:nth-child(2), td:nth-child(2) {
+    padding-right: 4px;
+    text-align: right;
+    border-right: 1px solid pink;
+}
+
+.list table thead tr th:nth-child(3), td:nth-child(3) {
     text-align: left;
     padding-left: 4px;
 }
 
-.list tbody tr td:first-child {
-    width: 180px;
-    /*width: 106px;*/
-    text-align: left;
-    padding-left: 8px;
-    overflow: visible;
-}
-
-.list thead tr th:nth-child(2) {
-    width: 90px;
-    /*width: 74px;*/
-    text-align: right;
-}
-
-.list tbody tr td:nth-child(2) {
-    width: 90px;
-    /*width: 42px;*/
-    text-align: right;
-}
-
-.list thead tr th:nth-child(3) {
-    width: 140px;
-    text-align: left;
-}
-
-.list tbody tr td:nth-child(3) {
-    width: 140px;
-    text-align: left;
-    padding-left: 10px;
+/* size MG span */
+.fsizeunit {
+    font-size: .7em;
 }
 
 .selected {
@@ -194,103 +169,98 @@ tbody {
     opacity: .7;
 }
 
-@media only screen and (max-width: 415px) {
-    section.row{
-        font-size: .75em;
-    }
-    
-    .left {
-        width: 100%;
+@media all and (min-width: 440px) {
+
+    .list {
+        order: 2;
+        margin-right: 4px;
+        flex: 1.3 0 0;
     }
 
-    .right {
-        width: 100%;
-    }
-
-    .list thead tr th:first-child {
-        width: 160px;
-        text-align: left;
-    }
-
-    .list tbody tr td:first-child {
-        width: 160px;
-        text-align: left;
-        overflow: visible;
-    }
-
-    .list thead tr th:nth-child(2) {
-        width: 90px;
-        text-align: right;
-    }
-
-    .list tbody tr td:nth-child(2) {
-        width: 90px;
-        text-align: right;
-    }
-
-    .list thead tr th:nth-child(3) {
-        width: 120px;
-        text-align: left;
-    }
-
-    .list tbody tr td:nth-child(3) {
-        width: 120px;
-        text-align: left;
+    #console {
+        order: 3;
+        flex: .7 0 0;
     }
 }
 
-@media only screen and (max-width: 480px) {
-    section.row {
-        font-size: .75em;
+@media all and (min-width: 840px) {
+
+    .player {
+        flex: 0 0 65%;
+        max-width: 1080px;
+    }
+
+    .list {
+        flex: 0 0 34%;
+        max-width: 440px;
+        max-height: 300px;
+        margin: 0px 2px 3px 4px;
+        height: 40%;
+    }
+
+    #console {
+        flex: 0 0 65%;
+        max-width: 1080px;
     }
 }
 
-@media only screen and (min-width: 416px) and (max-width: 991px) {
+@media all and (min-width: 920px) {
 
-    .editcontainer button {
-        width: 48%;
-    }
-
-    .left {
-        width: 65%;
-    }
-
-    .right {
-        width: 33%;
-    }
-
-    .list thead tr th:first-child {
-        width: 80px;
-        text-align: left;
-    }
-
-    .list tbody tr td:first-child {
-        width: 120px;
-        text-align: left;
-        word-wrap: break-word;
-    }
-
-    .list thead tr th:nth-child(2) {
-        width: 80px;
-        text-align: right;
-    }
-
-    .list tbody tr td:nth-child(2) {
-        width: 35px;
-        text-align: right;
-    }
-
-    .list thead tr th:nth-child(3) {
-        width: 108px;
-        text-align: left;
-    }
-
-    .list tbody tr td:nth-child(3) {
-        width: 100px;
-        text-align: left;
+    .list {
+        max-height: 330px;
     }
 }
 
-.video-js .vjs-remaining-time {
-    display: contents;
+@media all and (min-width: 1000px) {
+
+    .list {
+        max-height: 360px;
+    }
+}
+
+@media all and (min-width: 1080px) {
+
+    .list {
+        max-height: 390px;
+    }
+}
+
+@media all and (min-width: 1160px) {
+
+    .list {
+        max-height: 420px;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+
+    #console {
+        flex: 1 0 0;
+        order: 1;
+    }
+
+    .player {
+        flex: 2 0 0;
+        order: 2;
+    }
+
+    .list {
+        flex: 1 0 0;
+        order: 3;
+        max-height: 350px;
+    }
+}
+
+@media all and (min-width: 1380px) {
+
+    .list {
+        max-height: 380px;
+    }
+}
+
+@media all and (min-width: 1480px) {
+
+    .list {
+        max-height: 420px;
+    }
 }

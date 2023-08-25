@@ -5,11 +5,10 @@
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="/css/global.css?version=9">
-    <link rel="stylesheet" href="/css/login.css?version=9">
-    <script src="/script/global.js"></script>
+    <link rel="stylesheet" href="/css/global.css?version=23">
+    <link rel="stylesheet" href="/css/login.css?version=23">
+    <script src="/script/global.js?version=23"></script>
     <title>Goggle Login</title>
-
 </head>
 <body>
     <header>
@@ -20,7 +19,7 @@
             </div>
         </div>
     </header>
-    <article>
+    <main>
         <section id="dialog" class="animate modal">
             <div>
                 <h3 id="d-title"></h3>
@@ -38,19 +37,14 @@
                     </div>
                     <div class="inputcontainer">
                         <label for="pswd"><b>Password</b></label>
-                        <input id="pswd" type="password" name="password" maxlength="20" required>
+                        <input id="pswd" type="password" name="password" maxlength="20" required onkeyup="checkEnter(event)">
                     </div>
                     <button type="submit" onclick="getAuthorization()">Login</button>
                     <button type="button" onclick="returnFromLogin()">Cancel</button>
                 </div>
         </section>
-</article>
+    </main>
     <footer></footer>
-    <script>
-
-        
-
-    </script>
 </body>
 
 </html>
