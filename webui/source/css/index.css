@@ -98,7 +98,11 @@ main {
     margin: 3px auto 0 auto;
 }
 
-ul.instruction {
+.editcontainer div:nth-child(2) button:first-child {
+    margin-right: 4px;
+}
+
+ul .instruction {
     list-style-type: none;
     padding: 0px;
     margin: 0px;
