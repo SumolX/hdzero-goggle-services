@@ -1,6 +1,7 @@
 function hideElement(element) {
     element.classList.toggle("display-block");
-   
+}
+
 function checkEnter(event) {
     if (event.keyCode === 13 || event.key === 'Enter') {
         getAuthorization();
@@ -44,7 +45,7 @@ function init_page() {
         //owner.style.display = "block";
         login.style.display = "none";
         logout.style.display = "flex";
-        get_list()
+        get_list();
     }
     else {
         login.style.display = "flex";
