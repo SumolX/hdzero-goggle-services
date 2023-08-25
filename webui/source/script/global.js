@@ -158,7 +158,7 @@ function get_list() {
             console.log(json.dvr[prop]);
             const msize = Math.round(json.dvr[prop].size / Math.pow(1024, 2), 1);
 
-            tr.innerHTML = '<td>' + json.dvr[prop].file + '</td>' + '<td>' + msize + '<span class=\'fsizeunit\'>MG</span>'
+            tr.innerHTML = '<td>' + json.dvr[prop].file + '</td>' + '<td>' + msize + '<span class=\'fsizeunit\'>MB</span>'
                 + '</td>' + '<td>' + json.dvr[prop].date + '</td>';
             tbody.appendChild(tr);
         });
