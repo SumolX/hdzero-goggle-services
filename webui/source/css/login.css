@@ -15,12 +15,27 @@ section.login {
     margin: 100px auto;
 }
 
-label {
-    float: left;
-}
-
 .inputcontainer {
     margin-bottom: 4px;
+}
+
+#usr {
+    pointer-events: none;
+    opacity: .8;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+input[type=password] {
+    color: #ffffff;
+    background-color: #646464;
+    border-radius: 4px;
+    font-size: 1.2em;
+    border-style: none;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .logincontainer {
@@ -30,11 +45,6 @@ label {
 }
 
 .logincontainer .inputcontainer:first-child label {
-    opacity: .8;
-}
-
-#usr {
-    pointer-events: none;
     opacity: .8;
 }
 

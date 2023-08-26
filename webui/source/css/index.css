@@ -33,7 +33,8 @@ main {
     max-height: 380px;
     border: 1px solid pink;
     border-radius: 4px;
-    overflow: scroll;
+    overflow-x: auto;
+    display: none;
 }
 
 #console {
@@ -41,6 +42,7 @@ main {
     text-align: left;
     border-radius: 4px;
     overflow-wrap: break-word;
+    display: none;
 }
 
 /* console elements*/
@@ -86,11 +88,12 @@ main {
     text-align: center;
 }
 
-.editcontainer div:first-child input {
-    box-sizing: border-box;
-    width: 100%;
-    margin: 2px auto 0 auto;
-}
+    .editcontainer div:first-child input {
+        box-sizing: border-box;
+        width: 100%;
+        margin: 2px auto 0 auto;
+        maxlength ="20";
+    }
 
 .editcontainer div:nth-child(2) {
     display: flex;
@@ -146,17 +149,26 @@ tbody {
     text-align: left;
     padding-left: 4px;
     border-right: 1px solid pink;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 40%;
 }
 
 .list table thead tr th:nth-child(2), td:nth-child(2) {
     padding-right: 4px;
     text-align: right;
     border-right: 1px solid pink;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 25%;
 }
 
 .list table thead tr th:nth-child(3), td:nth-child(3) {
     text-align: left;
     padding-left: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 35%;
 }
 
 /* size MG span */

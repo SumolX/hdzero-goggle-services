@@ -40,9 +40,9 @@ function init_page() {
 
     if (au) {
         const console = document.getElementById("console");
-        const owner = document.getElementById("owner");
+        const list = document.getElementById("list");
         console.style.display = "block";
-        //owner.style.display = "block";
+        list.style.display = "block";
         login.style.display = "none";
         logout.style.display = "flex";
         get_list();

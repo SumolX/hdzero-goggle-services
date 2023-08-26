@@ -5,6 +5,7 @@ body {
     font: 1em RaleWay, Open Sans, Helvetica, sans-serif;
     color: #ffffff;
     background: #313131;
+    overflow-x: auto;
 }
 
 h1,
