@@ -47,15 +47,13 @@ on_dvr_delete() {
 }
 
 on_dvr_m3u8() {
-    echo "#EXTM3U" > ${HDZ_DVR_M3U8}
-    echo "#EXT-X-VERSION:3" >> ${HDZ_DVR_M3U8}
-    echo "#EXT-X-MEDIA-SEQUENCE:0" >> ${HDZ_DVR_M3U8}
-    echo "#EXT-X-ALLOW-CACHE:YES" >> ${HDZ_DVR_M3U8}
-    echo "#EXT-X-TARGETDURATION:900" >> ${HDZ_DVR_M3U8}
-    echo "#EXTINF:900.000000," >> ${HDZ_DVR_M3U8}
-    echo "../${MEDIA_PATH}/$1" >> ${HDZ_DVR_M3U8}
-    echo "#EXT-X-ENDLIST" >> ${HDZ_DVR_M3U8}
-
+    kill -9 $(cat ${HDZ_DVR_PATH}/ffmpeg.pid) > /dev/null 2>&1
+    rm -rf ${HDZ_DVR_PATH}/*
+    ffmpeg -i ../${MEDIA_PATH}/$1 -b:v 2048K -preset veryfast -start_number 0 -f hls -hls_time 3 -hls_list_size 30 -hls_flags independent_segments+delete_segments -hls_segment_type fmp4 -movflags faststart+frag_keyframe+empty_moov ${HDZ_DVR_M3U8} > /dev/null 2>&1 &
+    echo "$!" > ${HDZ_DVR_PATH}/ffmpeg.pid
+    while [[ ! -f "${HDZ_DVR_PATH}/hdz0.m4s" ]]; do
+        sleep 0.1
+    done
     echo "Status: 200 OK"
 }
 

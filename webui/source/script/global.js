@@ -109,28 +109,31 @@ function getAuthorization() {
 }
 
 // Player Functionality
-function selectVideo() {
-    var ipFileName = document.getElementById("videoname")
-    var fName = this.getElementsByTagName("td")[0].innerHTML.split('.')[0];
-    var fType = this.getElementsByTagName("td")[0].innerHTML.split('.')[1];
-    ipFileName.value = fName;
-    toggleSelection(fName);
+function selectVideo(source) {
+    if (source == "stream") {
+        player.src({ type: "application/x-mpegURL", src: "live/hdz.m3u8" });
+        player.play();
+    } else {
+        try {
+            var ipFileName = document.getElementById("videoname")
+            var fName = this.getElementsByTagName("td")[0].innerHTML.split('.')[0];
+            var fType = this.getElementsByTagName("td")[0].innerHTML.split('.')[1];
+            ipFileName.value = fName;
+            toggleSelection(fName);
 
-    player.poster("movies/" + fName + '.jpg');
+            player.poster("movies/" + fName + '.jpg');
+            player.hasStarted(false);
+            player.currentTime(0);
+            player.bigPlayButton.hide();
 
-    if (fType === "ts") {
-        (async () => {
-            const res = await fetch("/cgi-bin/dvr?m3u8=" + fName + ".ts", {});
-            player.src({ type: "application/x-mpegURL", src: "dvr/hdz.m3u8" });
-        })();
+            (async () => {
+                const res = await fetch("/cgi-bin/dvr?m3u8=" + fName + "." + fType, {});
+                player.src({ type: "application/x-mpegURL", src: "dvr/hdz.m3u8" });
+                player.play();
+            })();
+        } catch {
+        }
     }
-    else {
-        player.src({ type: "video/mp4", src: "movies/" + fName + ".mp4" });
-    }
-}
-
-function liveView() {
-    player.src({ type: "application/x-mpegURL", src: "live/hdz.m3u8" });
 }
 
 /*function toggleMode() {
