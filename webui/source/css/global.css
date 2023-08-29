@@ -1,7 +1,7 @@
 html,
 body {
     margin: 0;
-    padding: 0 2px 0 2px;
+    padding: 0;
     font: 1em RaleWay, Open Sans, Helvetica, sans-serif;
     color: #ffffff;
     background: #313131;
@@ -20,7 +20,7 @@ h5 {
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 1.8em;
 }
 
 h2 {
@@ -72,22 +72,34 @@ label {
 }
 
 /* page layout */
+main {
+    display: grid;
+    gap: 4px;
+    grid-template-columns: 29% 30% 40%;
+    grid-template-rows: auto auto auto auto auto;
+    padding: 2px 3px 3px 3px;
+    border: 1px solid #800015;
+}
+
+header {
+    grid-column: span 3;
+}
+
+footer {
+    grid-column: span 3;
+    text-align: center;
+    background: #313131;
+    border-top: 3px solid #ff0000;
+    padding: 2px 0 2px 0;
+}
+
 .nav {
     padding: 0;
     border-bottom: 3px solid #ff0000;
     display: flex;
     justify-content: flex-end;
     width: auto;
-    height: 40px;
-}
-
-footer {
-    text-align: center;
-    margin-top: 4px;
-    padding-top: 10px;
-    height: 25px;
-    background: #313131;
-    border-top: 3px solid #ff0000;
+    height: auto;
 }
 
 /* logo */

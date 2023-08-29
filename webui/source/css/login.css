@@ -1,16 +1,11 @@
 
 main {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: auto;
-    /*min-height: 100vh;*/
-    height: auto;
-    padding-top: 4px;
+    max-width: 1520px;
+    margin: 0 auto;
 }
 
 section.login {
-    display: block;
+    grid-column: span 3;
     width: 350px;
     margin: 100px auto;
 }

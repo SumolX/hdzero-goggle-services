@@ -48,8 +48,10 @@ function init_page() {
         get_list();
     }
     else {
+        const player = document.getElementById("player");
         login.style.display = "flex";
         logout.style.display = "none";
+        player.style.gridColumn = "span 3";
     }
 }
 

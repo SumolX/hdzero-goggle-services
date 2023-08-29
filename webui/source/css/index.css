@@ -2,50 +2,23 @@
 .video-js .vjs-remaining-time {
     display: contents;
 }
-
-main {
-    display: block;
-    width: auto;
-    height: auto;
+ 
+#player {
+    grid-column: span 3;
 }
 
-.video {
-    width: auto;
-    height: auto;
-    margin: 0 auto;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    padding-top: 4px;
-}
-
-.video > * {
-    flex: 1 100%;
-}
-
-.player {
-    margin-bottom: 3px;
-}
-
-.list {
-    margin-top: 4px;
-    min-height: 260px;
-    max-height: 380px;
-    border: 1px solid pink;
-    border-radius: 4px;
-    overflow-x: auto;
+#list {
+    grid-column: span 3;
     display: none;
 }
 
 #console {
-    min-height: 140px;
+    grid-column: span 3;
     text-align: left;
-    border-radius: 4px;
     overflow-wrap: break-word;
     display: none;
 }
 
-/* console elements*/
 .video-mode {
     display: flex;
     justify-content: space-evenly;
@@ -59,7 +32,7 @@ main {
 
 .video-mode label {
     color: #ffffff;
-    /*box-sizing: content-box;*/
+    box-sizing: content-box;
     background-color: #646464;
     border-radius: 4px;
     text-align: center;
@@ -78,7 +51,7 @@ main {
 }
 
 .editcontainer {
-    margin-top: 5px;
+    padding-right: 3px;
 }
 
 .editcontainer div:first-child label {
@@ -88,17 +61,17 @@ main {
     text-align: center;
 }
 
-    .editcontainer div:first-child input {
-        box-sizing: border-box;
-        width: 100%;
-        margin: 2px auto 0 auto;
-        maxlength ="20";
-    }
+.editcontainer div:first-child input {
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 2px;
+}
 
 .editcontainer div:nth-child(2) {
     display: flex;
-    justify-content: space-evenly;
-    margin: 3px auto 0 auto;
+    box-sizing: border-box;
+    justify-content: center;
+    margin-top: 3px;
 }
 
 .editcontainer div:nth-child(2) button:first-child {
@@ -118,34 +91,47 @@ ul.instruction {
 }
 
 /* list elements */
-.list table {
-    width: 100%;
-    height: 100%;
+.list-container {
+    display: block;
+    border: 1px solid pink;
+    border-radius: 4px;
+    max-height: 400px;
+    min-height: 0;
+    overflow-x: auto;
+}
+
+.list-container table {
     color: #ffffff;
     table-layout: fixed;
     border-collapse: collapse;
     border-spacing: 0px;
+    width: 100%;
 }
 
-.list table thead,
+.list-container table thead,
 tbody {
     box-sizing: border-box;
     width: auto;
 }
 
-.list table thead {
+.list-container table thead {
     background-color: #646464;
 }
 
-.list table tbody {
+.list-container table tbody {
     background-color: #4d4d4d;
+    overflow-x: scroll;
 }
 
-.list table tbody tr {
+.list-container table tbody tr {
     border-bottom: 1px solid pink;
 }
 
-.list table thead tr th:first-child, td:first-child {
+.list-container table tbody tr:hover {
+    color: pink;
+}
+
+.list-container table thead tr th:first-child, td:first-child {
     text-align: left;
     padding-left: 4px;
     border-right: 1px solid pink;
@@ -154,7 +140,7 @@ tbody {
     width: 40%;
 }
 
-.list table thead tr th:nth-child(2), td:nth-child(2) {
+.list-container table thead tr th:nth-child(2), td:nth-child(2) {
     padding-right: 4px;
     text-align: right;
     border-right: 1px solid pink;
@@ -163,7 +149,7 @@ tbody {
     width: 25%;
 }
 
-.list table thead tr th:nth-child(3), td:nth-child(3) {
+.list-container table thead tr th:nth-child(3), td:nth-child(3) {
     text-align: left;
     padding-left: 4px;
     overflow: hidden;
@@ -187,96 +173,87 @@ tbody {
 
 @media all and (min-width: 440px) {
 
-    .list {
-        order: 2;
-        margin-right: 4px;
-        flex: 1.3 0 0;
+    main {
+        grid-template-rows: auto auto auto auto;
+    }
+
+    #list {
+        grid-row: 3;
+        grid-column-start: 1;
+        grid-column: span 2;
     }
 
     #console {
-        order: 3;
-        flex: .7 0 0;
+        grid-row: 3;
+        grid-column-start: 3;
     }
 }
 
-@media all and (min-width: 840px) {
+@media all and (min-width: 780px) {
 
-    .player {
-        flex: 0 0 65%;
-        max-width: 1080px;
-    }
-
-    .list {
-        flex: 0 0 34%;
-        max-width: 440px;
-        max-height: 300px;
-        margin: 0px 2px 3px 4px;
-        height: 40%;
-    }
-
-    #console {
-        flex: 0 0 65%;
-        max-width: 1080px;
-    }
-}
-
-@media all and (min-width: 920px) {
-
-    .list {
-        max-height: 330px;
-    }
-}
-
-@media all and (min-width: 1000px) {
-
-    .list {
-        max-height: 360px;
+    main {
+        max-width: 780px;
+        margin: 0 auto;
     }
 }
 
 @media all and (min-width: 1080px) {
 
-    .list {
-        max-height: 390px;
+    main {
+        grid-template-columns: 40% 30% 29%;
+        max-width: 1520px;
+        padding: 2px 3px 2px 3px;
+        margin: 0 auto;
     }
-}
 
-@media all and (min-width: 1160px) {
-
-    .list {
-        max-height: 420px;
+    #list {
+        grid-column-start: 3;
+        grid-row-start: 2;
+        grid-row: span 2;
     }
-}
 
-@media only screen and (min-width: 1280px) {
+    #player {
+        grid-column: span 2;
+    }
 
     #console {
-        flex: 1 0 0;
-        order: 1;
+        grid-row-start: 3;
+        grid-column: span 2;
     }
 
-    .player {
-        flex: 2 0 0;
-        order: 2;
+    .list-container {
+        max-height: 548px;
     }
+      
+ }
 
-    .list {
-        flex: 1 0 0;
-        order: 3;
-        max-height: 350px;
-    }
-}
+@media all and (min-width: 1170px) {
 
-@media all and (min-width: 1380px) {
-
-    .list {
-        max-height: 380px;
+    .list-container {
+        max-height: 588px;
     }
 }
 
-@media all and (min-width: 1480px) {
+@media all and (min-width: 1260px) {
 
-    .list {
-        max-height: 420px;
+    .list-container {
+        max-height: 628px;
     }
 }
+
+@media all and (min-width: 1350px) {
+
+    .list-container {
+        max-height: 668px;
+    }
+}
+
+@media all and (min-width: 1440px) {
+    
+    .list-container {
+        max-height: 708px;
+    }
+}
+
+
+        
