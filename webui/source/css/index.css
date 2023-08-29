@@ -1,10 +1,10 @@
-
 .video-js .vjs-remaining-time {
     display: contents;
 }
- 
+
 #player {
     grid-column: span 3;
+    padding-right: 3px;
 }
 
 #list {
@@ -45,7 +45,7 @@
     opacity: 0.8;
 }
 
-.video-mode input[type="radio"]:checked + label {
+.video-mode input[type="radio"]:checked+label {
     color: #ffffff;
     background-color: #ff0000;
 }
@@ -78,26 +78,14 @@
     margin-right: 4px;
 }
 
-ul.instruction {
-    list-style-type: none;
-    padding: 0px;
-    margin: 0px;
-}
-
-.instruction li {
-    margin: 0px 0px 0px 4px;
-    padding: 0px;
-    font-size: .9em;
-}
-
 /* list elements */
 .list-container {
     display: block;
-    border: 1px solid pink;
-    border-radius: 4px;
+    #border: 1px solid pink;
     max-height: 400px;
     min-height: 0;
     overflow-x: auto;
+    padding-right: 3px;
 }
 
 .list-container table {
@@ -124,32 +112,37 @@ tbody {
 }
 
 .list-container table tbody tr {
-    border-bottom: 1px solid pink;
+    #border-bottom: 1px solid pink;
 }
 
 .list-container table tbody tr:hover {
-    color: pink;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #646464;
 }
 
-.list-container table thead tr th:first-child, td:first-child {
+.list-container table thead tr th:first-child,
+td:first-child {
     text-align: left;
     padding-left: 4px;
-    border-right: 1px solid pink;
+    #border-right: 1px solid pink;
     overflow: hidden;
     white-space: nowrap;
     width: 40%;
 }
 
-.list-container table thead tr th:nth-child(2), td:nth-child(2) {
+.list-container table thead tr th:nth-child(2),
+td:nth-child(2) {
     padding-right: 4px;
     text-align: right;
-    border-right: 1px solid pink;
+    #border-right: 1px solid pink;
     overflow: hidden;
     white-space: nowrap;
     width: 25%;
 }
 
-.list-container table thead tr th:nth-child(3), td:nth-child(3) {
+.list-container table thead tr th:nth-child(3),
+td:nth-child(3) {
     text-align: left;
     padding-left: 4px;
     overflow: hidden;
@@ -163,8 +156,8 @@ tbody {
 }
 
 .selected {
-    color: #ffffff;
-    background: #ff0000;
+    color: #ffffff !important;
+    background: #ff0000 !important;
 }
 
 .highlight {
@@ -224,8 +217,8 @@ tbody {
     .list-container {
         max-height: 548px;
     }
-      
- }
+
+}
 
 @media all and (min-width: 1170px) {
 
@@ -249,11 +242,8 @@ tbody {
 }
 
 @media all and (min-width: 1440px) {
-    
+
     .list-container {
         max-height: 708px;
     }
 }
-
-
-        

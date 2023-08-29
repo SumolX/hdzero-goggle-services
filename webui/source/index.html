@@ -42,7 +42,7 @@
         </header>
         <article id="player">
             <video id="video-player" class="video-js vjs-default-skin vjs-16-9" playsinline controls preload="auto"
-                   poster="images/HDtou-01.webp" data-setup='{}'>
+                poster="images/HDtou-01.webp" data-setup='{}'>
                 <source src="live/hdz.m3u8" type="application/x-mpegURL" />
             </video>
             <script>
@@ -50,9 +50,6 @@
             </script>
         </article>
         <article id="console">
-            <ul class="instruction">
-                <li>Click the directory listing to select a file.</li>
-            </ul>
             <div class="video-mode">
                 <input type="radio" id="videostream" name="videomode" value="stream" checked />
                 <label for="videostream"><b>Stream</b></label>
@@ -61,12 +58,11 @@
             </div>
             <div class="editcontainer">
                 <div>
-                    <label for="videoname"><b>Video Name</b></label>
-                    <input id="videoname" type="text" maxlength="20">
+                    <input id="videoname" type="text" placeholder="Select DVR Video" maxlength="20">
                 </div>
                 <div>
-                    <button type="button" onclick="modifyFile()">Modify</button>
-                    <button type="button" onclick="removeFile()">Remove</button>
+                    <button type="button" onclick="modifyFile()">Rename</button>
+                    <button type="button" onclick="removeFile()">Delete</button>
                 </div>
             </div>
         </article>
