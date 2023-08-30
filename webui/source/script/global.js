@@ -65,18 +65,18 @@ function returnFromLogin() {
 }
 
 function togglehover(element) {
-    const src = element.src.substring(element.src.lastIndexOf('/') + 1);
+    const src = element.childNodes[1].src.substring(element.childNodes[1].src.lastIndexOf('/') + 1);
     if (src === 'HDZLogin.gif') {
-        element.setAttribute('src', 'images/HDZLoginW.gif');
+        element.childNodes[1].setAttribute('src', 'images/HDZLoginW.gif');
     }
     else if (src === 'HDZLoginW.gif') {
-        element.setAttribute('src', 'images/HDZLogin.gif');
+        element.childNodes[1].setAttribute('src', 'images/HDZLogin.gif');
     }
     else if (src === 'HDZLogout.gif') {
-        element.setAttribute('src', 'images/HDZLogoutW.gif');
+        element.childNodes[1].setAttribute('src', 'images/HDZLogoutW.gif');
     }
     else if (src === 'HDZLogoutW.gif') {
-        element.setAttribute('src', 'images/HDZLogout.gif');
+        element.childNodes[1].setAttribute('src', 'images/HDZLogout.gif');
     }
 }
 
