@@ -1,3 +1,5 @@
+var gSelectedDvrFile;
+
 function hideElement(element) {
     element.classList.toggle("display-block");
 }
@@ -109,30 +111,30 @@ function getAuthorization() {
 }
 
 // Player Functionality
-function selectVideo(source) {
+function selectVideo() {
+    gSelectedDvrFile = this.getElementsByTagName("td")[0].innerHTML;
+    var ipFileName = document.getElementById("videoname");
+    var fName = gSelectedDvrFile.split('.')[0];
+    ipFileName.value = fName;
+    toggleSelection(fName);
+
+    player.poster("movies/" + fName + '.jpg');
+    player.hasStarted(false);
+    player.currentTime(0);
+    player.bigPlayButton.hide();
+}
+
+function playVideo(source) {
+    fetch("/cgi-bin/dvr?stop");
     if (source == "stream") {
         player.src({ type: "application/x-mpegURL", src: "live/hdz.m3u8" });
         player.play();
     } else {
-        try {
-            var ipFileName = document.getElementById("videoname")
-            var fName = this.getElementsByTagName("td")[0].innerHTML.split('.')[0];
-            var fType = this.getElementsByTagName("td")[0].innerHTML.split('.')[1];
-            ipFileName.value = fName;
-            toggleSelection(fName);
-
-            player.poster("movies/" + fName + '.jpg');
-            player.hasStarted(false);
-            player.currentTime(0);
-            player.bigPlayButton.hide();
-
-            (async () => {
-                const res = await fetch("/cgi-bin/dvr?m3u8=" + fName + "." + fType, {});
-                player.src({ type: "application/x-mpegURL", src: "dvr/hdz.m3u8" });
-                player.play();
-            })();
-        } catch {
-        }
+        (async () => {
+            const res = await fetch("/cgi-bin/dvr?play=" + gSelectedDvrFile, {});
+            player.src({ type: "application/x-mpegURL", src: "dvr/hdz.m3u8" });
+            player.play();
+        })();
     }
 }
 

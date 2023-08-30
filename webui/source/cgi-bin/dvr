@@ -46,9 +46,8 @@ on_dvr_delete() {
     fi
 }
 
-on_dvr_m3u8() {
-    kill -9 $(cat ${HDZ_DVR_PATH}/ffmpeg.pid) > /dev/null 2>&1
-    rm -rf ${HDZ_DVR_PATH}/*
+on_dvr_play() {
+    on_dvr_stop
     ffmpeg -i ../${MEDIA_PATH}/$1 -b:v 2048K -preset veryfast -start_number 0 -f hls -hls_time 3 -hls_list_size 30 -hls_flags independent_segments+delete_segments -hls_segment_type fmp4 -movflags faststart+frag_keyframe+empty_moov ${HDZ_DVR_M3U8} > /dev/null 2>&1 &
     echo "$!" > ${HDZ_DVR_PATH}/ffmpeg.pid
     while [[ ! -f "${HDZ_DVR_PATH}/hdz0.m4s" ]]; do
@@ -57,18 +56,14 @@ on_dvr_m3u8() {
     echo "Status: 200 OK"
 }
 
+on_dvr_stop() {
+    kill -9 $(cat ${HDZ_DVR_PATH}/ffmpeg.pid) > /dev/null 2>&1
+    rm -rf ${HDZ_DVR_PATH}/*
+    echo "Status: 200 OK"
+}
+
 on_dvr_image() {
     utils_send_image_file "${MOVIE_PATH}" "$1"
-}
-
-on_dvr_play() {
-    utils_send_video_file "${MOVIE_PATH}" "$1"
-}
-
-on_dvr_stop() {
-    echo "Content-Type: text/html"
-    echo ""
-    echo "Stop command not implemented"
 }
 
 # Parse Request
@@ -84,13 +79,11 @@ else
         on_dvr_rename "${2#*=}" "${3#*=}"
     elif [ ${key} == "delete" ]; then
         on_dvr_delete "${1#*=}"
-    elif [ ${key} == "m3u8" ]; then
-        on_dvr_m3u8 "${1#*=}"
-    elif [ ${key} == "image" ]; then
-        on_dvr_image "${1#*=}"
     elif [ ${key} == "play" ]; then
         on_dvr_play "${1#*=}"
     elif [ ${key} == "stop" ]; then
         on_dvr_stop
+    elif [ ${key} == "image" ]; then
+        on_dvr_image "${1#*=}"
     fi
 fi
