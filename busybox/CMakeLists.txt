@@ -1,12 +1,13 @@
 cmake_minimum_required(VERSION 3.14)
 project (busybox C)
 
+# Load Modules
 include(FetchContent)
 
 FetchContent_Declare(
 	busybox
 	GIT_REPOSITORY "https://git.busybox.net/busybox.git"
-	GIT_TAG        "1_27_2"
+	GIT_TAG        "1_36_1"
 	SOURCE_DIR     "src"
 	BINARY_DIR     "out"
 )
