@@ -13,7 +13,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(untrunc)
 
 set(
-    FFMPEG_OPTIONS
+    UNTRUNC_FFMPEG_OPTIONS
     --prefix=${untrunc_BINARY_DIR}
     --disable-everything
     --enable-version3
@@ -53,7 +53,7 @@ set(
 if(DEFINED CMAKE_TOOLCHAIN_FILE)
 list(
     APPEND
-    FFMPEG_OPTIONS
+    UNTRUNC_FFMPEG_OPTIONS
     --enable-cross-compile
     --cross-prefix=${COMPILER_PATH}/${TARGET_PLATFORM}-
     --arch=arm
@@ -78,7 +78,7 @@ set(
 endif()
 
 execute_process(
-	COMMAND ./configure ${FFMPEG_OPTIONS}
+	COMMAND ./configure ${UNTRUNC_FFMPEG_OPTIONS}
 	WORKING_DIRECTORY ${untrunc_SOURCE_DIR}/libav
 )
 
