@@ -28,7 +28,6 @@ add_custom_command(
 )
 endif()
 
-
 add_custom_command(
 	OUTPUT tinycurl_cleanall
 	COMMAND find . -name '*.o' -delete
