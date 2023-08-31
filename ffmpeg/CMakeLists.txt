@@ -68,18 +68,18 @@ list(
 endif()
 
 add_custom_command(
-	OUTPUT ffmpeg_build
+    OUTPUT ffmpeg_build
     COMMAND ./configure ${FFMPEG_OPTIONS}
-	COMMAND make -j6 && make install
+    COMMAND make -j6 && make install
     WORKING_DIRECTORY ${ffmpeg_SOURCE_DIR}
 )
 
 add_custom_command(
-	OUTPUT ffmpeg_cleanall
-	COMMAND find . -name '*.o' -delete
-	COMMAND find . -name '*.a' -delete
-	COMMAND find . -name '*.so*' -delete
-	COMMAND rm -rf ${ffmpeg_BINARY_DIR}/*
+    OUTPUT ffmpeg_cleanall
+    COMMAND find . -name '*.o' -delete
+    COMMAND find . -name '*.a' -delete
+    COMMAND find . -name '*.so*' -delete
+    COMMAND rm -rf ${ffmpeg_BINARY_DIR}/*
 )
 
 add_custom_target(ffmpeg ALL DEPENDS ffmpeg_build)
