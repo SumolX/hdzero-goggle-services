@@ -1,11 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 project (ffmpeg C)
 
-# Custom Module Path
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
-
 # Load Modules
-include(toolchain)
 include(FetchContent)
 
 FetchContent_Declare(
@@ -24,6 +20,7 @@ set(
     --disable-static
     --enable-shared
     --enable-version3
+    --enable-gpl
     
     # libavcodec
     --disable-faan
@@ -40,20 +37,20 @@ set(
 
     --enable-avcodec
     --enable-avfilter
+    --enable-libx264
     --enable-protocol=file
-    --enable-demuxer=h264
-    --enable-parser=h264
-    --enable-demuxer=hevc
-    --enable-parser=hevc
-    --enable-bsf=h264_metadata
-    --enable-bsf=h264_redundant_pps
-    --enable-bsf=hevc_metadata
-    --enable-bsf=extract_extradata
-    --enable-muxer=mpegts
-    --enable-muxer=mp4
-    --enable-demuxer=mov
-    --enable-demuxer=mpegts 
+    --enable-encoder=libx264,aac
+    --enable-decoder=hevc,aac
+    --enable-muxer=h264,hevc,mpegts,mp4,hls
+    --enable-demuxer=h264,hevc,mpegts,mov
+    --enable-parser=h264,hevc
+    --enable-bsf=h264_metadata,h264_redundant_pps,hevc_metadata,extract_extradata
+
+    --extra-ldflags=-L${PROJECT_BINARY_DIR}/../x264/out/lib
+    --extra-cflags=-I${PROJECT_BINARY_DIR}/../x264/out/include
 )
+
+message("${PROJECT_BINARY_DIR}")
 
 if(DEFINED CMAKE_TOOLCHAIN_FILE)
 list(
@@ -70,14 +67,11 @@ list(
 )
 endif()
 
-execute_process(
-	COMMAND ./configure ${FFMPEG_OPTIONS} 
-	WORKING_DIRECTORY ${ffmpeg_SOURCE_DIR}
-)
-
 add_custom_command(
 	OUTPUT ffmpeg_build
-	COMMAND cd ${ffmpeg_SOURCE_DIR} && make -j6 && make install
+    COMMAND ./configure ${FFMPEG_OPTIONS}
+	COMMAND make -j6 && make install
+    WORKING_DIRECTORY ${ffmpeg_SOURCE_DIR}
 )
 
 add_custom_command(
