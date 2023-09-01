@@ -23,10 +23,16 @@ add_subdirectory(ffmpeg)
 add_subdirectory(ntpclient)
 add_subdirectory(tinycurl)
 add_subdirectory(untrunc)
+add_subdirectory(x264)
 
 add_dependencies(
 	tinycurl
 	bearssl
+)
+
+add_dependencies(
+	ffmpeg
+	x264
 )
 
 add_custom_command(
@@ -46,8 +52,14 @@ add_custom_command(
 	COMMAND mkdir -p ${BIN_DIR}/dropbear
 	COMMAND cp -a ${PROJECT_BINARY_DIR}/dropbear/out/dropbearmulti ${BIN_DIR}/dropbear/
 
-	COMMAND mkdir -p ${BIN_DIR}/ffmpeg
-	COMMAND cp -a ${PROJECT_BINARY_DIR}/ffmpeg/out/* ${BIN_DIR}/ffmpeg/
+	COMMAND mkdir -p ${BIN_DIR}/ffmpeg/lib
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/ffmpeg/out/bin ${BIN_DIR}/ffmpeg/
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/ffmpeg/out/lib/libavcodec.so.59.18.100 ${BIN_DIR}/ffmpeg/lib/libavcodec.so.59
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/ffmpeg/out/lib/libavdevice.so.59.4.100 ${BIN_DIR}/ffmpeg/lib/libavdevice.so.59
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/ffmpeg/out/lib/libavfilter.so.8.24.100 ${BIN_DIR}/ffmpeg/lib/libavfilter.so.8
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/ffmpeg/out/lib/libavformat.so.59.16.100 ${BIN_DIR}/ffmpeg/lib/libavformat.so.59
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/ffmpeg/out/lib/libavutil.so.57.17.100 ${BIN_DIR}/ffmpeg/lib/libavutil.so.57
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/ffmpeg/out/lib/libpostproc.so.56.3.100 ${BIN_DIR}/ffmpeg/lib/libpostproc.so.56
 
 	COMMAND mkdir -p ${BIN_DIR}/ntpclient
 	COMMAND cp -a ${PROJECT_BINARY_DIR}/ntpclient/out/ntpclient ${BIN_DIR}/ntpclient/
@@ -61,6 +73,9 @@ add_custom_command(
 	COMMAND mkdir -p ${BIN_DIR}/webui
 	COMMAND cp -a ${PROJECT_SOURCE_DIR}/webui/source/* ${BIN_DIR}/webui/
 
+	COMMAND mkdir -p ${BIN_DIR}/x264/lib
+	COMMAND cp -a ${PROJECT_BINARY_DIR}/x264/out/lib/libx264.so.164 ${BIN_DIR}/x264/lib/
+
 	COMMAND mkdir -p ${BIN_DIR}/scripts
 	COMMAND cp -a ${bearssl_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp -a ${busybox_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
@@ -69,10 +84,11 @@ add_custom_command(
 	COMMAND cp -a ${ffmpeg_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp -a ${ntpclient_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp -a ${tinycurl_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
+	COMMAND cp -a ${x264_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 	COMMAND cp -a ${SCRIPTS_DIR}/* ${BIN_DIR}/
 	COMMAND cp -a ${CMAKE_SOURCE_DIR}/VERSION ${BIN_DIR}/
 
-	DEPENDS bearssl busybox dosfstools dropbear ffmpeg ntpclient tinycurl untrunc
+	DEPENDS bearssl busybox dosfstools dropbear ffmpeg ntpclient tinycurl untrunc x264
 )
 
 add_custom_command(
@@ -86,7 +102,7 @@ add_custom_command(
 add_custom_command(
 	OUTPUT CLEAN_ALL
 	COMMAND rm -rf ${BIN_DIR} ${OUT_DIR}
-	DEPENDS bearssl_clean busybox_clean dropbear_clean ffmpeg_clean ntpclient_clean tinycurl_clean untrunc_clean
+	DEPENDS bearssl_clean busybox_clean dropbear_clean ffmpeg_clean ntpclient_clean tinycurl_clean untrunc_clean x264_clean
 )
 
 add_custom_target(
