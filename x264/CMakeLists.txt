@@ -17,16 +17,6 @@ set(
     --prefix=${x264_BINARY_DIR}
     --enable-shared
     --enable-pic
-    --enable-strip 
-    --disable-cli
-    --disable-win32thread
-    --disable-avs
-    --disable-swscale
-    --disable-lavf
-    --disable-ffms
-    --disable-gpac
-    --disable-lsmash
-    --disable-asm
 )
 
 if(DEFINED CMAKE_TOOLCHAIN_FILE)

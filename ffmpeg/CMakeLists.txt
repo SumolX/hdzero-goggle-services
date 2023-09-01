@@ -50,8 +50,6 @@ set(
     --extra-cflags=-I${PROJECT_BINARY_DIR}/../x264/out/include
 )
 
-message("${PROJECT_BINARY_DIR}")
-
 if(DEFINED CMAKE_TOOLCHAIN_FILE)
 list(
     APPEND
