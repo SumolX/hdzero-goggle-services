@@ -226,11 +226,14 @@ function modifyFile() {
 
 function removeFile() {
     const result = confirm("Sure you want to delete?");
-    if (result) {
+    const frFile = getSelectedRow().split('.')[0];
+    const ext = getSelectedRow().split('.')[1];
+if (result) {
         (async () => {
-            const res = await fetch('/cgi-bin/dvr?', {
+            const res = await fetch('/cgi-bin/dvr?delete=&fr=' + frFile + "." + ext, {
                 headers: { Accept: 'application/text' },
             });
+            get_list();
         })();
     }
 }

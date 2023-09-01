@@ -78,7 +78,7 @@ else
     elif [ ${key} == "rename" ]; then
         on_dvr_rename "${2#*=}" "${3#*=}"
     elif [ ${key} == "delete" ]; then
-        on_dvr_delete "${1#*=}"
+        on_dvr_delete "${2#*=}"
     elif [ ${key} == "play" ]; then
         on_dvr_play "${1#*=}"
     elif [ ${key} == "stop" ]; then
