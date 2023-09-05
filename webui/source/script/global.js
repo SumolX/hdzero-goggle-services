@@ -111,20 +111,54 @@ function getAuthorization() {
 }
 
 // Player Functionality
+function changeVideoMode(element) {
+
+    player.reset();
+    toggleSelection("");
+    fetch("/cgi-bin/dvr?stop");
+
+    if (element.ID === "videostream") {
+        
+        player.src({ type: "application/x-mpegURL", src: "live/hdz.m3u8" });
+        player.play();
+
+    }
+    else if (element.ID === "videodvr") {
+        // stop stream
+
+
+    }
+}
+
+
+
 function selectVideo() {
     gSelectedDvrFile = this.getElementsByTagName("td")[0].innerHTML;
-    var ipFileName = document.getElementById("videoname");
-    var fName = gSelectedDvrFile.split('.')[0];
+    const ipFileName = document.getElementById("videoname");
+    const fName = gSelectedDvrFile.split('.')[0];
+    const ext = gSelectedDvrFile.split('.')[1];
     ipFileName.value = fName;
     toggleSelection(fName);
 
+    player.reset;
     player.poster("movies/" + fName + '.jpg');
     player.hasStarted(false);
     player.currentTime(0);
-    player.bigPlayButton.hide();
+    //player.bigPlayButton.hide();
+
+    if (ext === "ts") {
+        (async () => {
+            const res = await fetch("/cgi-bin/dvr?m3u8=" + fName + ".ts", {});
+            player.src({ type: "application/x-mpegURL", src: "hdz_dvr.m3u8" });
+        })();
+    }
+    else if (ext === "mp4")
+    {
+        player.src({ type: "video/mp4", src: "movies/" + fName + ".mp4" });
+    }
 }
 
-function playVideo(source) {
+function playStream(source) {
     fetch("/cgi-bin/dvr?stop");
     if (source == "stream") {
         player.src({ type: "application/x-mpegURL", src: "live/hdz.m3u8" });
