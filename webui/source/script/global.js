@@ -130,8 +130,6 @@ function changeVideoMode(element) {
     }
 }
 
-
-
 function selectVideo() {
     gSelectedDvrFile = this.getElementsByTagName("td")[0].innerHTML;
     const ipFileName = document.getElementById("videoname");
@@ -158,7 +156,7 @@ function selectVideo() {
     }
 }
 
-function playStream(source) {
+/*function playStream(source) {
     fetch("/cgi-bin/dvr?stop");
     if (source == "stream") {
         player.src({ type: "application/x-mpegURL", src: "live/hdz.m3u8" });
@@ -172,7 +170,7 @@ function playStream(source) {
     }
 }
 
-/*function toggleMode() {
+function toggleMode() {
     const hostSect = document.getElementById("host");
     const clientSect = document.getElementById("client");
     const scrollingElement = (document.scrollingElement || document.body);
@@ -272,3 +270,22 @@ if (result) {
     }
 }
 
+function downloadFile() {
+    const frFile = getSelectedRow();
+
+    (async () => {
+        const res = await fetch('/cgi-bin/dvr?download=&fr=' + frFile, {
+            headers: { Accept: 'application/x-download' },
+        });
+
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = frFile;
+        a.click();
+        URL.revokeObjectURL(URL);
+    })();
+    toggleSelection(null);
+    alert("Download will begin shortly!")
+}

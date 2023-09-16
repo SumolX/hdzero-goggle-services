@@ -54,13 +54,6 @@
     padding-right: 3px;
 }
 
-.editcontainer div:first-child label {
-    font-size: .85em;
-    display: block;
-    width: 100%;
-    text-align: center;
-}
-
 .editcontainer div:first-child input {
     box-sizing: border-box;
     width: 100%;
@@ -68,14 +61,17 @@
 }
 
 .editcontainer div:nth-child(2) {
-    display: flex;
-    box-sizing: border-box;
-    justify-content: center;
     margin-top: 3px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .editcontainer div:nth-child(2) button:first-child {
-    margin-right: 4px;
+    margin-right: 3px;
+}
+
+.editcontainer div:nth-child(2) button:nth-child(2) {
+    margin-right: 3px;
 }
 
 /* list elements */

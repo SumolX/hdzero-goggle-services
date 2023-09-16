@@ -22,7 +22,13 @@ on_dvr() {
 }
 
 on_dvr_download() {
-    utils_send_binary_file "${MOVIE_PATH}" "$1"
+    utils_is_action_authorized "${HTTP_COOKIE#token=}"
+    if test "$?" -eq 0 -a -f ${MOVIE_PATH}/$1; then
+        utils_send_binary_file "${MOVIE_PATH}" "$1"
+        echo "Status: 200 OK"
+    else
+        echo "Status: 404 Not Found"
+    fi
 }
 
 on_dvr_rename() {
@@ -74,7 +80,7 @@ else
     set -- $QUERY_STRING
     key="${1%=*}"
     if [ ${key} == "download" ]; then
-        on_dvr_download "${1#*=}"
+        on_dvr_download "${2#*=}"
     elif [ ${key} == "rename" ]; then
         on_dvr_rename "${2#*=}" "${3#*=}"
     elif [ ${key} == "delete" ]; then

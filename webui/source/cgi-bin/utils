@@ -77,7 +77,7 @@ utils_is_client_authorized() {
     fi
 }
 
-# Verify if action is allowed access
+# Verify if action is allowed
 utils_is_action_authorized() {
     ret = 1
     salt="hdzgoggles"
