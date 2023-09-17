@@ -30,11 +30,13 @@
                     <img src="images/hdzero.png" />
                     <h1>HDZero Goggle</h1>
                 </div>
-                <div id="login" class="login-button" onclick="login()" onmouseover="togglehover(this);" onmouseout="togglehover(this);">
-                    <img src="images/HDZLogin.gif"/>
+                <div id="login" class="login-button" onclick="login()" onmouseover="togglehover(this);"
+                    onmouseout="togglehover(this);">
+                    <img src="images/HDZLogin.gif" />
                     <h3>Login</h3>
                 </div>
-                <div id="logout" class="login-button" onclick="getAuthorization()" onmouseover="togglehover(this);" onmouseout="togglehover(this);">
+                <div id="logout" class="login-button" onclick="getAuthorization()" onmouseover="togglehover(this);"
+                    onmouseout="togglehover(this);">
                     <img src="images/HDZLogout.gif" />
                     <h3>Logout</h3>
                 </div>
@@ -51,9 +53,9 @@
         </article>
         <article id="console">
             <div class="video-mode">
-                <input type="radio" id="videostream" name="videomode" onclick="changeVideoMode(this)" checked />
+                <input type="radio" id="videostream" name="videomode" onclick="changeVideoMode('stream')" checked />
                 <label for="videostream"><b>Stream</b></label>
-                <input type="radio" id="videodvr" name="videomode" onclick="changeVideoMode(this)" />
+                <input type="radio" id="videodvr" name="videomode" onclick="changeVideoMode('dvr')" />
                 <label for="videodvr"><b>DVR</b></label>
             </div>
             <div class="editcontainer">

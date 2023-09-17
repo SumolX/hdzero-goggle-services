@@ -1,4 +1,4 @@
-var gSelectedDvrFile;
+var gSelectedDvrFile = '';
 
 function hideElement(element) {
     element.classList.toggle("display-block");
@@ -111,30 +111,31 @@ function getAuthorization() {
 }
 
 // Player Functionality
-function changeVideoMode(element) {
+function changeVideoMode(source) {
 
     player.reset();
-    toggleSelection("");
-    fetch("/cgi-bin/dvr?stop");
+    //toggleSelection("");
 
-    if (element.ID === "videostream") {
-        
-        player.src({ type: "application/x-mpegURL", src: "live/hdz.m3u8" });
-        player.play();
-
-    }
-    else if (element.ID === "videodvr") {
-        // stop stream
-
-
-    }
+    (async () => {
+        const res = await fetch("/cgi-bin/dvr?stop");
+        if (source === "stream") {
+            player.src({ type: "application/x-mpegURL", src: "live/hdz.m3u8" });
+            player.play();
+        } else if (source === "dvr" && gSelectedDvrFile !== "") {
+            (async () => {
+                const res = await fetch("/cgi-bin/dvr?play=" + gSelectedDvrFile);
+                player.src({ type: "application/x-mpegURL", src: "dvr/hdz.m3u8" });
+                player.play();
+            })();
+        }
+    })();
 }
 
 function selectVideo() {
     gSelectedDvrFile = this.getElementsByTagName("td")[0].innerHTML;
     const ipFileName = document.getElementById("videoname");
     const fName = gSelectedDvrFile.split('.')[0];
-    const ext = gSelectedDvrFile.split('.')[1];
+    const fType = gSelectedDvrFile.split('.')[1];
     ipFileName.value = fName;
     toggleSelection(fName);
 
@@ -142,43 +143,8 @@ function selectVideo() {
     player.poster("movies/" + fName + '.jpg');
     player.hasStarted(false);
     player.currentTime(0);
-    //player.bigPlayButton.hide();
-
-    if (ext === "ts") {
-        (async () => {
-            const res = await fetch("/cgi-bin/dvr?m3u8=" + fName + ".ts", {});
-            player.src({ type: "application/x-mpegURL", src: "hdz_dvr.m3u8" });
-        })();
-    }
-    else if (ext === "mp4")
-    {
-        player.src({ type: "video/mp4", src: "movies/" + fName + ".mp4" });
-    }
+    player.bigPlayButton.hide();
 }
-
-/*function playStream(source) {
-    fetch("/cgi-bin/dvr?stop");
-    if (source == "stream") {
-        player.src({ type: "application/x-mpegURL", src: "live/hdz.m3u8" });
-        player.play();
-    } else {
-        (async () => {
-            const res = await fetch("/cgi-bin/dvr?play=" + gSelectedDvrFile, {});
-            player.src({ type: "application/x-mpegURL", src: "dvr/hdz.m3u8" });
-            player.play();
-        })();
-    }
-}
-
-function toggleMode() {
-    const hostSect = document.getElementById("host");
-    const clientSect = document.getElementById("client");
-    const scrollingElement = (document.scrollingElement || document.body);
-
-    hostSect.classList.toggle("hidden");
-    clientSect.classList.toggle("hidden");
-    scrollingElement.scrollTop = scrollingElement.scrollHeight;
-}*/
 
 // File Listing Functionality
 function get_list() {
@@ -260,7 +226,7 @@ function removeFile() {
     const result = confirm("Sure you want to delete?");
     const frFile = getSelectedRow().split('.')[0];
     const ext = getSelectedRow().split('.')[1];
-if (result) {
+    if (result) {
         (async () => {
             const res = await fetch('/cgi-bin/dvr?delete=&fr=' + frFile + "." + ext, {
                 headers: { Accept: 'application/text' },
