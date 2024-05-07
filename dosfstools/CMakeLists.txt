@@ -13,7 +13,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(dosfstools)
 
 execute_process(
-        # autogen.sh returns ignorable error
+	# autogen.sh returns ignorable error
 	COMMAND ./autogen.sh
 	WORKING_DIRECTORY ${dosfstools_SOURCE_DIR}
 )
