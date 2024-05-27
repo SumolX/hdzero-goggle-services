@@ -41,7 +41,7 @@ copy ```~/hdzero-goggle-services/out/hdzero-google-VERSION.tar``` to the root of
 HDZ Goggles Minimum Firmware: May 12, 2023 [PR 223](https://github.com/hd-zero/hdzero-goggle/pull/238).
 
 # Donation
-If you enjoyed this work or would like to see additional tuned filaments please feel free to donate or join my patreon.
+If you enjoyed this work or would like to see additional features and functionality added in the future please feel free to donate or join my patreon.
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=E4DSQMLR5JUXS)
 
