@@ -3,14 +3,6 @@
 
 ## Services
 ```
-<<<<<<< HEAD
-busybox:    Software Suite Version 1.27.2
-dosfstools: V4.2 Programs used to create, modify, and check the FAT filesystem
-dropbear:   Network communications (SSH/SCP) via WiFi Module
-ffmpeg:     v5.0.1 Complete solution to record, convert and stream audio and video.
-ntpclient:  Synchronize time with NTP Server via WiFi Module
-webui:      Provides goggle access via a HTML interface
-=======
 bearssl:    v0.6 Implementation of the SSL/TLS protocol.
 busybox:    v1.27.2 Software Suite Version
 dosfstools: v4.2 Programs used to create, modify, and check the FAT filesystem.
@@ -19,11 +11,8 @@ ffmpeg:     v5.0.1 Complete solution to record, convert and stream audio and vid
 ntpclient:  Synchronize time with NTP Server via WiFi Module
 tinycurl:   v7.79.1 A low memory footprint of Curl designed for smaller systems.
 untrunc:    MP4 Repair tool for corrupt video files.
-<<<<<<< HEAD
->>>>>>> master
-=======
+webui:      Provides goggle access via a HTML interface
 x264:       VideoLAN x264, the best and fastest H.264 encoder.
->>>>>>> master
 ```
 
 ## Building Target: Goggle
