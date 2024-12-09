@@ -12,9 +12,9 @@ add_executable(ntpclient
 )
 
 add_custom_command(
-        OUTPUT ntpclient_cleanall
+	OUTPUT ntpclient_cleanall
 	COMMAND find . -name '*.o' -delete
-        COMMAND find . -name '*.a' -delete
+	COMMAND find . -name '*.a' -delete
 	COMMAND rm -rf ${PROJECT_BINARY_DIR}/out/*
 )
 
