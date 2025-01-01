@@ -1,0 +1,139 @@
+#!/bin/bash
+
+# Includes
+. ./constants
+. ./utils
+
+# Handlers
+on_settings() {
+    echo "Content-Type: application/json"
+    echo ""
+    
+    count=0
+    body=""
+    settings=""
+    section=""
+
+     #if [ ! -z "$(mount | grep ${SDC_PATH})" ]; then
+        while read line; do
+          if [ ! -z "${line}" ]; then
+              IFS="=" read key value <<< "$line"
+              if [ ! -z "${key}" ] && [ ! -z "${value}" ]; then
+                # settings
+                settings="${settings} {\"key\":\"${key}\" \"value\":\"${value}\"},"
+              elif [ ! -z "${key}" ] && [ $count -gt 0 ]; then
+                # sections
+                settings="${settings%?}"
+                body="${body} \"${section}\": [ $settings ],"
+                section=$(echo "$key" | sed 's/[][]//g')
+                settings=
+              else
+                # first section
+                section=$(echo "$key" | sed 's/[][]//g')
+                ((count++))
+              fi
+          fi
+        done < "$SETTING_PATH"
+#    fi
+
+    settings="${settings%?}"
+    body="${body} \"${section}\": [ $settings ]"
+    echo "{ \"file\": { $body } }"
+}
+
+on_section_read() {
+  echo "Content-Type: application/json"
+  echo ""
+ 
+  settings=""
+  count=$(sed -n "/\[$1\]/{=;q;}" "$SETTING_PATH")
+  
+  # utils_is_action_authorized "${HTTP_COOKIE#token=}"
+  # if test "$?" -eq 0 -a -f ${MOVIE_PATH}/$1; then
+  while read line; do
+    IFS="=" read key value <<< "$line"
+    if [ ! -z "${key}" ] && [ ! -z "${value}" ]; then
+        # settings
+	((count++))
+	settings="${settings} {\"line\":\"${count}\" \"key\":\"${key}\" \"value\":\"${value}\"},"
+    fi
+  done < <(sed -n "/\[$1\]/,/\[/p" "$SETTING_PATH")
+  # else
+  #     echo "Status: 404 Not Found"
+  # fi
+
+  settings="${settings%?}"
+  echo "{\"$1\": [ $settings ] }"
+}
+
+on_setting_change() {
+  echo "Content-Type: text/html"
+  echo ""
+  
+  # utils_is_action_authorized "${HTTP_COOKIE#token=}"
+  # if test "$?" -eq 0 -a -f ${MOVIE_PATH}/$1; then
+ 
+  sed -i "${1}s/.*/${2}/" "$SETTING_PATH"
+  if [ $? -eq 0 ]; then
+      echo "Status: 200 OK"
+  else
+      echo "Status: 500 Error"
+  fi  
+}
+
+on_setting_delete() {
+    echo "Content-Type: text/html"
+    echo ""
+  
+  # utils_is_action_authorized "${HTTP_COOKIE#token=}"
+  # if test "$?" -eq 0 -a -f ${MOVIE_PATH}/$1; then
+ 
+  sed -i "${1}d" "$SETTING_PATH"
+  if [ $? -eq 0 ]; then
+      echo "Status: 200 OK"
+  else
+      echo "Status: 500 Error"
+  fi
+}
+
+on_setting_insert() {
+    echo "Content-Type: text/html"
+    echo ""
+
+  # utils_is_action_authorized "${HTTP_COOKIE#token=}"
+  # if test "$?" -eq 0 -a -f ${MOVIE_PATH}/$1; then
+ 
+  sed -i "${1}i ${2}" "$SETTING_PATH"
+  if [ $? -eq 0 ]; then
+      echo "Status: 200 OK"
+  else
+      echo "Status: 500 Error"
+  fi
+}
+
+on_reset_all() {
+    echo "Content-Type: text/html"
+    echo ""
+    echo "reset section not implemented"
+}
+
+# Parse Request
+if [ -z $QUERY_STRING ]; then
+    on_settings
+else
+    IFS="&"
+    set -- $QUERY_STRING
+    key="${1%=*}"
+    if [ ${key} == "section" ]; then
+	on_section_read "${1#*=}"
+    elif [ ${key} == "change" ]; then
+	on_setting_change "${1#*=}" "${2#*=}" 
+    elif [ ${key} == "delete" ]; then
+        on_setting_delete "${1#*=}"
+    elif [ ${key} == "insert" ]; then
+        on_setting_insert "${1#*=}" "${2#*=}"
+    elif [ ${key} == "reset" ]; then
+        on_reset_all "${1#*=}"
+    fi
+fi
+
