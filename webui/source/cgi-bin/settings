@@ -5,23 +5,26 @@
 . ./utils
 
 # Handlers
+
+# Send the entire settings file
 on_settings() {
     echo "Content-Type: application/json"
     echo ""
-    
-    count=0
-    body=""
-    settings=""
-    section=""
 
-     #if [ ! -z "$(mount | grep ${SDC_PATH})" ]; then
+    utils_is_action_authorized "${HTTP_COOKIE#token=}"
+    if test "$?" -eq 0 -a -f ${SETTING_PATH}; then
+        count=0
+        body=""
+        settings=""
+        section=""
         while read line; do
           if [ ! -z "${line}" ]; then
+              ((count++))
               IFS="=" read key value <<< "$line"
               if [ ! -z "${key}" ] && [ ! -z "${value}" ]; then
                 # settings
                 settings="${settings} {\"key\":\"${key}\" \"value\":\"${value}\"},"
-              elif [ ! -z "${key}" ] && [ $count -gt 0 ]; then
+              elif [ ! -z "${key}" ] && [ $count -gt 1 ]; then
                 # sections
                 settings="${settings%?}"
                 body="${body} \"${section}\": [ $settings ],"
@@ -30,91 +33,129 @@ on_settings() {
               else
                 # first section
                 section=$(echo "$key" | sed 's/[][]//g')
-                ((count++))
               fi
           fi
         done < "$SETTING_PATH"
-#    fi
-
-    settings="${settings%?}"
-    body="${body} \"${section}\": [ $settings ]"
-    echo "{ \"file\": { $body } }"
+        settings="${settings%?}"
+        body="${body} \"${section}\": [ $settings ]"
+        echo "{ \"file\": { $body } }"
+    else
+        echo "Status: 401"
+    fi
 }
 
+# Send a settings section with line numbers
 on_section_read() {
   echo "Content-Type: application/json"
   echo ""
  
-  settings=""
-  count=$(sed -n "/\[$1\]/{=;q;}" "$SETTING_PATH")
-  
-  # utils_is_action_authorized "${HTTP_COOKIE#token=}"
-  # if test "$?" -eq 0 -a -f ${MOVIE_PATH}/$1; then
-  while read line; do
-    IFS="=" read key value <<< "$line"
-    if [ ! -z "${key}" ] && [ ! -z "${value}" ]; then
-        # settings
-	((count++))
-	settings="${settings} {\"line\":\"${count}\" \"key\":\"${key}\" \"value\":\"${value}\"},"
-    fi
-  done < <(sed -n "/\[$1\]/,/\[/p" "$SETTING_PATH")
-  # else
-  #     echo "Status: 404 Not Found"
-  # fi
-
-  settings="${settings%?}"
-  echo "{\"$1\": [ $settings ] }"
+  utils_is_action_authorized "${HTTP_COOKIE#token=}"
+  if test "$?" -eq 0 -a -f ${SETTING_PATH}; then
+     settings=""
+     count=$(sed -n "/\[$1\]/{=;q;}" "$SETTING_PATH")
+     while read line; do
+       IFS="=" read key value <<< "$line"
+       if [ ! -z "${key}" ] && [ ! -z "${value}" ]; then
+          # settings
+      	  ((count++))
+          settings="${settings} {\"line\":\"${count}\" \"key\":\"${key}\" \"value\":\"${value}\"},"
+       fi
+     done < <(sed -n "/\[$1\]/,/\[/p" "$SETTING_PATH")
+     settings="${settings%?}"
+     echo "{\"$1\": [ $settings ] }"
+   else
+        echo "Status: 401"
+   fi
 }
 
+# Change a setting by line number
 on_setting_change() {
   echo "Content-Type: text/html"
   echo ""
-  
-  # utils_is_action_authorized "${HTTP_COOKIE#token=}"
-  # if test "$?" -eq 0 -a -f ${MOVIE_PATH}/$1; then
- 
-  sed -i "${1}s/.*/${2}/" "$SETTING_PATH"
-  if [ $? -eq 0 ]; then
-      echo "Status: 200 OK"
-  else
-      echo "Status: 500 Error"
-  fi  
-}
 
-on_setting_delete() {
-    echo "Content-Type: text/html"
-    echo ""
-  
-  # utils_is_action_authorized "${HTTP_COOKIE#token=}"
-  # if test "$?" -eq 0 -a -f ${MOVIE_PATH}/$1; then
- 
-  sed -i "${1}d" "$SETTING_PATH"
-  if [ $? -eq 0 ]; then
-      echo "Status: 200 OK"
+  utils_is_action_authorized "${HTTP_COOKIE#token=}"
+  if test "$?" -eq 0 -a -f ${SETTING_PATH}; then
+     sed -i "${1}s/.*/${2}/" "$SETTING_PATH"
+     if [ $? -eq 0 ]; then
+        echo "Status: 200 OK"
+     else
+        echo "Status: 500"
+     fi
   else
-      echo "Status: 500 Error"
+     echo "Status: 401"
   fi
 }
 
+# Add a setting at line number, move everthing after down one line
 on_setting_insert() {
-    echo "Content-Type: text/html"
-    echo ""
+  echo "Content-Type: text/html"
+  echo ""
 
-  # utils_is_action_authorized "${HTTP_COOKIE#token=}"
-  # if test "$?" -eq 0 -a -f ${MOVIE_PATH}/$1; then
- 
-  sed -i "${1}i ${2}" "$SETTING_PATH"
-  if [ $? -eq 0 ]; then
-      echo "Status: 200 OK"
+  utils_is_action_authorized "${HTTP_COOKIE#token=}"
+  if test "$?" -eq 0 -a -f ${SETTING_PATH}; then
+     sed -i "${1}i ${2}" "$SETTING_PATH"
+     if [ $? -eq 0 ]; then
+        echo "Status: 200 OK"
+     else
+        echo "Status: 500"
+     fi
   else
-      echo "Status: 500 Error"
+     echo "Status: 401"
   fi
 }
 
-on_reset_all() {
-    echo "Content-Type: text/html"
-    echo ""
-    echo "reset section not implemented"
+# Delete a setting at line number, move everthing after up one line
+on_setting_delete() {
+  echo "Content-Type: text/html"
+  echo ""
+  
+  utils_is_action_authorized "${HTTP_COOKIE#token=}"
+  if test "$?" -eq 0 -a -f ${SETTING_PATH}; then
+     sed -i "${1}d" "$SETTING_PATH"
+     if [ $? -eq 0 ]; then
+        echo "Status: 200 OK"
+     else
+        echo "Status: 500"
+     fi
+  else
+     echo "Status: 401"
+  fi
+}
+
+# backup the setting file to the sdcard, overwrite
+on_backup() {
+  echo "Content-Type: text/html"
+  echo ""
+  
+  utils_is_action_authorized "${HTTP_COOKIE#token=}"
+  if test "$?" -eq 0 -a -f ${SETTING_PATH} -a ! -z "$(mount | grep ${SDC_PATH})"; then
+     cp ${SETTING_PATH} "${SDC_PATH}settings.bak"
+     if [ $? -eq 0 ]; then
+        echo "Status: 200 OK"
+     else
+        echo "Status: 500"
+     fi
+  else
+     echo "Status: 401"
+  fi
+}
+
+# delete the settings file, application will load defaults on next boot
+on_reset() {
+  echo "Content-Type: text/html"
+  echo ""
+  
+  utils_is_action_authorized "${HTTP_COOKIE#token=}"
+  if test "$?" -eq 0 -a -f ${SETTING_PATH}; then
+     rm -f ${SETTING_PATH}
+     if [ $? -eq 0 ]; then
+        echo "Status: 200 OK"
+     else
+        echo "Status: 500"
+     fi
+  else
+     echo "Status: 401"
+  fi
 }
 
 # Parse Request
@@ -132,8 +173,10 @@ else
         on_setting_delete "${1#*=}"
     elif [ ${key} == "insert" ]; then
         on_setting_insert "${1#*=}" "${2#*=}"
+    elif [ ${key} == "backup" ]; then
+        on_backup
     elif [ ${key} == "reset" ]; then
-        on_reset_all "${1#*=}"
+        on_reset 
     fi
 fi
 

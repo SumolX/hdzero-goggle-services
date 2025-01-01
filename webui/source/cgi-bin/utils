@@ -9,6 +9,14 @@ utils_has_string() {
     fi
 }
 
+# Transfer text file to client
+utils_send_text_file() {
+    echo "content-type: text/file"
+    echo "content-disposition: attachment; filename=$2"
+    echo ""
+    
+    cat $1/$2
+
 # Transfer binary file to client
 utils_send_binary_file() {
     echo "content-type: application/x-download"
