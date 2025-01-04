@@ -60,18 +60,18 @@ utils_is_client_authorized() {
 
     if [ "$hash_server" == "$hash_client" ]; then
         token="$(/tmp/mktoken.sh \"$hash_server\")"
+        echo "Content-Type: text/html"
         echo "Set-Cookie: token=$token;expires=;path=/"      
+        echo ""
     else
         dt=`TZ=GMT date -d '-1 day' '+%a, %d %b %Y %T %Z'`
+        echo "Content-Type: text/html"
         echo "Set-Cookie: token=$token;expires=$dt;path=/"      
+        echo ""
     
         if [ -z "$1" ]; then
-            echo "Content-Type: text/html"
-            echo ""
             echo "Status: 200 OK"
         else
-            echo "Content-Type: text/html"
-            echo ""
             echo "Status: 401 Not Authorized"
         fi
     fi
