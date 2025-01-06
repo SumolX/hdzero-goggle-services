@@ -57,16 +57,16 @@ utils_is_client_authorized() {
 
     hash_server="$(/tmp/mkpw.sh "$pw")"
     hash_client="$(/tmp/mkpw.sh "$1")"
-
     if [ "$hash_server" == "$hash_client" ]; then
         token="$(/tmp/mktoken.sh \"$hash_server\")"
+        dt=`TZ=UTC date -d '+1 day' '+%Y-%m-%d %H:%M:%S'`
         echo "Content-Type: text/html"
-        echo "Set-Cookie: token=$token;expires=;path=/"      
+        echo "Set-Cookie: token=$token;expires=$dt;version=1;path=/"      
         echo ""
     else
-        dt=`TZ=GMT date -d '-1 day' '+%a, %d %b %Y %T %Z'`
+        dt=`TZ=UTC date -d '-1 day' '+%Y-%m-%d %H:%M:%S'`
         echo "Content-Type: text/html"
-        echo "Set-Cookie: token=$token;expires=$dt;path=/"      
+        echo "Set-Cookie: token=$token;expires=$dt;version=1;path=/"      
         echo ""
     
         if [ -z "$1" ]; then
