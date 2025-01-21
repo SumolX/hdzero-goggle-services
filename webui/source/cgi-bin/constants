@@ -9,3 +9,23 @@ SDC_PATH="/mnt/extsd"
 APP_PATH="/mnt/app"
 MOVIE_PATH="${SDC_PATH}/movies"
 SETTING_PATH="${APP_PATH}/setting.ini"
+
+function ContentText
+{
+  echo "Content-Type: text/html"
+  echo ""
+}
+
+function ContentJson()
+{
+  echo "Content-Type: application/json"
+  echo ""
+}
+
+function PrintError() 
+{
+   echo "Content-Type: text/html"
+   echo ""
+   echo "<h1>$1</h1>"
+   echo "<p>$2</p>"
+}
