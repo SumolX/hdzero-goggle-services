@@ -10,19 +10,19 @@ APP_PATH="/mnt/app"
 MOVIE_PATH="${SDC_PATH}/movies"
 SETTING_PATH="${APP_PATH}/setting.ini"
 
-function ContentText
+function content_text
 {
   echo "Content-Type: text/html"
   echo ""
 }
 
-function ContentJson()
+function content_json()
 {
   echo "Content-Type: application/json"
   echo ""
 }
 
-function PrintError() 
+function print_error() 
 {
    echo "Content-Type: text/html"
    echo ""

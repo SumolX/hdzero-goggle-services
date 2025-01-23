@@ -8,7 +8,7 @@
 
 # Send the entire settings file
 on_settings() {
-    ContentJson
+    content_json
     #utils_is_action_authorized "${HTTP_COOKIE#token=}"
     if test -f ${SETTING_PATH}; then
         count=0
@@ -19,7 +19,7 @@ on_settings() {
               IFS="=" read key value <<< "$line"
               if [ ! -z "${key}" ] && [ ! -z "${value}" ]; then
                 # settings
-                settings="${settings} {\"line\":\"${count}\" \"key\":\"${key}\" \"value\":\"${value}\"},"
+                settings="${settings} {\"key\":\"${key}\" \"value\":\"${value}\"},"
               elif [ ! -z "${key}" ] && [ $count -gt 1 ]; then
                 # sections
                 settings="${settings%?}"
@@ -31,47 +31,58 @@ on_settings() {
                 section=$(echo "$key" | sed 's/[][]//g')
               fi
           fi
-		done < "$SETTING_PATH"
-		settings="${settings%?}"
-		body="${body} \"${section}\": [ $settings ]"
-		echo "{ \"file\": { $body } }"
-	    else
-		echo "Status: 401"
-	    fi
-	}
+	done < "$SETTING_PATH"
+	settings="${settings%?}"
+	body="${body} \"${section}\": [ $settings ]"
+	echo "{ \"file\": { $body } }"
+   else
+      print_error "Status: 404" "Settings file not found."
+   fi
+}
 
-	# Send a settings section with line numbers
-	on_section_read() {
-	  echo "Content-Type: application/json"
-	  echo ""
-	 
+# Send a settings with line number
+on_line_read() {
+  content_json
+  #utils_is_action_authorized "${HTTP_COOKIE#token=}"
+  if test -f ${SETTING_PATH}; then
+     while read line; do
+        IFS="=" read key value <<< "$line"
+	if [ "$key" = "$1" ]; then
+           setting="{\"key\":\"${key}\", \"value\":\"${value}\"}"
+	   break
+	fi
+     done < <(sed -n "/\[$2\]/,/\[/p" "$SETTING_PATH" | grep -v "\[[A-Z]*[a-z]*\]" )
+     echo "{ \"$2\": $setting }"
+  else
+     print_error "Status: 404" "Settings file not found."
+  fi
+}
 
-	  #utils_is_action_authorized "${HTTP_COOKIE#token=}"
-	echo "read: {$1}" >> debug
+
+# Send a settings section with line numbers
+on_section_read() {
+    content_json
+    #utils_is_action_authorized "${HTTP_COOKIE#token=}"
   if test -f ${SETTING_PATH}; then
      settings=""
-     count=$(sed -n "/\[$1\]/{=;q;}" "$SETTING_PATH")
-     echo "count: {$count}" >> debug
      while read line; do
         IFS="=" read key value <<< "$line"
         if [ ! -z "${key}" ] && [ ! -z "${value}" ]; then
            # settings
-           ((count++))
-           settings="${settings} { \"line\": \"${count}\", \"key\": \"${key}\", \"value\": \"${value}\" },"
+           settings="${settings} { \"key\": \"${key}\", \"value\": \"${value}\" },"
         fi
-        done < <(sed -n "/\[$1\]/,/\[/p" "$SETTING_PATH")
-        settings="${settings%?}"
-        echo "{\"section\": \"$1\", \"settings\": [ $settings ] }"
-   else
-	echo "Status: 401"
-   fi
+     done < <(sed -n "/\[$1\]/,/\[/p" "$SETTING_PATH")
+     settings="${settings%?}"
+     echo "{ \"$1\": [ $settings ] }"
+  else
+      print_error "Status: 404" "Settings file not found."
+  fi
 }
 
 # Change a setting by line number
 on_setting_change() {
    echo "Content-Type: text/html"
    echo ""
-
    #utils_is_action_authorized "${HTTP_COOKIE#token=}"
    if test -f ${SETTING_PATH}; then
       sed -i "${1}s/.*/${2}/" "$SETTING_PATH"
@@ -139,52 +150,54 @@ on_backup() {
   fi
 }
 
+echo "qs: $QUERY_STRING" > debug
+
 # Parse Request
- if [ -z $QUERY_STRING ]; then
+if [ -z $QUERY_STRING ]; then
    on_settings
- else
+else
     IFS="&"
     set -- $QUERY_STRING
     key="${1%=*}"
     if [ "$REQUEST_METHOD" = "GET" ]; then
-       if [ ${key} == "line" ]; then
-          NotImplemented "Needs development."
+       if [ ${key} == "line" -a "${2%=*}" == "section" ]; then
+	  on_line_read "${1#*=}" "${2#*=}" 
        elif [ ${key} == "section" ]; then
           on_section_read "${1#*=}"
        else
-          NotImplemented "Key not recongized. For get use only line, section."
+          print_error "421 Misdirected Request" "Use only line, section or null."
        fi
     elif [ "$REQUEST_METHOD" = "POST" ]; then
        if [ "$CONTENT_LENGTH" -gt 0 ]; then
-           read -n $CONTENT_LENGTH POST_DATA <&0
-        case ${key} in
+          read -n $CONTENT_LENGTH POST_DATA <&0
+          case ${key} in
           put)
               if [ ${1#*=} == "line" ]; then
-                echo '{"message": "Hello from PUT line"}' >> debug
+          print_error "000" "Needs development."
               elif [ ${1#*=} == "section" ]; then
-                echo '{"message": "Hello from PUT section" }' >> debug
+          print_error "000" "Needs development."
               else
-                 NotImplemented "Query not recongized. For put use only line, section or file."
+                 print_error "421 Misdirected Request" "Use only line, section or file."
               fi
             ;;
           post)
-              echo '{"message": "Hello from POST"}' >> debug
+          print_error "000" "Needs development."
             ;;
           patch)
-              echo '{"message": "Hello from PATCH"}' >> debug
+          print_error "000" "Needs development."
             ;;
           delete)
-              echo '{"message": "Hello from DELETE"}' >> debug
+          print_error "000" "Needs development."
          ;;
           *)
-              NotImplemented "POST method query not recongized. Use only put, post, patch, delete."
+              print_error "421 Misdirected Request" "Use only put, post, patch, delete."
            ;;
-       esac
+         esac
        else
-          NotImplemented "Method is not recognized. Use only GET or POST."
+          print_error "501 Not Implemented" "Use only GET or POST."
        fi
     else
-       Notimplementd "Method is not recognized. Use only GET or POST."
+       print_error "501 Not Implemented" "Method is not recognized. Use only GET or POST."
     fi
- fi
+fi
 
