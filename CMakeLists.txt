@@ -6,7 +6,9 @@ project(HDZGOGGLE-SERVICES)
 option(BUSYBOX    "" ON)
 option(DOSFSTOOLS "" ON)
 option(DROPBEAR   "" ON)
+option(FBGRAB     "" ON)
 option(FFMPEG     "" ON)
+option(LIBPNG     "" ON)
 option(NTPCLIENT  "" ON)
 option(TINYCURL   "" ON)
 option(UNTRUNC    "" ON)
@@ -101,14 +103,24 @@ if(DOSFSTOOLS)
 	add_custom_command(OUTPUT CLEAN_ALL APPEND DEPENDS dosfstools_clean)
 endif()
 
+if(FBGRAB)
+	add_dependencies(${PROJECT_NAME} fbgrab)
+	add_subdirectory(fbgrab)
+	add_dependencies(fbgrab libpng)
+	add_custom_command(
+		OUTPUT ALL_TARGETS APPEND
+		COMMAND mkdir -p ${BIN_DIR}/fbgrab
+		COMMAND cp -a ${PROJECT_BINARY_DIR}/fbgrab/out/fbgrab ${BIN_DIR}/fbgrab/
+		DEPENDS libpng fbgrab
+	)
+	add_custom_command(OUTPUT CLEAN_ALL APPEND DEPENDS fbgrab_clean)
+endif()
+
 if(FFMPEG)
 	add_dependencies(${PROJECT_NAME} ffmpeg)
 	add_subdirectory(ffmpeg)
 	add_subdirectory(x264)
-	add_dependencies(
-		ffmpeg
-		x264
-	)
+	add_dependencies(ffmpeg x264)
 	add_custom_command(
 		OUTPUT ALL_TARGETS APPEND
 		COMMAND mkdir -p ${BIN_DIR}/x264/lib
@@ -126,6 +138,22 @@ if(FFMPEG)
 		DEPENDS x264 ffmpeg
 	)
 	add_custom_command(OUTPUT CLEAN_ALL APPEND DEPENDS x264_clean ffmpeg_clean)
+endif()
+
+if(LIBPNG)
+	add_dependencies(${PROJECT_NAME} libpng)
+	add_subdirectory(libz)
+	add_subdirectory(libpng)
+	add_dependencies(libpng libz)
+	add_custom_command(
+		OUTPUT ALL_TARGETS APPEND
+		COMMAND mkdir -p ${BIN_DIR}/libpng
+		COMMAND cp -a ${PROJECT_BINARY_DIR}/libpng/out/* ${BIN_DIR}/libpng/
+		COMMAND mkdir -p ${BIN_DIR}/libz
+		COMMAND cp -a ${PROJECT_BINARY_DIR}/libz/out/* ${BIN_DIR}/libz/
+		DEPENDS libpng
+	)
+	add_custom_command(OUTPUT CLEAN_ALL APPEND DEPENDS libz_clean libpng_clean)
 endif()
 
 if(NTPCLIENT)
