@@ -46,8 +46,8 @@ set(
     --enable-parser=h264,hevc
     --enable-bsf=h264_metadata,h264_redundant_pps,hevc_metadata,extract_extradata
 
-    --extra-ldflags=-L${PROJECT_BINARY_DIR}/../x264/out/lib
-    --extra-cflags=-I${PROJECT_BINARY_DIR}/../x264/out/include
+    --extra-ldflags=-L${PROJECT_BINARY_DIR}/../libx264/out/lib
+    --extra-cflags=-I${PROJECT_BINARY_DIR}/../libx264/out/include
 )
 
 if(DEFINED CMAKE_TOOLCHAIN_FILE)
@@ -67,6 +67,7 @@ endif()
 
 add_custom_command(
     OUTPUT ffmpeg_build
+    COMMENT "Building FFMPEG..."
     COMMAND ./configure ${FFMPEG_OPTIONS}
     COMMAND make -j6 && make install
     WORKING_DIRECTORY ${ffmpeg_SOURCE_DIR}

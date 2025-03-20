@@ -15,6 +15,7 @@ FetchContent_Populate(libpng)
 if(DEFINED CMAKE_TOOLCHAIN_FILE)
 add_custom_command(
 	OUTPUT libpng_build
+	COMMENT "Building LIBPNG (Toolchain)..."
 	# CMakeLists.txt 1.6.47 bug, not able to override PNG_TARGET_ARCHITECTURE
 	COMMAND patch ${libpng_SOURCE_DIR}/CMakeLists.txt -i ${PROJECT_SOURCE_DIR}/patch/CMakeLists.diff
 	COMMAND cd ${libpng_SOURCE_DIR} && mkdir -p build && cd build && cmake .. -DPNG_SHARED=OFF -DZLIB_ROOT=${PROJECT_BINARY_DIR}/../libz/out && make
@@ -29,6 +30,7 @@ add_custom_command(
 else()
 add_custom_command(
 	OUTPUT libpng_build
+	COMMENT "Building LIBPNG (Native)..."
 	COMMAND cd ${libpng_SOURCE_DIR} && mkdir -p build && cd build && cmake .. -DZLIB_ROOT=${PROJECT_BINARY_DIR}/../libz/out && make
 	COMMAND mkdir -p ${libpng_BINARY_DIR}/lib
 	COMMAND mkdir -p ${libpng_BINARY_DIR}/include

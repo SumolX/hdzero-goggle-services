@@ -18,14 +18,16 @@ set(LDFLAGS "${LDFLAGS} -L../../libpng/out/lib -L../../libz/out/lib")
 if(DEFINED CMAKE_TOOLCHAIN_FILE)
 add_custom_command(
 	OUTPUT fbgrab_build
+	COMMENT "Building FBGRAB (Toolchain)..."
 	# Forcing static build type
 	COMMAND patch ${fbgrab_SOURCE_DIR}/Makefile -i ${PROJECT_SOURCE_DIR}/patch/Makefile.diff
-	COMMAND . ${PROJECT_BINARY_DIR}/../toolchain.sh && cd ${fbgrab_SOURCE_DIR} && CFLAGS=${CFLAGS} LDFLAGS=${LDFLAGS} make
+	COMMAND . ${CMAKE_BINARY_DIR}/toolchain.sh && cd ${fbgrab_SOURCE_DIR} && CFLAGS=${CFLAGS} LDFLAGS=${LDFLAGS} make
 	COMMAND cp ${fbgrab_SOURCE_DIR}/fbgrab ${fbgrab_BINARY_DIR}
 )
 else()
 add_custom_command(
 	OUTPUT fbgrab_build
+	COMMENT "Building FBGRAB (Native)..."
 	COMMAND cd ${fbgrab_SOURCE_DIR} && make
 	COMMAND cp ${fbgrab_SOURCE_DIR}/fbgrab ${fbgrab_BINARY_DIR}
 )

@@ -89,6 +89,7 @@ add_custom_command(
 
 add_custom_command(
 	OUTPUT untrunc_build
+    COMMENT "Building UNTRUNC..."
 	COMMAND cd ${untrunc_SOURCE_DIR} && ${CMAKE_CXX_COMPILER} -o untrunc -I./libav ${UNTRUNC_SRCS} ${UNTRUNC_LIBS}
 	COMMAND cp ${untrunc_SOURCE_DIR}/untrunc ${untrunc_BINARY_DIR}
 	DEPENDS untrunc_build_libav

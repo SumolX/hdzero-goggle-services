@@ -25,6 +25,7 @@ execute_process(
 
 add_custom_command(
 	OUTPUT dosfstools_build
+	COMMENT "Building DOSFSTOOLS..."
 	COMMAND cd ${dosfstools_SOURCE_DIR} && make
 	COMMAND cp ${dosfstools_SOURCE_DIR}/src/fatlabel ${dosfstools_BINARY_DIR}
 	COMMAND cp ${dosfstools_SOURCE_DIR}/src/fsck.fat ${dosfstools_BINARY_DIR}

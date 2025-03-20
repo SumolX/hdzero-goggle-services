@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 project (libz C)
+message("Building LIBZ...")
 
 include(FetchContent)
 
@@ -15,7 +16,8 @@ FetchContent_Populate(libz)
 if(DEFINED CMAKE_TOOLCHAIN_FILE)
 add_custom_command(
 	OUTPUT libz_build
-	COMMAND . ${PROJECT_BINARY_DIR}/../toolchain.sh && cd ${libz_SOURCE_DIR} && mkdir -p build && cd build && cmake .. && make
+	COMMENT "Building LIBZ (Toolchain)..."
+	COMMAND . ${CMAKE_BINARY_DIR}/toolchain.sh && cd ${libz_SOURCE_DIR} && mkdir -p build && cd build && cmake .. && make
 	COMMAND mkdir -p ${libz_BINARY_DIR}/lib
 	COMMAND mkdir -p ${libz_BINARY_DIR}/include
 	COMMAND cp ${libz_SOURCE_DIR}/build/libz.a ${libz_BINARY_DIR}/lib/
@@ -25,6 +27,7 @@ add_custom_command(
 else()
 add_custom_command(
 	OUTPUT libz_build
+	COMMENT "Building LIBZ (Native)..."
 	COMMAND cd ${libz_SOURCE_DIR} && mkdir -p build && cd build && cmake .. && make
 	COMMAND mkdir -p ${libz_BINARY_DIR}/lib
 	COMMAND mkdir -p ${libz_BINARY_DIR}/include

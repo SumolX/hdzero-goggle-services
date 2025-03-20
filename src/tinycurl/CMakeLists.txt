@@ -15,13 +15,15 @@ FetchContent_Populate(tinycurl)
 if(DEFINED CMAKE_TOOLCHAIN_FILE)
 add_custom_command(
 	OUTPUT tinycurl_build
-	COMMAND . ${PROJECT_BINARY_DIR}/../toolchain.sh && ./configure --host=${TARGET_PLATFORM} --prefix=${tinycurl_BINARY_DIR} --with-bearssl=${tinycurl_BINARY_DIR}/../../bearssl/out --disable-shared
+	COMMENT "Building TINYCURL (Toolchain)..."
+	COMMAND . ${CMAKE_BINARY_DIR}/toolchain.sh && ./configure --host=${TARGET_PLATFORM} --prefix=${tinycurl_BINARY_DIR} --with-bearssl=${tinycurl_BINARY_DIR}/../../bearssl/out --disable-shared
 	COMMAND cd ${tinycurl_SOURCE_DIR} && make && make install
 	WORKING_DIRECTORY ${tinycurl_SOURCE_DIR}
 )
 else()
 add_custom_command(
 	OUTPUT tinycurl_build
+	COMMENT "Building TINYCURL (Native)..."
 	COMMAND ./configure --host=${TARGET_PLATFORM} --prefix=${tinycurl_BINARY_DIR} --with-bearssl=${tinycurl_BINARY_DIR}/../../bearssl/out --disable-shared
 	COMMAND cd ${tinycurl_SOURCE_DIR} && make && make install
 	WORKING_DIRECTORY ${tinycurl_SOURCE_DIR}

@@ -20,7 +20,8 @@ execute_process(
 
 add_custom_command(
 	OUTPUT busybox_build
-	COMMAND cd ${busybox_SOURCE_DIR} && . ${PROJECT_BINARY_DIR}/../toolchain.sh && make && make install
+	COMMENT "Building BUSYBOX (Toolchain)..."
+	COMMAND cd ${busybox_SOURCE_DIR} && . ${CMAKE_BINARY_DIR}/toolchain.sh && make && make install
 	COMMAND ${PROJECT_SOURCE_DIR}/generate.sh ${busybox_SOURCE_DIR} ${PROJECT_SOURCE_DIR}
 	COMMAND cp ${busybox_SOURCE_DIR}/busybox ${busybox_BINARY_DIR}
 )
@@ -34,6 +35,7 @@ execute_process(
 
 add_custom_command(
 	OUTPUT busybox_build
+	COMMENT "Building BUSYBOX (Native)..."
 	COMMAND cd ${busybox_SOURCE_DIR} && make && make install
 	COMMAND ${PROJECT_SOURCE_DIR}/generate.sh ${busybox_SOURCE_DIR} ${PROJECT_SOURCE_DIR}
 	COMMAND cp ${busybox_SOURCE_DIR}/busybox ${busybox_BINARY_DIR}
