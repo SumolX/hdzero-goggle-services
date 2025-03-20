@@ -1,20 +1,20 @@
 cmake_minimum_required(VERSION 3.14)
-project (x264 C)
+project (libx264 C)
 
 # Load Modules
 include(FetchContent)
 
 FetchContent_Declare(
-	x264
+	libx264
 	GIT_REPOSITORY "https://code.videolan.org/videolan/x264.git"
 	SOURCE_DIR     "src"
 	BINARY_DIR     "out"
 )
-FetchContent_MakeAvailable(x264)
+FetchContent_MakeAvailable(libx264)
 
 set(
-    X264_OPTIONS
-    --prefix=${x264_BINARY_DIR}
+    LIBX264_OPTIONS
+    --prefix=${libx264_BINARY_DIR}
     --enable-shared
     --enable-pic
 )
@@ -22,7 +22,7 @@ set(
 if(DEFINED CMAKE_TOOLCHAIN_FILE)
 list(
     APPEND
-    X264_OPTIONS
+    LIBX264_OPTIONS
     --host=${TARGET_PLATFORM}
     --cross-prefix=${COMPILER_PATH}/${TARGET_PLATFORM}-
     --extra-cflags=${CMAKE_C_FLAGS}
@@ -31,23 +31,24 @@ list(
 endif()
 
 execute_process(
-	COMMAND ./configure ${X264_OPTIONS} 
-	WORKING_DIRECTORY ${x264_SOURCE_DIR}
+	COMMAND ./configure ${LIBX264_OPTIONS} 
+	WORKING_DIRECTORY ${libx264_SOURCE_DIR}
 )
 
 add_custom_command(
-	OUTPUT x264_build
+	OUTPUT libx264_build
+	COMMENT "Building LIBX264..."
 	COMMAND make -j6 && make install
-	WORKING_DIRECTORY ${x264_SOURCE_DIR}
+	WORKING_DIRECTORY ${libx264_SOURCE_DIR}
 )
 
 add_custom_command(
-	OUTPUT x264_cleanall
+	OUTPUT libx264_cleanall
 	COMMAND find . -name '*.o' -delete
 	COMMAND find . -name '*.a' -delete
 	COMMAND find . -name '*.so*' -delete
-	COMMAND rm -rf ${x264_BINARY_DIR}/*
+	COMMAND rm -rf ${libx264_BINARY_DIR}/*
 )
 
-add_custom_target(x264 ALL DEPENDS x264_build)
-add_custom_target(x264_clean DEPENDS x264_cleanall)
+add_custom_target(libx264 ALL DEPENDS libx264_build)
+add_custom_target(libx264_clean DEPENDS libx264_cleanall)

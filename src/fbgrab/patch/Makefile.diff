@@ -1,0 +1,11 @@
+--- Makefile.old	2025-03-19 19:33:39.119641665 +0000
++++ Makefile.new	2025-03-19 19:33:46.425350115 +0000
+@@ -12,7 +12,7 @@
+ all: fbgrab fbgrab.1.gz
+ 
+ fbgrab: fbgrab.c
+-	$(CC) -g -Wall $(CFLAGS) $(LDFLAGS) $< -lpng -lz -o $@
++	$(CC) -g -Wall $(CFLAGS) $(LDFLAGS) $< -lpng -lz -static -o $@
+ 
+ fbgrab.1.gz: fbgrab.1.man
+ 	$(GZIP) $(GZIPFLAGS) $< > $@

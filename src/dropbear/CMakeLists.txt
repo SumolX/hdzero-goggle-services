@@ -21,6 +21,7 @@ execute_process(
 
 add_custom_command(
 	OUTPUT dropbear_build
+	COMMENT "Building DROPBEAR..."
 	COMMAND cd ${dropbear_SOURCE_DIR} && make PROGRAMS='dropbear dbclient dropbearkey dropbearconvert scp' MULTI=1 SCPPROGRESS=1
 	COMMAND cp ${dropbear_SOURCE_DIR}/dropbearmulti ${dropbear_BINARY_DIR}
 )

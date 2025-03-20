@@ -1,0 +1,4 @@
+--- CMakeLists.txt.old	2023-05-15 21:38:54.357121327 -0400
++++ CMakeLists.txt.new	2023-05-15 21:33:05.595370792 -0400
+99a100
+> set(PNG_TARGET_ARCHITECTURE "arm")

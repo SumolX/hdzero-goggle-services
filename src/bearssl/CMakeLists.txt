@@ -16,13 +16,15 @@ FetchContent_MakeAvailable(bearssl)
 if(DEFINED CMAKE_TOOLCHAIN_FILE)
 add_custom_command(
 	OUTPUT bearssl_build
+	COMMENT "Building BEARSSL (Toolchain)..."
 	COMMAND cp ${PROJECT_SOURCE_DIR}/hdzero.mk ${bearssl_SOURCE_DIR}/conf/
-	COMMAND . ${PROJECT_BINARY_DIR}/../toolchain.sh && make CONF=hdzero
+	COMMAND . ${CMAKE_BINARY_DIR}/toolchain.sh && make CONF=hdzero
 	WORKING_DIRECTORY ${bearssl_SOURCE_DIR}
 )
 else()
 add_custom_command(
 	OUTPUT bearssl_build
+	COMMENT "Building BEARSSL (Native)..."
 	COMMAND make
 	WORKING_DIRECTORY ${bearssl_SOURCE_DIR}
 )
