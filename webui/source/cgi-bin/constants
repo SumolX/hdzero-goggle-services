@@ -9,23 +9,4 @@ SDC_PATH="/mnt/extsd"
 APP_PATH="/mnt/app"
 MOVIE_PATH="${SDC_PATH}/movies"
 SETTING_PATH="${APP_PATH}/setting.ini"
-
-function content_text
-{
-  echo "Content-Type: text/html"
-  echo ""
-}
-
-function content_json()
-{
-  echo "Content-Type: application/json"
-  echo ""
-}
-
-function print_error() 
-{
-   echo "Content-Type: text/html"
-   echo ""
-   echo "<h1>$1</h1>"
-   echo "<p>$2</p>"
-}
+KB_LIMIT=25000000
