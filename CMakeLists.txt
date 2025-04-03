@@ -9,6 +9,7 @@ option(DOSFSTOOLS "" ON)
 option(DROPBEAR   "" ON)
 option(FBGRAB     "" ON)
 option(FFMPEG     "" ON)
+option(IPERF      "" ON)
 option(LIBPNG     "" ON)
 option(LIBX264    "" ON)
 option(LIBZ       "" ON)
@@ -158,8 +159,21 @@ if(FFMPEG)
 	add_custom_command(OUTPUT CLEAN_ALL APPEND DEPENDS ffmpeg_clean)
 endif()
 
+if(IPERF)
+	message("Configuring IPERF...")
+	add_dependencies(${PROJECT_NAME} iperf)
+	add_subdirectory(src/iperf)
+	add_custom_command(
+		OUTPUT ALL_TARGETS APPEND
+		COMMAND mkdir -p ${BIN_DIR}/iperf
+		COMMAND cp -a ${PROJECT_BINARY_DIR}/src/iperf/out/iperf3 ${BIN_DIR}/iperf/
+		DEPENDS iperf
+	)
+	add_custom_command(OUTPUT CLEAN_ALL APPEND DEPENDS iperf_clean)
+endif()
+
 if(LIBPNG)
-	message(status "Configuring LIBPNG...")
+	message("Configuring LIBPNG...")
 	add_dependencies(${PROJECT_NAME} libpng)
 	add_subdirectory(src/libpng)
 	add_dependencies(libpng libz)

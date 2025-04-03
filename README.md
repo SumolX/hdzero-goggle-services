@@ -9,6 +9,7 @@ dosfstools: v4.2 Programs used to create, modify, and check the FAT filesystem.
 dropbear:   Network communications (SSH/SCP) via WiFi Module
 fbgrab:     v1.5 Linux framebuffer screenshot utility.
 ffmpeg:     v5.0.1 Complete solution to record, convert and stream audio and video.
+iperf:      v3.18 A TCP, UDP, and SCTP network bandwidth measurement tool.
 libpng:     v1.6.47 Portable Network Graphics support, official libpng repository.
 libx264:    VideoLAN x264, the best and fastest H.264 encoder.
 libz:       v1.3.1 A general purpose data compression library.
