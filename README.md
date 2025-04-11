@@ -11,7 +11,6 @@ fbgrab:     v1.5 Linux framebuffer screenshot utility.
 ffmpeg:     v5.0.1 Complete solution to record, convert and stream audio and video.
 iperf:      v3.18 A TCP, UDP, and SCTP network bandwidth measurement tool.
 libpng:     v1.6.47 Portable Network Graphics support, official libpng repository.
-libx264:    VideoLAN x264, the best and fastest H.264 encoder.
 libz:       v1.3.1 A general purpose data compression library.
 ntpclient:  Synchronize time with NTP Server via WiFi Module
 tinycurl:   v7.79.1 A low memory footprint of Curl designed for smaller systems.

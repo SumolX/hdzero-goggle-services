@@ -20,7 +20,6 @@ set(
     --disable-static
     --enable-shared
     --enable-version3
-    --enable-gpl
     
     # libavcodec
     --disable-faan
@@ -30,24 +29,17 @@ set(
     --disable-vdpau
 
     # libavformat
-    --disable-network
+    --enable-network
     --disable-bzlib
     --disable-xlib
     --disable-zlib
 
-    --enable-avcodec
-    --enable-avfilter
-    --enable-libx264
-    --enable-protocol=file
-    --enable-encoder=libx264,aac
+    --enable-protocol=file,tcp
     --enable-decoder=hevc,aac
-    --enable-muxer=h264,hevc,mpegts,mp4,hls
-    --enable-demuxer=h264,hevc,mpegts,mov
-    --enable-parser=h264,hevc
-    --enable-bsf=h264_metadata,h264_redundant_pps,hevc_metadata,extract_extradata
-
-    --extra-ldflags=-L${PROJECT_BINARY_DIR}/../libx264/out/lib
-    --extra-cflags=-I${PROJECT_BINARY_DIR}/../libx264/out/include
+    --enable-muxer=hevc,mpegts,mp4,hls,rtsp
+    --enable-demuxer=hevc,mpegts,mov,rtsp
+    --enable-parser=hevc
+    --enable-bsf=hevc_metadata,extract_extradata
 )
 
 if(DEFINED CMAKE_TOOLCHAIN_FILE)

@@ -11,7 +11,6 @@ option(FBGRAB     "" ON)
 option(FFMPEG     "" ON)
 option(IPERF      "" ON)
 option(LIBPNG     "" ON)
-option(LIBX264    "" ON)
 option(LIBZ       "" ON)
 option(NTPCLIENT  "" ON)
 option(TINYCURL   "" ON)
@@ -142,7 +141,6 @@ if(FFMPEG)
 	message("Configuring FFMPEG...")
 	add_dependencies(${PROJECT_NAME} ffmpeg)
 	add_subdirectory(src/ffmpeg)
-	add_dependencies(ffmpeg libx264)
 	add_custom_command(
 		OUTPUT ALL_TARGETS APPEND
 		COMMAND mkdir -p ${BIN_DIR}/ffmpeg/lib
@@ -152,7 +150,6 @@ if(FFMPEG)
 		COMMAND cp -a ${PROJECT_BINARY_DIR}/src/ffmpeg/out/lib/libavfilter.so.8.24.100 ${BIN_DIR}/ffmpeg/lib/libavfilter.so.8
 		COMMAND cp -a ${PROJECT_BINARY_DIR}/src/ffmpeg/out/lib/libavformat.so.59.16.100 ${BIN_DIR}/ffmpeg/lib/libavformat.so.59
 		COMMAND cp -a ${PROJECT_BINARY_DIR}/src/ffmpeg/out/lib/libavutil.so.57.17.100 ${BIN_DIR}/ffmpeg/lib/libavutil.so.57
-		COMMAND cp -a ${PROJECT_BINARY_DIR}/src/ffmpeg/out/lib/libpostproc.so.56.3.100 ${BIN_DIR}/ffmpeg/lib/libpostproc.so.56
 		COMMAND cp -a ${ffmpeg_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 		DEPENDS ffmpeg
 	)
@@ -184,20 +181,6 @@ if(LIBPNG)
 		DEPENDS libpng
 	)
 	add_custom_command(OUTPUT CLEAN_ALL APPEND DEPENDS libpng_clean)
-endif()
-
-if(LIBX264)
-	message("Configuring LIBX264...")
-	add_dependencies(${PROJECT_NAME} libx264)
-	add_subdirectory(src/libx264)
-	add_custom_command(
-		OUTPUT ALL_TARGETS APPEND
-		COMMAND mkdir -p ${BIN_DIR}/libx264
-		COMMAND cp -a ${PROJECT_BINARY_DIR}/src/libx264/out/* ${BIN_DIR}/libx264/
-		COMMAND cp -a ${libx264_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
-		DEPENDS libx264
-	)
-	add_custom_command(OUTPUT CLEAN_ALL APPEND DEPENDS libx264_clean)
 endif()
 
 if(LIBZ)
