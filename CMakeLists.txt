@@ -145,11 +145,8 @@ if(FFMPEG)
 		OUTPUT ALL_TARGETS APPEND
 		COMMAND mkdir -p ${BIN_DIR}/ffmpeg/lib
 		COMMAND cp -a ${PROJECT_BINARY_DIR}/src/ffmpeg/out/bin ${BIN_DIR}/ffmpeg/
-		COMMAND cp -a ${PROJECT_BINARY_DIR}/src/ffmpeg/out/lib/libavcodec.so.59.18.100 ${BIN_DIR}/ffmpeg/lib/libavcodec.so.59
-		COMMAND cp -a ${PROJECT_BINARY_DIR}/src/ffmpeg/out/lib/libavdevice.so.59.4.100 ${BIN_DIR}/ffmpeg/lib/libavdevice.so.59
-		COMMAND cp -a ${PROJECT_BINARY_DIR}/src/ffmpeg/out/lib/libavfilter.so.8.24.100 ${BIN_DIR}/ffmpeg/lib/libavfilter.so.8
-		COMMAND cp -a ${PROJECT_BINARY_DIR}/src/ffmpeg/out/lib/libavformat.so.59.16.100 ${BIN_DIR}/ffmpeg/lib/libavformat.so.59
-		COMMAND cp -a ${PROJECT_BINARY_DIR}/src/ffmpeg/out/lib/libavutil.so.57.17.100 ${BIN_DIR}/ffmpeg/lib/libavutil.so.57
+                COMMAND cp -a ${PROJECT_BINARY_DIR}/src/ffmpeg/out/lib ${BIN_DIR}/ffmpeg/
+                COMMAND cp -a ${PROJECT_BINARY_DIR}/src/ffmpeg/out/include ${BIN_DIR}/ffmpeg/
 		COMMAND cp -a ${ffmpeg_SOURCE_DIR}/scripts/* ${BIN_DIR}/scripts/
 		DEPENDS ffmpeg
 	)

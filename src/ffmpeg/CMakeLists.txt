@@ -18,6 +18,7 @@ set(
     --prefix=${ffmpeg_BINARY_DIR}
     --disable-everything
     --disable-static
+    --disable-runtime-cpudetect
     --enable-shared
     --enable-version3
     
@@ -34,12 +35,13 @@ set(
     --disable-xlib
     --disable-zlib
 
-    --enable-protocol=file,tcp
+    --enable-protocol=file,udp
     --enable-decoder=hevc,aac
-    --enable-muxer=hevc,mpegts,mp4,hls,rtsp
-    --enable-demuxer=hevc,mpegts,mov,rtsp
-    --enable-parser=hevc
-    --enable-bsf=hevc_metadata,extract_extradata
+    --enable-muxer=hevc,adts,latm,mpegts,mp4,hls,rtsp
+    --enable-demuxer=h264,hevc,mpegts,mov,rtsp
+    --enable-parser=h264,hevc,ac3
+    --enable-bsf=h264_metadata,h264_redundant_pps,h264_mp4toannexb,
+    --enable-bsf=hevc_metadata,hevc_mp4toannexb,aac_adtstoasc,extract_extradata
 )
 
 if(DEFINED CMAKE_TOOLCHAIN_FILE)
